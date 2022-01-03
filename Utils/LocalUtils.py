@@ -31,3 +31,11 @@ def run_logcat(deviceId, editor):
         print('Subprogram success')
     else:
         print('Subprogram failed')
+
+
+def clear_cache(deviceId, editor):
+    commandADB = 'adb logcat -c'
+    if editor:
+        editor.clear()
+    subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    print('adb logcat cache cleared!')
