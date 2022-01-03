@@ -1,9 +1,14 @@
+import subprocess
 import sys
+import threading
 
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtCore import Qt
 from enum import Enum
+from PyQt5.Qsci import *
+
+from Utils import LocalUtils
 
 
 class ToolkitItems(Enum):
@@ -50,10 +55,18 @@ def toolkit_click(actionItem):
 
 class MainDesk(QMainWindow):
     def __init__(self):
-        super(MainDesk, self).__init__()
-        self.init_UI()
+        super(MainDesk, self).__init__(flags=Qt.WindowFlags())
+        self.__myFont = None
+        self.__lyt = None
+        self.__frm = None
+        self.__editor = None
+        # start building the UI renderings
+        self.init_ui()
+        # start the adb logcat outputting
+        thread_adb = threading.Thread(target=LocalUtils.run_logcat, args=('', self.__editor))
+        thread_adb.start()
 
-    def init_UI(self):
+    def init_ui(self):
         self.setWindowTitle('Logcatty')
         self.resize(1280, 720)
 
@@ -93,6 +106,28 @@ class MainDesk(QMainWindow):
         toolbar.addAction(clearToolkit)
 
         toolbar.actionTriggered.connect(toolkit_click)
+
+        # ------------------------ main layout -------------------
+        self.__frm = QFrame(self, flags=Qt.WindowFlags())
+        self.__frm.setStyleSheet("QWidget { background-color: #ffeaeaea }")
+        self.__lyt = QVBoxLayout()
+        self.__frm.setLayout(self.__lyt)
+        self.setCentralWidget(self.__frm)
+        self.__myFont = QFont()
+        self.__myFont.setPointSize(14)
+
+        # add the QScintilla element
+        # QScintilla editor setup
+        # ! Make instance of QScintilla class!
+        self.__editor = QsciScintilla()
+        self.__editor.setText("Hello\n")
+        self.__editor.append("world")
+        self.__editor.setLexer(None)
+        self.__editor.setUtf8(True)  # Set encoding to UTF-8
+        self.__editor.setFont(self.__myFont)  # Will be overridden by lexer!
+
+        # ! Add editor to layout !
+        self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
 
 
 if __name__ == '__main__':
