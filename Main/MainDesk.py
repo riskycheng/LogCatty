@@ -7,6 +7,7 @@ from enum import Enum
 from PyQt5.Qsci import *
 
 from Utils import LocalUtils
+from Utils.MyLexer import MyLexer
 
 
 class ToolkitItems(Enum):
@@ -31,6 +32,7 @@ ToolkitItemNames = {
 class MainDesk(QMainWindow):
     def __init__(self):
         super(MainDesk, self).__init__(flags=Qt.WindowFlags())
+        self.__lexer = None
         self.__myFont = None
         self.__lyt = None
         self.__frm = None
@@ -98,6 +100,12 @@ class MainDesk(QMainWindow):
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
         self.__editor.setFont(self.__myFont)  # Will be overridden by lexer!
 
+        # set Lexer for editor
+        # self.__lexer = MyLexer(self.__editor)
+        # self.__editor.setLexer(self.__lexer)
+
+        # set editor end-of-line
+        # self.__editor.setEolMode(QsciScintilla.EolUnix)
         # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
 

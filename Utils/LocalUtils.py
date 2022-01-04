@@ -2,6 +2,8 @@ import os
 import re
 import subprocess
 
+from PyQt5.QtGui import QColor
+
 from Main.LogEntity import LogEntity
 
 
@@ -22,14 +24,14 @@ def find_devices():
 
 def run_logcat(deviceId, editor):
     # commandADB = 'adb -s ' + deviceId + ' logcat -c && adb -s ' + deviceId + ' logcat'
-    subprocess.Popen('adb logcat -G 256M')
     subprocess.Popen('adb logcat -c')
+    subprocess.Popen('adb logcat -G 256M')
     commandADB = 'adb logcat'
     p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     while p.poll() is None:
         line = p.stdout.readline()
         if line:
-            lineStr = str(line, encoding='utf-8')
+            lineStr = str(line, encoding='utf-8').replace('\r\n', '\n').replace('\LF','')
             editor.append(lineStr)
     if p.returncode == 0:
         print('Subprogram success')
