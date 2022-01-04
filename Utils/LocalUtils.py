@@ -1,5 +1,8 @@
 import os
+import re
 import subprocess
+
+from Main.LogEntity import LogEntity
 
 
 def find_devices():
@@ -19,6 +22,7 @@ def find_devices():
 
 def run_logcat(deviceId, editor):
     # commandADB = 'adb -s ' + deviceId + ' logcat -c && adb -s ' + deviceId + ' logcat'
+    subprocess.Popen('adb logcat -G 256M')
     subprocess.Popen('adb logcat -c')
     commandADB = 'adb logcat'
     p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -39,3 +43,25 @@ def clear_cache(deviceId, editor):
         editor.clear()
     subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     print('adb logcat cache cleared!')
+
+
+# parse one Line to logEntity instance
+def parse_line_to_log(line):
+    logItem = LogEntity()
+    pattern_date = re.compile(r"\s+")
+    items = pattern_date.split(line)
+    itemsLen = len(items)
+
+    if itemsLen < logItem.leastLen:
+        logItem.content = line
+        logItem.wellAllocated = False
+        return logItem
+
+    logItem.timeStamp = items[0] + '_' + items[1]
+    logItem.pid = items[2]
+    logItem.tid = items[3]
+    logItem.level = items[4]
+    logItem.tag = items[5][:-1] if items[5][-1] == ':' else items[5][:]
+    for item in items[6:]:
+        logItem.content += item
+    return logItem
