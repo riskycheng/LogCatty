@@ -61,21 +61,16 @@ class MyLexer(QsciLexerCustom):
         text = self.parent().text()[start:end]
         lines = text.split('\n')
         for line in lines:
-            print(line)
             logItem = LocalUtils.parse_line_to_log(line)
             if logItem.level == 'I':
                 # Red style
-                print('setting style for I')
                 self.setStyling(len(line) + 1, 1)
             elif logItem.level == 'D':
                 # Black style
-                print('setting style for D')
                 self.setStyling(len(line) + 1, 0)
             elif logItem.level == 'E':
                 # Red style
-                print('setting style for E')
                 self.setStyling(len(line) + 1, 2)
             else:
                 # Black style
-                print('setting style for others')
                 self.setStyling(len(line) + 1, 0)

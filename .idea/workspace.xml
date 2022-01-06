@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="04a29b11-6665-4795-a005-2b6ad474c621" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/LocalUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/LocalUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/MainDesk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/MainDesk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/MyLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/MyLexer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +100,19 @@
       <option name="project" value="LOCAL" />
       <updated>1641284284877</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="improve the subprocess to execute adb">
+      <created>1641471740462</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641471740462</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add logEntity and corresponding parsing function" />
-    <option name="LAST_COMMIT_MESSAGE" value="add logEntity and corresponding parsing function" />
+    <MESSAGE value="improve the subprocess to execute adb" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve the subprocess to execute adb" />
   </component>
 </project>

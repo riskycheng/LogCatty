@@ -1,7 +1,7 @@
 import sys
 import threading
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtGui import QIcon, QFont, QColor
 from PyQt5.QtCore import Qt
 from enum import Enum
 from PyQt5.Qsci import *
@@ -99,6 +99,13 @@ class MainDesk(QMainWindow):
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
         self.__editor.setFont(self.__myFont)  # Will be overridden by lexer!
+
+        # Margins
+        # -----------
+        # Margin 0 = Line nr margin
+        self.__editor.setMarginType(0, QsciScintilla.NumberMargin)
+        self.__editor.setMarginWidth(0, "000000")
+        self.__editor.setMarginsForegroundColor(QColor("#ff888888"))
 
         # set Lexer for editor
         # self.__lexer = MyLexer(self.__editor)
