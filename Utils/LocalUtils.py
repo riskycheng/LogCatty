@@ -24,10 +24,10 @@ def find_devices():
 
 def run_logcat(deviceId, editor):
     # commandADB = 'adb -s ' + deviceId + ' logcat -c && adb -s ' + deviceId + ' logcat'
-    subprocess.Popen('adb logcat -c')
-    subprocess.Popen('adb logcat -G 256M')
+    subprocess.Popen('adb logcat -c', shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    subprocess.Popen('adb logcat -G 256M', shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     commandADB = 'adb logcat'
-    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=256 * 1024 * 1024)
     while p.poll() is None:
         line = p.stdout.readline()
         if line:
