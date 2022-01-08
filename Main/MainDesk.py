@@ -107,9 +107,12 @@ class MainDesk(QMainWindow):
         self.__editor.setMarginWidth(0, "000000")
         self.__editor.setMarginsForegroundColor(QColor("#ff888888"))
 
+        # set features
+        self.__editor.SendScintilla(QsciScintilla.SC_CACHE_PAGE, 100)
+        self.__editor.SendScintilla(QsciScintilla.SCI_SETLAYOUTCACHE, 2)
         # set Lexer for editor
-        # self.__lexer = MyLexer(self.__editor)
-        # self.__editor.setLexer(self.__lexer)
+        self.__lexer = MyLexer(self.__editor)
+        self.__editor.setLexer(self.__lexer)
 
         # set editor end-of-line
         # self.__editor.setEolMode(QsciScintilla.EolUnix)

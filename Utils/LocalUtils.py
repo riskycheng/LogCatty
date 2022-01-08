@@ -27,12 +27,16 @@ def run_logcat(deviceId, editor):
     subprocess.Popen('adb logcat -c', shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     subprocess.Popen('adb logcat -G 256M', shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     commandADB = 'adb logcat'
-    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=256 * 1024 * 1024)
+    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1024 * 1024 * 1024)
+    cnt = 0
     while p.poll() is None:
         line = p.stdout.readline()
         if line:
-            lineStr = str(line, encoding='utf-8').replace('\r\n', '\n').replace('\LF','')
+            lineStr = str(line, encoding='utf-8').replace('\r\n', '\n')
             editor.append(lineStr)
+            cnt += 1
+            if cnt % 1000 == 0:
+                print(str(cnt))
     if p.returncode == 0:
         print('Subprogram success')
     else:
