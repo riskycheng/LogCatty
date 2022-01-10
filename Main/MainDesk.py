@@ -110,6 +110,17 @@ class MainDesk(QMainWindow):
         # set features
         self.__editor.SendScintilla(QsciScintilla.SC_CACHE_PAGE, 100)
         self.__editor.SendScintilla(QsciScintilla.SCI_SETLAYOUTCACHE, 2)
+
+        # replace with customized scrollBar
+        vBar = QScrollBar(Qt.Vertical, self)
+        vBar.setRange(0, 100)
+        vBar.setValue(10)
+        vBar.setStyleSheet("background : lightgreen;")
+        vBar.valueChanged.connect(self.vertPosChanged)
+        self.__editor.replaceVerticalScrollBar(vBar)
+        # hide the scrollbar from QScintilla side
+        #self.__editor.SendScintilla(QsciScintilla.SCI_SETVSCROLLBAR)
+
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
         self.__editor.setLexer(self.__lexer)
@@ -119,6 +130,10 @@ class MainDesk(QMainWindow):
         # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
 
+
+    def vertPosChanged(self):
+        print('scrolling')
+        pass
     def toolkit_click(self, actionItem):
         # file open
         if actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_OPEN]:
