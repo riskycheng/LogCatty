@@ -8,6 +8,7 @@ from PyQt5.Qsci import *
 
 from Utils import LocalUtils
 from Utils.MyLexer import MyLexer
+from Utils import logCacher
 
 
 class ToolkitItems(Enum):
@@ -39,8 +40,11 @@ class MainDesk(QMainWindow):
         self.__editor = None
         # start building the UI renderings
         self.init_ui()
+        # init the global cache instance
+        logCacher.init()
+
         # start the adb logcat outputting
-        thread_adb = threading.Thread(target=LocalUtils.run_logcat, args=('', self.__editor))
+        thread_adb = threading.Thread(target=LocalUtils.run_logcat, args=(self.__editor,))
         thread_adb.start()
 
     def init_ui(self):
@@ -119,7 +123,7 @@ class MainDesk(QMainWindow):
         vBar.valueChanged.connect(self.vertPosChanged)
         self.__editor.replaceVerticalScrollBar(vBar)
         # hide the scrollbar from QScintilla side
-        #self.__editor.SendScintilla(QsciScintilla.SCI_SETVSCROLLBAR)
+        # self.__editor.SendScintilla(QsciScintilla.SCI_SETVSCROLLBAR)
 
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
@@ -130,10 +134,10 @@ class MainDesk(QMainWindow):
         # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
 
-
     def vertPosChanged(self):
         print('scrolling')
         pass
+
     def toolkit_click(self, actionItem):
         # file open
         if actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_OPEN]:

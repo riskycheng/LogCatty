@@ -1,9 +1,8 @@
 import os
 import re
 import subprocess
-
 from PyQt5.QtGui import QColor
-
+from Utils import logCacher
 from Main.LogEntity import LogEntity
 
 
@@ -22,25 +21,41 @@ def find_devices():
     return foundedDevices
 
 
-def run_logcat(deviceId, editor):
+def run_logcat(editor):
     # commandADB = 'adb -s ' + deviceId + ' logcat -c && adb -s ' + deviceId + ' logcat'
     subprocess.Popen('adb logcat -c', shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     subprocess.Popen('adb logcat -G 256M', shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
     commandADB = 'adb logcat'
-    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=1024 * 1024 * 1024)
-    cnt = 0
+    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                         bufsize=256 * 1024 * 1024)
     while p.poll() is None:
         line = p.stdout.readline()
         if line:
             lineStr = str(line, encoding='utf-8').replace('\r\n', '\n')
-            editor.append(lineStr)
-            cnt += 1
-            if cnt % 1000 == 0:
-                print(str(cnt))
+            update_editor_content(lineStr, editor)
     if p.returncode == 0:
         print('Subprogram success')
     else:
         print('Subprogram failed')
+
+
+def update_editor_content(lineStr, editor):
+    cache = logCacher.get_all_cache()
+    cacheLen = len(cache)
+    if cacheLen < 100:
+        logCacher.append_cache(lineStr)
+        return
+    else:
+        print('clear cache and set back to editor...')
+
+    index = 0
+    try:
+        for index in range(cacheLen):
+            line = cache.pop(index)
+            editor.append(line)
+    except IndexError as error:
+        print('error :', error)
 
 
 def clear_cache(deviceId, editor):
