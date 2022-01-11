@@ -18,6 +18,7 @@ class ToolkitItems(Enum):
     TOOLKIT_VIDEO = 4
     TOOLKIT_FILTER = 5
     TOOLKIT_CLEAR = 6
+    TOOLKIT_UPDATE_CONTENT = 7
 
 
 ToolkitItemNames = {
@@ -26,7 +27,8 @@ ToolkitItemNames = {
     ToolkitItems.TOOLKIT_CAM: 'CAMERA',
     ToolkitItems.TOOLKIT_VIDEO: 'VIDEO',
     ToolkitItems.TOOLKIT_FILTER: 'FILTER',
-    ToolkitItems.TOOLKIT_CLEAR: 'CLEAR'
+    ToolkitItems.TOOLKIT_CLEAR: 'CLEAR',
+    ToolkitItems.TOOLKIT_UPDATE_CONTENT: 'UPDATE'
 }
 
 
@@ -85,6 +87,11 @@ class MainDesk(QMainWindow):
         clearToolkit = QAction(QIcon('../res/clear_blue.png'), 'clear', self)
         clearToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_CLEAR])
         toolbar.addAction(clearToolkit)
+
+        # clear the cache
+        updateContentToolkit = QAction(QIcon('../res/update.png'), 'update', self)
+        updateContentToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_UPDATE_CONTENT])
+        toolbar.addAction(updateContentToolkit)
 
         toolbar.actionTriggered.connect(self.toolkit_click)
 
@@ -155,9 +162,12 @@ class MainDesk(QMainWindow):
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_CLEAR]:
             print(actionItem.text())
             # clear the window cache and device log cache
-            LocalUtils.clear_cache('', self.__editor)
+            LocalUtils.clear_cache(self.__editor, False)
         # debug enabling
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_DEBUG]:
+            print(actionItem.text())
+        # updating content in editor
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_UPDATE_CONTENT]:
             print(actionItem.text())
         else:
             print('no supported')
