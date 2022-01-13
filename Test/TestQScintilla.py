@@ -1,13 +1,13 @@
 import sys
 import threading
-
-from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+from PyQt5.QtGui import QIcon, QFont, QColor
+from PyQt5.QtCore import Qt
+from enum import Enum
 from PyQt5.Qsci import *
 
 from Utils.MyLexer import MyLexer
+from Utils.logCacher import LocalCache
 
 
 class CustomMainWindow(QMainWindow):
@@ -31,12 +31,15 @@ class CustomMainWindow(QMainWindow):
         self.__myFont.setPointSize(14)
 
         # 3. Place a button
-        self.__btn = QPushButton("Qsci")
+        self.__btn = QPushButton("File")
         self.__btn.setFixedWidth(50)
         self.__btn.setFixedHeight(50)
         self.__btn.clicked.connect(self.__btn_action)
         self.__btn.setFont(self.__myFont)
         self.__lyt.addWidget(self.__btn)
+
+        # 4. init file loader
+        self.__logCacher = LocalCache()
 
         # QScintilla editor setup
         # ------------------------
@@ -49,53 +52,51 @@ class CustomMainWindow(QMainWindow):
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
         self.__editor.setFont(self.__myFont)  # Will be overridden by lexer!
 
+        vBar = QScrollBar(Qt.Vertical, self)
+        vBar.setRange(0, 100)
+        vBar.setMaximum(100)
+        vBar.setStyleSheet("background : lightgreen;")
+        vBar.valueChanged.connect(self.vertPosChanged)
+        self.__editor.replaceVerticalScrollBar(vBar)
+
         self.__editor.setMarginType(0, QsciScintilla.NumberMargin)
         self.__editor.setMarginWidth(0, "000000")
         self.__editor.setMarginsForegroundColor(QColor("#ff888888"))
 
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
-
         self.show()
-        thread = threading.Thread(target=self.test_load_file_into_editor, args=('c:/test/logsTest.txt',), daemon=True)
-        thread.start()
-        # self.test_load_file_into_editor('c:/test/logsTest.txt')
-
 
     ''''''
 
+    def vertPosChanged(self, value):
+        sender = self.sender()
+        ratio = value / self.__editor.lines()
+        # if ratio > 0.995:
+        #     print('scrolling', str(ratio))
+        #     threading.Thread(target=self.test_append_file_into_editor, args=(0.05,),
+        #                      daemon=True).start()
+        #     ratio = 0.0
+        pass
+
     def __btn_action(self):
-        print("Hello World!")
+        print("reloading...")
+        thread = threading.Thread(target=self.test_load_file_into_editor, args=('c:/test/logs_1227.txt', 0.1),
+                                  daemon=True)
+        thread.start()
 
-    def test_load_file_into_editor(self, filePath):
-        file = open(filePath, errors="ignore")
-        lineCnt = 0
-        totalLines = 0
-        data = ''''''
+    def test_load_file_into_editor(self, filePath, ratio):
+        self.__logCacher.reload(filePath)
+        self.__editor.append(self.__logCacher.get_partial_block(ratio))
 
-        for line in file:
-            totalLines += 1
-            if lineCnt < 10000:
-                data += line
-                lineCnt += 1
-            else:
-                print('totalLines:', str(totalLines))
-                try:
-                    self.__editor.append(data)
-                    lineCnt = 0
-                    data = ''''''
-                    pass
-                except UnicodeDecodeError as e:
-                    print(e, '@', str(lineCnt))
-            if totalLines >= 1000000:
-                break
-        self.__editor.append(data)
-        file.close()
-
+        # ! append the text style, it is taking long since it would go through all lines
         self.__editor.setLexer(self.__lexer)
-        # ! Add editor to layout !
 
+        # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor)
+
+    def test_append_file_into_editor(self, ratio):
+        self.__editor.append(self.__logCacher.get_partial_block(ratio))
 
 
 ''''''

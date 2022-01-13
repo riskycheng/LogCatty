@@ -42,8 +42,6 @@ class MainDesk(QMainWindow):
         self.__editor = None
         # start building the UI renderings
         self.init_ui()
-        # init the global cache instance
-        logCacher.init()
 
         # start the adb logcat outputting
         thread_adb = threading.Thread(target=LocalUtils.run_logcat, args=(self.__editor,))

@@ -33,29 +33,11 @@ def run_logcat(editor):
         line = p.stdout.readline()
         if line:
             lineStr = str(line, encoding='utf-8').replace('\r\n', '\n')
-            update_editor_content(lineStr, editor)
     if p.returncode == 0:
         print('Subprogram success')
     else:
         print('Subprogram failed')
 
-
-def update_editor_content(lineStr, editor):
-    cache = logCacher.get_all_cache()
-    cacheLen = len(cache)
-    if cacheLen < 100:
-        logCacher.append_cache(lineStr)
-        return
-    else:
-        print('clear cache and set back to editor...')
-
-    index = 0
-    try:
-        for index in range(cacheLen):
-            line = cache.pop(index)
-            editor.append(line)
-    except IndexError as error:
-        print('error :', error)
 
 
 def clear_cache(deviceId, editor):
