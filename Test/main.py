@@ -1,6 +1,9 @@
 import os
 import subprocess
 
+from Utils import LocalUtils
+
+
 def find_devices():
     commandADB = 'adb devices'
     p = subprocess.Popen(commandADB, shell=True, stdout=subprocess.PIPE)
@@ -17,7 +20,11 @@ def find_devices():
 
 
 if __name__ == '__main__':
-    devices = find_devices()
-    print('founded devices:')
-    for item in devices:
-        print(item)
+    filename = 'c:/test/logs_exp.txt'
+    with open(filename, "r", encoding="utf-8", errors="ignore") as file:
+        for line in file:
+            # print(line)
+            for item in line:
+                if LocalUtils.is_contain_chinese_or_exASC(item):
+                    line = line.replace(item, '?')
+            print(line)

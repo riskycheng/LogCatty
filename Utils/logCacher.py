@@ -1,4 +1,7 @@
 # caching the content in dic
+from Utils import LocalUtils
+
+
 class LocalCache:
     def __init__(self):
         self.__MAX_LINES_PER_PAGE = 4000  # will be placed to another page if overflow
@@ -12,8 +15,11 @@ class LocalCache:
         self.__cachePages.clear()
         self.__numLines = 0
         tempLines = []
-        with open(filename, "r", encoding="utf-8", errors="strict") as file:
+        with open(filename, "r", encoding="utf-8", errors="ignore") as file:
             for line in file:
+                for item in line:
+                    if LocalUtils.is_contain_chinese_or_exASC(item):
+                        line = line.replace(item, '?')
                 self.__numLines += 1
                 tempLines.append(line)
                 if self.__numLines % self.__MAX_LINES_PER_PAGE == 0:

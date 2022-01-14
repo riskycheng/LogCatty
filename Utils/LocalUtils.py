@@ -39,7 +39,6 @@ def run_logcat(editor):
         print('Subprogram failed')
 
 
-
 def clear_cache(deviceId, editor):
     commandADB = 'adb logcat -c'
     if editor:
@@ -68,3 +67,14 @@ def parse_line_to_log(line):
     for item in items[6:]:
         logItem.content += item
     return logItem
+
+
+def is_contain_chinese_or_exASC(check_str):
+    """
+    :param check_str
+    :return: {bool}
+    """
+    for ch in check_str:
+        if u'\u4e00' <= ch <= u'\u9fff' or ord(ch) < 0 or ord(ch) > 127:
+            return True
+    return False

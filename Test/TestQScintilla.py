@@ -46,8 +46,6 @@ class CustomMainWindow(QMainWindow):
 
         # ! Make instance of QsciScintilla class!
         self.__editor = QsciScintilla()
-        self.__editor.setText("Hello\n")
-        self.__editor.append("world")
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
         self.__editor.setFont(self.__myFont)  # Will be overridden by lexer!
@@ -81,7 +79,7 @@ class CustomMainWindow(QMainWindow):
 
     def __btn_action(self):
         print("reloading...")
-        thread = threading.Thread(target=self.test_load_file_into_editor, args=('c:/test/logs_1227.txt', 0.1),
+        thread = threading.Thread(target=self.test_load_file_into_editor, args=('C:/test/logs_1227.txt', 0.1),
                                   daemon=True)
         thread.start()
 
