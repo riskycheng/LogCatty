@@ -13,13 +13,13 @@ class MyLexer(QsciLexerCustom):
         # ----------------------
         self.setDefaultColor(QColor("#ff000000"))
         self.setDefaultPaper(QColor("#ffffffff"))
-        self.setDefaultFont(QFont("Consolas", 14))
+        self.setDefaultFont(QFont("Aharon", 14))
 
         # Initialize colors per style
         # ----------------------------
         self.setColor(QColor("#ff000000"), 0)  # Style 0: black
         self.setColor(QColor("#ffff0000"), 1)  # Style 1: red
-        self.setColor(QColor("#ff0000bf"), 2)  # Style 2: blue
+        self.setColor(QColor("#ffffff00"), 2)  # Style 2: yellow
         self.setColor(QColor("#ff007f00"), 3)  # Style 3: green
 
         # Initialize paper colors per style
@@ -31,23 +31,23 @@ class MyLexer(QsciLexerCustom):
 
         # Initialize fonts per style
         # ---------------------------
-        self.setFont(QFont("Consolas", 14, weight=QFont.Bold), 0)  # Style 0: Consolas 14pt
-        self.setFont(QFont("Consolas", 14, weight=QFont.Bold), 1)  # Style 1: Consolas 14pt
-        self.setFont(QFont("Consolas", 14, weight=QFont.Bold), 2)  # Style 2: Consolas 14pt
-        self.setFont(QFont("Consolas", 14, weight=QFont.Bold), 3)  # Style 3: Consolas 14pt
+        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 0)  # Style 0: Consolas 14pt
+        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 1)  # Style 1: Consolas 14pt
+        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 2)  # Style 2: Consolas 14pt
+        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 3)  # Style 3: Consolas 14pt
 
     def language(self):
-        return "SimpleLanguage"
+        return "logLanguage"
 
     def description(self, style):
         if style == 0:
-            return "myStyle_0"
+            return "myStyle_black_normal"
         elif style == 1:
-            return "myStyle_1"
+            return "myStyle_red_error"
         elif style == 2:
-            return "myStyle_2"
+            return "myStyle_yellow_highlight"
         elif style == 3:
-            return "myStyle_3"
+            return "myStyle_green_working"
         ###
         return ""
 
@@ -62,15 +62,9 @@ class MyLexer(QsciLexerCustom):
         lines = text.split('\n')
         for line in lines:
             logItem = LocalUtils.parse_line_to_log(line)
-            if logItem.level == 'I':
+            if logItem.level == 'E':
                 # Red style
                 self.setStyling(len(line) + 1, 1)
-            elif logItem.level == 'D':
-                # Black style
-                self.setStyling(len(line) + 1, 0)
-            elif logItem.level == 'E':
-                # Red style
-                self.setStyling(len(line) + 1, 2)
             else:
                 # Black style
                 self.setStyling(len(line) + 1, 0)
