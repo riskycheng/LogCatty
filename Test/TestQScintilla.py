@@ -79,13 +79,13 @@ class CustomMainWindow(QMainWindow):
 
     def __btn_action(self):
         print("reloading...")
-        thread = threading.Thread(target=self.test_load_file_into_editor, args=('C:/test/logs_1227.txt', 0.1),
+        thread = threading.Thread(target=self.test_load_file_into_editor, args=('C:/test/logs_1227.txt', 50),
                                   daemon=True)
         thread.start()
 
-    def test_load_file_into_editor(self, filePath, ratio):
-        self.__logCacher.reload(filePath)
-        self.__editor.append(self.__logCacher.get_partial_block(ratio))
+    def test_load_file_into_editor(self, filePath, pages):
+        self.__logCacher.reload(filePath, False)
+        self.__editor.append(self.__logCacher.get_partial_block(pages))
 
         # ! append the text style, it is taking long since it would go through all lines
         self.__editor.setLexer(self.__lexer)
@@ -93,8 +93,8 @@ class CustomMainWindow(QMainWindow):
         # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor)
 
-    def test_append_file_into_editor(self, ratio):
-        self.__editor.append(self.__logCacher.get_partial_block(ratio))
+    def test_append_file_into_editor(self, pages):
+        self.__editor.append(self.__logCacher.get_partial_block(pages))
 
 
 ''''''
