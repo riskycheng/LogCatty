@@ -84,7 +84,7 @@ class CustomMainWindow(QMainWindow):
         thread.start()
 
     def test_load_file_into_editor(self, filePath, pages):
-        self.__logCacher.reload(filePath, False)
+        self.__logCacher.reload(filePath)
         self.__editor.append(self.__logCacher.get_partial_block(pages))
 
         # ! append the text style, it is taking long since it would go through all lines

@@ -9,6 +9,7 @@ from PyQt5.Qsci import *
 from Utils import LocalUtils
 from Utils.MyLexer import MyLexer
 from Utils import logCacher
+from Utils.logCacher import LocalCache
 
 
 class ToolkitItems(Enum):
@@ -19,6 +20,7 @@ class ToolkitItems(Enum):
     TOOLKIT_FILTER = 5
     TOOLKIT_CLEAR = 6
     TOOLKIT_UPDATE_CONTENT = 7
+    TOOLKIT_TEST = -1
 
 
 ToolkitItemNames = {
@@ -28,28 +30,30 @@ ToolkitItemNames = {
     ToolkitItems.TOOLKIT_VIDEO: 'VIDEO',
     ToolkitItems.TOOLKIT_FILTER: 'FILTER',
     ToolkitItems.TOOLKIT_CLEAR: 'CLEAR',
-    ToolkitItems.TOOLKIT_UPDATE_CONTENT: 'UPDATE'
+    ToolkitItems.TOOLKIT_UPDATE_CONTENT: 'UPDATE',
+    ToolkitItems.TOOLKIT_TEST: 'TEST'
 }
 
 
 class MainDesk(QMainWindow):
     def __init__(self):
         super(MainDesk, self).__init__(flags=Qt.WindowFlags())
+        self.__logCacher = None
         self.__lexer = None
         self.__myFont = None
         self.__lyt = None
         self.__frm = None
         self.__editor = None
+
+        # init the logCacher
+        self.__logCacher = LocalCache()
+
         # start building the UI renderings
         self.init_ui()
 
-        # start the adb logcat outputting
-        thread_adb = threading.Thread(target=LocalUtils.run_logcat, args=(self.__editor,))
-        thread_adb.start()
-
     def init_ui(self):
         self.setWindowTitle('Logcatty')
-        self.resize(1280, 720)
+        self.resize(1920, 1080)
 
         # add toolbar
         # file open
@@ -91,6 +95,11 @@ class MainDesk(QMainWindow):
         updateContentToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_UPDATE_CONTENT])
         toolbar.addAction(updateContentToolkit)
 
+        # experimental function
+        updateTestToolkit = QAction(QIcon('../res/test_blue.png'), 'test', self)
+        updateTestToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_TEST])
+        toolbar.addAction(updateTestToolkit)
+
         toolbar.actionTriggered.connect(self.toolkit_click)
 
         # ------------------------ main layout -------------------
@@ -120,28 +129,18 @@ class MainDesk(QMainWindow):
         self.__editor.SendScintilla(QsciScintilla.SC_CACHE_PAGE, 100)
         self.__editor.SendScintilla(QsciScintilla.SCI_SETLAYOUTCACHE, 2)
 
-        # replace with customized scrollBar
-        vBar = QScrollBar(Qt.Vertical, self)
-        vBar.setRange(0, 100)
-        vBar.setValue(10)
-        vBar.setStyleSheet("background : lightgreen;")
-        vBar.valueChanged.connect(self.vertPosChanged)
-        self.__editor.replaceVerticalScrollBar(vBar)
-        # hide the scrollbar from QScintilla side
-        # self.__editor.SendScintilla(QsciScintilla.SCI_SETVSCROLLBAR)
-
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
+
+    def reload_all(self, filePath, pages):
+        self.__logCacher.reload(filePath)
+        self.__editor.append(self.__logCacher.get_partial_block(pages))
+
+        # ! append the text style, it is taking long since it would go through all lines
         self.__editor.setLexer(self.__lexer)
 
-        # set editor end-of-line
-        # self.__editor.setEolMode(QsciScintilla.EolUnix)
         # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
-
-    def vertPosChanged(self):
-        print('scrolling')
-        pass
 
     def toolkit_click(self, actionItem):
         # file open
@@ -167,6 +166,10 @@ class MainDesk(QMainWindow):
         # updating content in editor
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_UPDATE_CONTENT]:
             print(actionItem.text())
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
+            print(actionItem.text())
+            thread = threading.Thread(target=self.reload_all, args=('c:/test/logsTest.txt', 100))
+            thread.start()
         else:
             print('no supported')
 

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04a29b11-6665-4795-a005-2b6ad474c621" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/res/test_blue.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/MainDesk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/MainDesk.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/TestQScintilla.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test/TestQScintilla.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Utils/logCacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/logCacher.py" afterDir="false" />
     </list>
@@ -40,9 +42,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/res" />
   </component>
-  <component name="RunManager" selected="Python.TestQScintilla">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\PCProject\LogCatty\res" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.MainDesk">
     <configuration name="MainDesk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="LogCatty" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -150,8 +157,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.TestQScintilla" />
         <item itemvalue="Python.MainDesk" />
+        <item itemvalue="Python.TestQScintilla" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.TestFileLocal" />
         <item itemvalue="Python.TestLocalUtils" />
@@ -188,13 +195,32 @@
       <option name="project" value="LOCAL" />
       <updated>1641479953096</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="able to open massive logs lines&#10;20,0000 lines within 2s">
+      <created>1642223626292</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642223626292</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add logEntity and corresponding parsing function" />
     <MESSAGE value="improve the subprocess to execute adb" />
     <MESSAGE value="add line indicator" />
-    <option name="LAST_COMMIT_MESSAGE" value="add line indicator" />
+    <MESSAGE value="able to open massive logs lines&#10;20,0000 lines within 2s" />
+    <option name="LAST_COMMIT_MESSAGE" value="able to open massive logs lines&#10;20,0000 lines within 2s" />
   </component>
 </project>

@@ -1,8 +1,6 @@
 # caching the content in dic
-from numpy import unicode
-
-from Utils import LocalUtils
 from unidecode import unidecode
+
 
 class LocalCache:
     def __init__(self):
@@ -12,7 +10,7 @@ class LocalCache:
         self.__currentPageIdx = 0
 
     # reload the file and measure the total length to decide the multi-level paging
-    def reload(self, filename, withStyle):
+    def reload(self, filename):
         print('reload started')
         self.__cachePages.clear()
         self.__numLines = 0
@@ -22,7 +20,6 @@ class LocalCache:
                 self.__numLines += 1
                 tempLines.append(line)
                 if self.__numLines % self.__MAX_LINES_PER_PAGE == 0:
-                    #  self.__cachePages.append(''.join([i if ord(i) < 128 else ' ' for i in line]))
                     self.__cachePages.append(''.join(unidecode(each) for each in tempLines))
 
                     tempLines.clear()
