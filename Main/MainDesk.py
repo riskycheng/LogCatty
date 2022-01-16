@@ -1,8 +1,8 @@
 import sys
 import threading
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon, QFont, QColor
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon, QFont, QColor, QImage
+from PyQt5.QtCore import Qt, QSize
 from enum import Enum
 from PyQt5.Qsci import *
 
@@ -116,7 +116,6 @@ class MainDesk(QMainWindow):
         self.__editor = QsciScintilla()
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
-        self.__editor.setFont(self.__myFont)  # Will be overridden by lexer!
 
         # Margins
         # -----------
@@ -124,10 +123,6 @@ class MainDesk(QMainWindow):
         self.__editor.setMarginType(0, QsciScintilla.NumberMargin)
         self.__editor.setMarginWidth(0, "000000")
         self.__editor.setMarginsForegroundColor(QColor("#ff888888"))
-
-        # set features
-        self.__editor.SendScintilla(QsciScintilla.SC_CACHE_PAGE, 100)
-        self.__editor.SendScintilla(QsciScintilla.SCI_SETLAYOUTCACHE, 2)
 
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
@@ -168,7 +163,7 @@ class MainDesk(QMainWindow):
             print(actionItem.text())
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('H:/test/huge_logFiles/logs_1227.txt', 1))
+            thread = threading.Thread(target=self.reload_all, args=('H:/test/huge_logFiles/logs_1227.txt', 5))
             thread.start()
         else:
             print('no supported')
