@@ -168,7 +168,7 @@ class MainDesk(QMainWindow):
             print(actionItem.text())
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('c:/test/logs_1227.txt', 100))
+            thread = threading.Thread(target=self.reload_all, args=('H:/test/huge_logFiles/logs_1227.txt', 1))
             thread.start()
         else:
             print('no supported')

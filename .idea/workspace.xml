@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="04a29b11-6665-4795-a005-2b6ad474c621" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/MainDesk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/MainDesk.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/MyLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/MyLexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/TestFileLocal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/TestFileLocal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/logCacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/logCacher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,9 +160,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.MainDesk" />
+        <item itemvalue="Python.TestFileLocal" />
         <item itemvalue="Python.TestQScintilla" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.TestFileLocal" />
         <item itemvalue="Python.TestLocalUtils" />
       </list>
     </recent_temporary>
