@@ -121,7 +121,8 @@ class MainDesk(QMainWindow):
         # -----------
         # Margin 0 = Line nr margin
         self.__editor.setMarginType(0, QsciScintilla.NumberMargin)
-        self.__editor.setMarginWidth(0, "000000")
+        self.__editor.setMarginWidth(0, "00000000")
+        self.__editor.setMarginsFont(QFont('Arial', 10))
         self.__editor.setMarginsForegroundColor(QColor("#ff888888"))
 
         # set Lexer for editor
@@ -163,7 +164,7 @@ class MainDesk(QMainWindow):
             print(actionItem.text())
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('H:/test/huge_logFiles/logs_1227.txt', 5))
+            thread = threading.Thread(target=self.reload_all, args=('H:/test/huge_logFiles/logs_1227.txt', 100))
             thread.start()
         else:
             print('no supported')
