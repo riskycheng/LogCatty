@@ -78,3 +78,20 @@ def is_contain_chinese_or_exASC(check_str):
         if u'\u4e00' <= ch <= u'\u9fff' or ord(ch) < 0 or ord(ch) > 127:
             return True
     return False
+
+
+# query the package info according to the given keyword, it could be the PID or partial package name
+def get_package_name_from_pid(app_str):
+    command = 'adb shell ps |grep ' + app_str
+    print('querying package info for given pid info:%s ...' % app_str)
+    p = subprocess.Popen(command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    while p.poll() is None:
+        line = p.stdout.readline()
+        if line:
+            lineStr = str(line, encoding='utf-8').replace('\r\n', '\n')
+            if lineStr:
+                return lineStr.split(' ')[-1]
+    if p.returncode == 0:
+        print('Subprogram success')
+    else:
+        print('Subprogram failed')

@@ -18,13 +18,9 @@ def find_devices():
     # all the queried devices
     return foundedDevices
 
+def test_get_package_name_from_pid(str):
+    result = LocalUtils.get_package_name_from_pid(str)
+    print(result)
 
 if __name__ == '__main__':
-    filename = 'c:/test/logs_exp.txt'
-    with open(filename, "r", encoding="utf-8", errors="ignore") as file:
-        for line in file:
-            # print(line)
-            for item in line:
-                if LocalUtils.is_contain_chinese_or_exASC(item):
-                    line = line.replace(item, '?')
-            print(line)
+    test_get_package_name_from_pid('detect')
