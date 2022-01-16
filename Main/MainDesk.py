@@ -108,14 +108,15 @@ class MainDesk(QMainWindow):
         self.__lyt = QVBoxLayout()
         self.__frm.setLayout(self.__lyt)
         self.setCentralWidget(self.__frm)
-        self.__myFont = QFont()
-        self.__myFont.setPointSize(14)
+        self.__myFont = QFont("Aharon", 14, weight=QFont.Normal)
 
         # add the QScintilla element
         # QScintilla editor setup
         self.__editor = QsciScintilla()
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
+        # self.__editor.setFont(self.__myFont) # to use the style from Lexer
+        self.__editor.resetSelectionForegroundColor()
 
         # Margins
         # -----------
