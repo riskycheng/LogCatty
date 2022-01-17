@@ -108,15 +108,15 @@ class MainDesk(QMainWindow):
         self.__lyt = QVBoxLayout()
         self.__frm.setLayout(self.__lyt)
         self.setCentralWidget(self.__frm)
-        self.__myFont = QFont("Aharon", 14, weight=QFont.Normal)
+        self.__myFont = QFont("Simsun", 14, weight=QFont.Normal)
 
         # add the QScintilla element
         # QScintilla editor setup
         self.__editor = QsciScintilla()
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
-        # self.__editor.setFont(self.__myFont) # to use the style from Lexer
-        self.__editor.resetSelectionForegroundColor()
+        self.__editor.setFont(self.__myFont) # to use the style from Lexer
+        # self.__editor.resetSelectionForegroundColor()
 
         # Margins
         # -----------
@@ -165,7 +165,7 @@ class MainDesk(QMainWindow):
             print(actionItem.text())
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('H:/test/huge_logFiles/logs_1227.txt', 100))
+            thread = threading.Thread(target=self.reload_all, args=('c:/test/logs_1227.txt', 100))
             thread.start()
         else:
             print('no supported')
