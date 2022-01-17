@@ -13,7 +13,7 @@ class MyLexer(QsciLexerCustom):
         # ----------------------
         self.setDefaultColor(QColor("#ff000000"))
         self.setDefaultPaper(QColor("#ffffffff"))
-        self.setDefaultFont(QFont("Aharon", 14))
+        self.setDefaultFont(QFont("Simsun", 12))
 
         # Initialize colors per style
         # ----------------------------
@@ -31,10 +31,10 @@ class MyLexer(QsciLexerCustom):
 
         # Initialize fonts per style
         # ---------------------------
-        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 0)  # Style 0: Consolas 14pt
-        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 1)  # Style 1: Consolas 14pt
-        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 2)  # Style 2: Consolas 14pt
-        self.setFont(QFont("Aharon", 14, weight=QFont.Normal), 3)  # Style 3: Consolas 14pt
+        self.setFont(QFont("Simsun", 12, weight=QFont.Normal), 0)  # Style 0: Consolas 14pt
+        self.setFont(QFont("Simsun", 12, weight=QFont.Normal), 1)  # Style 1: Consolas 14pt
+        self.setFont(QFont("Simsun", 12, weight=QFont.Normal), 2)  # Style 2: Consolas 14pt
+        self.setFont(QFont("Simsun", 12, weight=QFont.Normal), 3)  # Style 3: Consolas 14pt
 
     def language(self):
         return "logLanguage"
