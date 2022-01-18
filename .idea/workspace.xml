@@ -216,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642397131012</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="change the default toolbar position to left-area">
+      <created>1642486925445</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642486925445</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,6 +244,7 @@
     <MESSAGE value="able to open massive logs lines&#10;20,0000 lines within 2s" />
     <MESSAGE value="add function to query the package name" />
     <MESSAGE value="update the format to Simsun" />
-    <option name="LAST_COMMIT_MESSAGE" value="update the format to Simsun" />
+    <MESSAGE value="change the default toolbar position to left-area" />
+    <option name="LAST_COMMIT_MESSAGE" value="change the default toolbar position to left-area" />
   </component>
 </project>

@@ -1,14 +1,11 @@
 import sys
 import threading
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon, QFont, QColor, QImage
-from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import QIcon, QFont, QColor
+from PyQt5.QtCore import Qt
 from enum import Enum
 from PyQt5.Qsci import *
-
-from Utils import LocalUtils
 from Utils.MyLexer import MyLexer
-from Utils import logCacher
 from Utils.logCacher import LocalCache
 
 
@@ -42,6 +39,12 @@ ToolkitItemNames = {
 class MainDesk(QMainWindow):
     def __init__(self):
         super(MainDesk, self).__init__(flags=Qt.WindowFlags())
+        self.__listFilter = None
+        self.__regexCheckBox = None
+        self.__quickFilter = None
+        self.__processes = None
+        self.__toolkit_lyt = None
+        self.__logLevel = None
         self.__logCacher = None
         self.__lexer = None
         self.__myFont = None
@@ -91,9 +94,9 @@ class MainDesk(QMainWindow):
         toolbar.addAction(stopToolkit)
 
         # capture screen
-        camoolkit = QAction(QIcon('../res/camera.png'), 'camera', self)
-        camoolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_CAM])
-        toolbar.addAction(camoolkit)
+        cameraToolkit = QAction(QIcon('../res/camera.png'), 'camera', self)
+        cameraToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_CAM])
+        toolbar.addAction(cameraToolkit)
 
         # record the video
         videoToolkit = QAction(QIcon('../res/video_green.png'), 'video', self)
@@ -125,6 +128,46 @@ class MainDesk(QMainWindow):
         self.setCentralWidget(self.__frm)
         self.__myFont = QFont("Simsun", 12, weight=QFont.Normal)
 
+        # add the toolkits into first row
+        self.__toolkit_lyt = QHBoxLayout()
+        # - process options
+        self.__processes = QComboBox()
+        self.__processes.setFont(QFont('Arial', 12))
+        self.__processes.setObjectName('processes')
+        self.__processes.addItems(['com.jian.detectx', 'com.system.gallery', 'com.jian.logcatty'])
+        self.__toolkit_lyt.addWidget(self.__processes)
+        self.__toolkit_lyt.setStretch(0, 3)
+        # - log level
+        self.__logLevel = QComboBox()
+        self.__logLevel.setFont(QFont('Arial', 12))
+        self.__logLevel.setObjectName('logLevel')
+        self.__logLevel.addItems(['Verbose', 'Debug', 'Info', 'Warn', 'Error', 'Assert'])
+        self.__toolkit_lyt.addWidget(self.__logLevel)
+        self.__toolkit_lyt.setStretch(1, 1)
+        # - quick filter
+        self.__quickFilter = QLineEdit()
+        self.__quickFilter.setFont(QFont('Arial', 12))
+        self.__quickFilter.setObjectName('quickFilter')
+        self.__toolkit_lyt.addWidget(self.__quickFilter)
+        self.__toolkit_lyt.setStretch(2, 6)
+        # - regex checkbox
+        self.__regexCheckBox = QCheckBox()
+        self.__regexCheckBox.setText('Regex')
+        self.__regexCheckBox.setFont(QFont('Arial', 12))
+        self.__regexCheckBox.setObjectName('regexCheckBox')
+        self.__toolkit_lyt.addWidget(self.__regexCheckBox, alignment=Qt.AlignCenter)
+        self.__toolkit_lyt.setStretch(3, 1)
+        # - regex checkbox
+        self.__listFilter = QComboBox()
+        self.__listFilter.setFont(QFont('Arial', 12))
+        self.__listFilter.setObjectName('listFilter')
+        self.__listFilter.addItems(['Show only selected application', 'No Filters', 'Edit Filter Configuration'])
+        self.__toolkit_lyt.addWidget(self.__listFilter)
+        self.__toolkit_lyt.setStretch(4, 2)
+
+
+        self.__lyt.addLayout(self.__toolkit_lyt)
+        self.__lyt.setStretch(0, 1)  # the first toolkit row
         # add the QScintilla element
         # QScintilla editor setup
         self.__editor = QsciScintilla()
@@ -143,6 +186,9 @@ class MainDesk(QMainWindow):
 
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
+        # ! Add editor to layout !
+        self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
+        self.__lyt.setStretch(1, 10)  # the second Log content row
 
     def reload_all(self, filePath, pages):
         self.__logCacher.reload(filePath)
@@ -150,9 +196,6 @@ class MainDesk(QMainWindow):
 
         # ! append the text style, it is taking long since it would go through all lines
         self.__editor.setLexer(self.__lexer)
-
-        # ! Add editor to layout !
-        self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
 
     def toolkit_click(self, actionItem):
         # file open
