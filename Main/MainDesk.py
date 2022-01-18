@@ -14,23 +14,27 @@ from Utils.logCacher import LocalCache
 
 class ToolkitItems(Enum):
     TOOLKIT_OPEN = 1
-    TOOLKIT_DEBUG = 2
-    TOOLKIT_CAM = 3
-    TOOLKIT_VIDEO = 4
-    TOOLKIT_FILTER = 5
-    TOOLKIT_CLEAR = 6
-    TOOLKIT_UPDATE_CONTENT = 7
+    TOOLKIT_ANALYZE = 2
+    TOOLKIT_FILTER = 3
+    TOOLKIT_RUN = 4
+    TOOLKIT_STOP = 5
+    TOOLKIT_CAM = 6
+    TOOLKIT_VIDEO = 7
+    TOOLKIT_CLEAR = 8
+    TOOLKIT_SETTINGS = 9
     TOOLKIT_TEST = -1
 
 
 ToolkitItemNames = {
     ToolkitItems.TOOLKIT_OPEN: 'OPEN',
-    ToolkitItems.TOOLKIT_DEBUG: 'DEBUG',
+    ToolkitItems.TOOLKIT_ANALYZE: 'ANALYZE',
+    ToolkitItems.TOOLKIT_FILTER: 'FILTER',
+    ToolkitItems.TOOLKIT_RUN: 'RUN',
+    ToolkitItems.TOOLKIT_STOP: 'STOP',
     ToolkitItems.TOOLKIT_CAM: 'CAMERA',
     ToolkitItems.TOOLKIT_VIDEO: 'VIDEO',
-    ToolkitItems.TOOLKIT_FILTER: 'FILTER',
     ToolkitItems.TOOLKIT_CLEAR: 'CLEAR',
-    ToolkitItems.TOOLKIT_UPDATE_CONTENT: 'UPDATE',
+    ToolkitItems.TOOLKIT_SETTINGS: "SETTINGS",
     ToolkitItems.TOOLKIT_TEST: 'TEST'
 }
 
@@ -52,7 +56,7 @@ class MainDesk(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.setWindowTitle('Logcatty')
+        self.setWindowTitle('Logcatty Developed by JianCheng v1.0.0.1')
         self.resize(1920, 1080)
 
         # add toolbar
@@ -65,35 +69,45 @@ class MainDesk(QMainWindow):
         clearToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_OPEN])
         toolbar.addAction(clearToolkit)
 
-        # debug with native
-        debugToolkit = QAction(QIcon('../res/debug_blue.png'), 'debug', self)
-        debugToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_DEBUG])
+        # analyze with native
+        debugToolkit = QAction(QIcon('../res/analyze.png'), 'analyze', self)
+        debugToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_ANALYZE])
         toolbar.addAction(debugToolkit)
-
-        # record the screenshot
-        cameraToolkit = QAction(QIcon('../res/camera_blue.png'), 'image', self)
-        cameraToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_CAM])
-        toolbar.addAction(cameraToolkit)
-
-        # record the video
-        videoToolkit = QAction(QIcon('../res/video_blue.png'), 'video', self)
-        videoToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_VIDEO])
-        toolbar.addAction(videoToolkit)
 
         # filter the log
         filterToolkit = QAction(QIcon('../res/filter_blue.png'), 'filter', self)
         filterToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_FILTER])
         toolbar.addAction(filterToolkit)
 
+        # run ro capture logs
+        runToolkit = QAction(QIcon('../res/play.png'), 'run', self)
+        runToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_RUN])
+        toolbar.addAction(runToolkit)
+
+        # stop capture logs
+        stopToolkit = QAction(QIcon('../res/stop.png'), 'stop', self)
+        stopToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_STOP])
+        toolbar.addAction(stopToolkit)
+
+        # capture screen
+        camoolkit = QAction(QIcon('../res/camera.png'), 'camera', self)
+        camoolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_CAM])
+        toolbar.addAction(camoolkit)
+
+        # record the video
+        videoToolkit = QAction(QIcon('../res/video_green.png'), 'video', self)
+        videoToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_VIDEO])
+        toolbar.addAction(videoToolkit)
+
         # clear the cache
-        clearToolkit = QAction(QIcon('../res/clear_blue.png'), 'clear', self)
+        clearToolkit = QAction(QIcon('../res/delete.png'), 'clear', self)
         clearToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_CLEAR])
         toolbar.addAction(clearToolkit)
 
-        # clear the cache
-        updateContentToolkit = QAction(QIcon('../res/update.png'), 'update', self)
-        updateContentToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_UPDATE_CONTENT])
-        toolbar.addAction(updateContentToolkit)
+        # additional settings
+        settingsToolkit = QAction(QIcon('../res/settings.png'), 'settings', self)
+        settingsToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_SETTINGS])
+        toolbar.addAction(settingsToolkit)
 
         # experimental function
         updateTestToolkit = QAction(QIcon('../res/test_blue.png'), 'test', self)
@@ -115,7 +129,7 @@ class MainDesk(QMainWindow):
         self.__editor = QsciScintilla()
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
-        self.__editor.setFont(self.__myFont) # to use the style from Lexer
+        self.__editor.setFont(self.__myFont)  # to use the style from Lexer
         # self.__editor.resetSelectionForegroundColor()
 
         # Margins
@@ -155,14 +169,20 @@ class MainDesk(QMainWindow):
         # clear log cache
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_CLEAR]:
             print(actionItem.text())
-            # clear the window cache and device log cache
-            LocalUtils.clear_cache(self.__editor, False)
         # debug enabling
-        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_DEBUG]:
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_ANALYZE]:
             print(actionItem.text())
-        # updating content in editor
-        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_UPDATE_CONTENT]:
+        # stop action
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_STOP]:
             print(actionItem.text())
+        # run action
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_RUN]:
+            print(actionItem.text())
+        # settings action
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_SETTINGS]:
+            print(actionItem.text())
+
+        # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
             thread = threading.Thread(target=self.reload_all, args=('c:/test/logs_1227.txt', 100))
