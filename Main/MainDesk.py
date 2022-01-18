@@ -62,6 +62,7 @@ class MainDesk(QMainWindow):
         # add toolbar
         # file open
         toolbar = self.addToolBar('File')
+        self.addToolBar(Qt.LeftToolBarArea, toolbar)
         # define the toolkit style
         toolbar.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
@@ -185,7 +186,7 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('c:/test/logs_1227.txt', 100))
+            thread = threading.Thread(target=self.reload_all, args=('../logs_1227.txt', 5))
             thread.start()
         else:
             print('no supported')
