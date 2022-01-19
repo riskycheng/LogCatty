@@ -23,4 +23,6 @@ def test_get_package_name_from_pid(str):
     print(result)
 
 if __name__ == '__main__':
-    test_get_package_name_from_pid('detect')
+    data = 'this is line data'
+
+    print(data.find('datas'))

@@ -149,6 +149,7 @@ class MainDesk(QMainWindow):
         self.__quickFilter.setFont(QFont('Arial', 12))
         self.__quickFilter.setObjectName('quickFilter')
         self.__toolkit_lyt.addWidget(self.__quickFilter)
+        self.__quickFilter.textChanged.connect(self.onQuickFilterUpdated)
         self.__toolkit_lyt.setStretch(2, 6)
         # - regex checkbox
         self.__regexCheckBox = QCheckBox()
@@ -165,7 +166,6 @@ class MainDesk(QMainWindow):
         self.__toolkit_lyt.addWidget(self.__listFilter)
         self.__toolkit_lyt.setStretch(4, 2)
 
-
         self.__lyt.addLayout(self.__toolkit_lyt)
         self.__lyt.setStretch(0, 1)  # the first toolkit row
         # add the QScintilla element
@@ -174,7 +174,6 @@ class MainDesk(QMainWindow):
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
         self.__editor.setFont(self.__myFont)  # to use the style from Lexer
-        # self.__editor.resetSelectionForegroundColor()
 
         # Margins
         # -----------
@@ -190,8 +189,9 @@ class MainDesk(QMainWindow):
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
         self.__lyt.setStretch(1, 10)  # the second Log content row
 
-    def reload_all(self, filePath, pages):
-        self.__logCacher.reload(filePath)
+    def reload_all(self, filePath, pages, filterStr):
+        self.__editor.clear()
+        self.__logCacher.reload(filePath, filterStr)
         self.__editor.append(self.__logCacher.get_partial_block(pages))
 
         # ! append the text style, it is taking long since it would go through all lines
@@ -229,10 +229,18 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('../logs_1227.txt', 5))
+            thread = threading.Thread(target=self.reload_all, args=('../logs_0117.txt', -1, None))
             thread.start()
         else:
             print('no supported')
+
+    def onQuickFilterUpdated(self, filterStr):
+        print('filtering content with:', filterStr)
+        if filterStr == '':
+            filterStr = None
+        thread = threading.Thread(target=self.reload_all, args=('../logs_0117.txt', -1, filterStr))
+        thread.start()
+        pass
 
 
 if __name__ == '__main__':
