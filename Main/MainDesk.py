@@ -19,6 +19,7 @@ class ToolkitItems(Enum):
     TOOLKIT_VIDEO = 7
     TOOLKIT_CLEAR = 8
     TOOLKIT_SETTINGS = 9
+    TOOLKIT_REFRESH = 10
     TOOLKIT_TEST = -1
 
 
@@ -32,6 +33,7 @@ ToolkitItemNames = {
     ToolkitItems.TOOLKIT_VIDEO: 'VIDEO',
     ToolkitItems.TOOLKIT_CLEAR: 'CLEAR',
     ToolkitItems.TOOLKIT_SETTINGS: "SETTINGS",
+    ToolkitItems.TOOLKIT_REFRESH: "REFRESH",
     ToolkitItems.TOOLKIT_TEST: 'TEST'
 }
 
@@ -112,6 +114,11 @@ class MainDesk(QMainWindow):
         settingsToolkit = QAction(QIcon('../res/settings.png'), 'settings', self)
         settingsToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_SETTINGS])
         toolbar.addAction(settingsToolkit)
+
+        # refresh cache according to current content
+        refreshToolkit = QAction(QIcon('../res/refresh.png'), 'refresh', self)
+        refreshToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_REFRESH])
+        toolbar.addAction(refreshToolkit)
 
         # experimental function
         updateTestToolkit = QAction(QIcon('../res/test_blue.png'), 'test', self)
@@ -197,6 +204,9 @@ class MainDesk(QMainWindow):
         # ! append the text style, it is taking long since it would go through all lines
         self.__editor.setLexer(self.__lexer)
 
+    def refresh_all(self):
+        self.__logCacher.refresh_cache_from_content(self.__editor)
+
     def toolkit_click(self, actionItem):
         # file open
         if actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_OPEN]:
@@ -225,11 +235,13 @@ class MainDesk(QMainWindow):
         # settings action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_SETTINGS]:
             print(actionItem.text())
-
+        # refresh action
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_REFRESH]:
+            print(actionItem.text())
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('../logs_0117.txt', -1, None))
+            thread = threading.Thread(target=self.reload_all, args=('../logs_0119.txt', -1, None))
             thread.start()
         else:
             print('no supported')
@@ -238,7 +250,7 @@ class MainDesk(QMainWindow):
         print('filtering content with:', filterStr)
         if filterStr == '':
             filterStr = None
-        thread = threading.Thread(target=self.reload_all, args=('../logs_0117.txt', -1, filterStr))
+        thread = threading.Thread(target=self.reload_all, args=('../logs_0119.txt', -1, filterStr))
         thread.start()
         pass
 
