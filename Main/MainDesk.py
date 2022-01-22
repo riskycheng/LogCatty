@@ -1,5 +1,7 @@
 import sys
 import threading
+import time
+
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QFont, QColor
 from PyQt5.QtCore import Qt
@@ -196,17 +198,6 @@ class MainDesk(QMainWindow):
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
         self.__lyt.setStretch(1, 10)  # the second Log content row
 
-    def reload_all(self, filePath, pages, filterStr):
-        self.__editor.clear()
-        self.__logCacher.reload(filePath, filterStr)
-        self.__editor.append(self.__logCacher.get_partial_block(pages))
-
-        # ! append the text style, it is taking long since it would go through all lines
-        self.__editor.setLexer(self.__lexer)
-
-    def refresh_all(self):
-        self.__logCacher.refresh_cache_from_content(self.__editor)
-
     def toolkit_click(self, actionItem):
         # file open
         if actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_OPEN]:
@@ -241,7 +232,7 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.reload_all, args=('../logs_0119.txt', -1, None))
+            thread = threading.Thread(target=self.load_file_init, args=('../logcat_botao.txt',))
             thread.start()
         else:
             print('no supported')
@@ -250,9 +241,21 @@ class MainDesk(QMainWindow):
         print('filtering content with:', filterStr)
         if filterStr == '':
             filterStr = None
-        thread = threading.Thread(target=self.reload_all, args=('../logs_0119.txt', -1, filterStr))
+        thread = threading.Thread(target=self.reload_all, args=('../logs_0117.txt', -1, filterStr))
         thread.start()
         pass
+
+    def load_file_init(self, filePath):
+        time_start = time.time()
+        self.__editor.clear()
+        self.__logCacher.load_file_to_cache(filePath)
+        self.__editor.append(self.__logCacher.get_cache_from_all_cache(None))
+
+        # ! append the text style, it is taking long since it would go through all lines
+        self.__editor.setLexer(self.__lexer)
+
+        time_finish = time.time()
+        print('load_file_init >>> cost %.2fs >>>>:' % (time_finish - time_start))
 
 
 if __name__ == '__main__':
