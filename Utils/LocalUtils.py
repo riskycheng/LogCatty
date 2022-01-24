@@ -56,6 +56,7 @@ def parse_line_to_log(line):
 
     if itemsLen < logItem.leastLen:
         logItem.content = line
+        logItem.orgText = line
         logItem.wellAllocated = False
         return logItem
 
@@ -66,6 +67,17 @@ def parse_line_to_log(line):
     logItem.tag = items[5][:-1] if items[5][-1] == ':' else items[5][:]
     for item in items[6:]:
         logItem.content += item
+    logItem.orgText = line
+    if logItem.level == 'E' and logItem.orgText.find('AndroidRuntime: Process') != -1 and logItem.orgText.find(
+            'PID') != -1:
+        datas = logItem.orgText.split(' ')
+        tmpPID = datas[-1].replace(' ', '').replace('\n', '')
+        tmpPackage = datas[-3].replace(' ', '').replace(',', '')
+        if tmpPID == logItem.pid:
+            logItem.packageName = tmpPackage
+
+    if logItem.packageName != '':
+        print(logItem.toString())
     return logItem
 
 
@@ -95,3 +107,33 @@ def get_package_name_from_pid(app_str):
         print('Subprogram success')
     else:
         print('Subprogram failed')
+
+
+def findTargetPositions(content):
+    suspiciousLines = []
+    suspiciousPIDs = set()
+    PID_Packages = dict()
+    index = 0
+    # 01-24 08:23:33.105 25669 26328 E AndroidRuntime: Process: com.jian.detectx.lahaina.debug, PID: 25669
+    for line in content:
+        index += 1
+        # check the process IDs
+        logItem = parse_line_to_log(line)
+        if logItem.orgText.find('beginning of crash') != -1:
+            suspiciousLines.append(index)
+
+        if logItem.orgText.find('FATAL EXCEPTION') != -1:
+            suspiciousPIDs.add(logItem.pid)
+
+        if logItem.packageName != '' and logItem.pid in suspiciousPIDs:
+            print(logItem.toString())
+            PID_Packages[logItem.pid] = logItem.packageName
+
+    # results
+    print('suspiciousLines: >>>>>>>>>>>>>>>>>>>>')
+    for item in suspiciousLines:
+        print('\t line[%06d]' % item)
+
+    print('suspicious PIDs & Packages : >>>>>>>>>>>>>>>>>>>>')
+    for item in suspiciousPIDs:
+        print('\t PID:%s, Package:%s' % (str(item), PID_Packages[item]))

@@ -29,6 +29,8 @@ class LogEntity:
     wellAllocated = True
     content = ''
     leastLen = 0
+    orgText = ''
+    packageName = ''
 
     def __init__(self):
         self.leastLen = 6
@@ -42,6 +44,8 @@ class LogEntity:
         res += 'PID:' + self.pid
         res += '\n\t'
         res += 'TID:' + self.tid
+        res += '\n\t'
+        res += 'Package:' + self.packageName
         res += '\n\t'
         res += 'LogLevel:' + self.level
         res += '\n\t'

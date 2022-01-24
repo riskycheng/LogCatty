@@ -1,0 +1,752 @@
+--------- beginning of main
+01-24 10:29:47.369  1058  1174 E ANDR-PERF-OPTSHANDLER: perf_lock_rel: failed for /sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/min_freq as previous value is not stored
+01-24 10:29:47.369  1058  1174 E ANDR-PERF-OPTSHANDLER: perf_lock_rel: failed for /sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/min_freq as previous value is not stored
+01-24 10:29:47.370  1058  1174 E ANDR-PERF-OPTSHANDLER: perf_lock_rel: failed for /sys/class/scsi_host/host0/../../../clkscale_enable as previous value is not stored
+01-24 10:29:47.370  1058  1174 E ANDR-PERF-OPTSHANDLER: Unable to find the correct node storage pointers for                   resource index=16, node path=/proc/sys/kernel/sched_upmigrate
+01-24 10:29:47.370  1058  1174 E ANDR-PERF-RESOURCEQS: Failed to reset optimization [3, 7]
+01-24 10:29:47.370  1058  1174 E ANDR-PERF-OPTSHANDLER: Unable to find the correct node storage pointers for                   resource index=17, node path=/proc/sys/kernel/sched_downmigrate
+01-24 10:29:47.370  1058  1174 E ANDR-PERF-RESOURCEQS: Failed to reset optimization [3, 8]
+01-24 10:29:47.371  1058  1174 E ANDR-PERF-OPTSHANDLER: Unable to find the correct node storage pointers for                   resource index=16, node path=/proc/sys/kernel/sched_upmigrate
+01-24 10:29:47.371  1058  1174 E ANDR-PERF-RESOURCEQS: Failed to reset optimization [3, 7]
+01-24 10:29:47.371  1058  1174 E ANDR-PERF-OPTSHANDLER: Unable to find the correct node storage pointers for                   resource index=17, node path=/proc/sys/kernel/sched_downmigrate
+01-24 10:29:47.371  1058  1174 E ANDR-PERF-RESOURCEQS: Failed to reset optimization [3, 8]
+01-24 10:29:47.371  1058  1174 E ANDR-PERF-OPTSHANDLER: perf_lock_rel: failed for /proc/sys/kernel/sched_busy_hyst_ns as previous value is not stored
+01-24 10:29:47.371  1058  1174 E ANDR-PERF-OPTSHANDLER: perf_lock_rel: failed for /proc/sys/kernel/sched_busy_hysteresis_enable_cpus as previous value is not stored
+01-24 10:29:47.372  1058  1174 E ANDR-PERF-OPTSHANDLER: perf_lock_rel: failed for /proc/sys/kernel/sched_group_upmigrate as previous value is not stored
+01-24 10:29:47.372  1058  1174 E ANDR-PERF-OPTSHANDLER: perf_lock_rel: failed for /proc/sys/kernel/sched_group_downmigrate as previous value is not stored
+--------- beginning of kernel
+01-24 10:29:47.710     0     0 I (virq   : irq_count)- 3:21331205 9:5006308 348:3056135 14:1371730 380:948103 303:815371 18:802173 414:773822 282:659048 279:641247
+01-24 10:29:47.710     0     0 I (cpu    : irq_count)- 0:8773576 1:8762867 2:8758504 3:9002665 4:718453 5:731714 6:769269 7:526537
+01-24 10:29:47.711     0     0 I (ipi    : irq_count)- 0:49559836 1:38214915 2:0 3:0 4:0 5:7028835 6:0
+01-24 10:29:51.726     0     0 D logd    : logdr: UID=0 GID=0 PID=26909 b tail=0 logMask=99 pid=0 start=0ns timeout=0ns
+--------- beginning of system
+01-24 10:29:53.168  1752  2680 I PowerManagerService: Waking up from Dozing (uid=1000, reason=WAKE_REASON_POWER_BUTTON, details=android.policy:POWER)...
+01-24 10:29:53.183  1752  2041 I DisplayPowerController: Blocking screen on until initial contents have been drawn.
+01-24 10:29:53.186  3580  3816 D KeyguardViewMediator: onStartedWakingUp, seq = 72
+01-24 10:29:53.187  3580  3816 D KeyguardViewMediator: notifyStartedWakingUp
+01-24 10:29:53.187  3580  3580 D KeyguardViewMediator: handleNotifyWakingUp
+01-24 10:29:53.190  3580  3816 D KeyguardViewMediator: notifyScreenOn
+01-24 10:29:53.190  3580  3580 V KeyguardUpdateMonitor: startListeningForFingerprint()
+01-24 10:29:53.193  3580  3580 V KeyguardUpdateMonitor: startListeningForFace()
+01-24 10:29:53.195  3580  3580 V KeyguardStatusView: Schedule setEnableMarquee: Enable
+01-24 10:29:53.198  3580  3580 D StatusBar: disable<e i a s b H R c s > disable2<q i n >
+01-24 10:29:53.199  3580  3580 D StatusBar: disable<e i a s b H R c s > disable2<q i n >
+01-24 10:29:53.201  3580  3580 D StatusBar: updateQsExpansionEnabled - QS Expand enabled: true
+01-24 10:29:53.210   699   699 I Binder:699_1: type=1400 audit(0.0:6563): avc: denied { read } for name="wakeup58" dev="sysfs" ino=105000 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+01-24 10:29:53.210   699   699 I Binder:699_1: type=1400 audit(0.0:6564): avc: denied { open } for path="/sys/devices/virtual/misc/msm_g711alaw/wakeup58" dev="sysfs" ino=105000 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+01-24 10:29:53.210   699   699 I Binder:699_1: type=1400 audit(0.0:6565): avc: denied { read } for name="event_count" dev="sysfs" ino=105007 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=1
+01-24 10:29:53.210   699   699 I Binder:699_1: type=1400 audit(0.0:6566): avc: denied { open } for path="/sys/devices/virtual/misc/msm_g711alaw/wakeup58/event_count" dev="sysfs" ino=105007 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=1
+01-24 10:29:53.210   699   699 I Binder:699_1: type=1400 audit(0.0:6567): avc: denied { getattr } for path="/sys/devices/virtual/misc/msm_g711alaw/wakeup58/event_count" dev="sysfs" ino=105007 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=1
+01-24 10:29:53.222  3580  3580 D StatusBar: updateQsExpansionEnabled - QS Expand enabled: true
+01-24 10:29:53.227  3580  3580 D KeyguardViewBase: screen on, instance 865f316
+01-24 10:29:53.227  3580  3580 D KeyguardSecurityView: showNextSecurityScreenOrFinish(false)
+01-24 10:29:53.228  3580  3580 V ShadeControllerImpl: NotificationShadeWindow: com.android.systemui.statusbar.phone.NotificationShadeWindowView{4fae467 V.E...... ......ID 0,0-1080,2340} canPanelBeCollapsed(): true
+01-24 10:29:53.228  3580  3580 D KeyguardViewMediator: keyguardDonePending
+01-24 10:29:53.229  3580  3580 E KeyguardViewMediator: mHideAnimationFinishedRunnable#run
+01-24 10:29:53.229  3580  3580 D KeyguardViewMediator: tryKeyguardDone: pending - true, animRan - true animRunning - false
+01-24 10:29:53.236  3580  3580 D KeyguardViewMediator: handleNotifyScreenTurningOn
+01-24 10:29:53.237  3580  3580 D KeyguardClockSwitch: Updating clock: 1029
+01-24 10:29:53.234     0     0 W audit   : audit_lost=2390 audit_rate_limit=5 audit_backlog_limit=64
+01-24 10:29:53.234     0     0 E audit   : rate limit exceeded
+01-24 10:29:53.234   699   699 I Binder:699_1: type=1400 audit(0.0:6568): avc: denied { read } for name="wakeup15" dev="sysfs" ino=69044 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs_rtc:s0 tclass=dir permissive=1
+01-24 10:29:53.247  1752  2041 V DisplayPowerController: Brightness [0.39763778] reason changing to: 'manual', previous reason: 'screen_off'.
+01-24 10:29:53.249   953   953 I sensors-hal: batch:242, android.sensor.proximity/82, period=20000000, max_latency=0
+01-24 10:29:53.249   953   953 I sensors-hal: set_config:68, no need to adjust sample_period_ns due to on_change_sp_enabled = 1 or reporting_mode = 2
+01-24 10:29:53.249   953   953 I sensors-hal: batch:251, android.sensor.proximity/82, period=20000000, max_latency=0 request completed
+01-24 10:29:53.250   953   953 I sensors-hal: activate:209, android.sensor.proximity/82 en=1
+01-24 10:29:53.250   953   953 I sensors-hal: get_qmi_debug_flag:241, support_qmi_debug : false
+01-24 10:29:53.253   952   952 I QTI PowerHAL: Power setMode: 7 to: 1
+01-24 10:29:53.253  1752  1973 I DisplayManagerService: Display device changed state: "Built-in Screen", ON
+01-24 10:29:53.253  3580  3717 D KeyguardViewMediator: updateActivityLockScreenState(true, false)
+01-24 10:29:53.253   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b4a went down
+01-24 10:29:53.254   952   952 I QTI PowerHAL: Got set_interactive hint
+01-24 10:29:53.257  1752  1973 I InputManager-JNI: Viewport [0] to add: local:19261208755302018, isActive: true
+01-24 10:29:53.258   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b4b went down
+01-24 10:29:53.259  1102  1102 D SurfaceFlinger: Setting power mode 2 on display 19261208755302018
+01-24 10:29:53.259   999  5012 I SDM     : DisplayBase::SetDisplayState: Set state = 1, display 54-0, teardown = 0
+01-24 10:29:53.261   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b4c went down
+01-24 10:29:53.260     0     0 I [drm:dsi_display_set_mode [msm_drm]] [msm-dsi-info]: mdp_transfer_time=7652, hactive=1080, vactive=2340, fps=120
+01-24 10:29:53.261     0     0 I [drm:dsi_ctrl_isr_configure [msm_drm]] [msm-dsi-info]: dsi-ctrl-0: IRQ 409 registered
+01-24 10:29:53.267   953   953 I sensors-hal: send_sensor_config_request:481, dt=proximity: convert sample_period=20000000 to batch_period=20000
+01-24 10:29:53.267   953   953 I sensors-hal: send_sync_sensor_request:358, send sync request
+01-24 10:29:53.267   953   953 I sensors-hal: send_sync_sensor_request:384, wait for notification of response
+01-24 10:29:53.267   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b4d went down
+01-24 10:29:53.277   953 26915 I sensors-hal: ssc_conn_resp_cb:663, resp_value = 0
+01-24 10:29:53.278   953   953 I sensors-hal: send_sync_sensor_request:390, takes 10 ms to receive the response with 0
+01-24 10:29:53.278   953   953 I sensors-hal: activate:220, android.sensor.proximity/82 en=1 completed
+01-24 10:29:53.301   953 26915 I sensors-hal: handle_indication_realtime:471,  SCHED_FIFO(10) for qmi_cbk
+01-24 10:29:53.495   999  5012 I SDM     : DisplayBase::SetDisplayState: active 1-1 state 1-1 pending_power_state_ 0
+01-24 10:29:53.497  1102  1102 D SurfaceFlinger: Finished setting power mode 2 on display 19261208755302018
+01-24 10:29:53.497  1752  3546 D SurfaceControl: Excessive delay in setPowerMode()
+01-24 10:29:53.502  1752  3677 W system_server: Long monitor contention with owner Binder:1752_7 (3675) at void com.android.server.wm.ActivityTaskManagerService.setLockScreenShown(boolean, boolean)(ActivityTaskManagerService.java:3430) waiters=1 in void com.android.server.wm.Session.setWallpaperZoomOut(android.os.IBinder, float) for 248ms
+01-24 10:29:53.505  1752  1752 W system_server: Long monitor contention with owner Binder:1752_7 (3675) at void com.android.server.wm.ActivityTaskManagerService.setLockScreenShown(boolean, boolean)(ActivityTaskManagerService.java:3430) waiters=4 in com.android.server.wm.WindowProcessController com.android.server.wm.ActivityTaskManagerService$LocalService.getTopApp() for 246ms
+01-24 10:29:53.506  1752  2680 I InputReader: Reconfiguring input devices, changes=DISPLAY_INFO | 
+01-24 10:29:53.506  1752  2680 I InputReader: Device reconfigured: id=5, name='qbt_key_input', size 1080x2340, orientation 0, mode 4, display id 0
+01-24 10:29:53.507  1752  2680 I InputReader: Device reconfigured: id=4, name='fts_ts', size 1080x2340, orientation 0, mode 1, display id 0
+01-24 10:29:53.511  3555  4149 I BtGatt.ScanManager: msg.what = 8
+01-24 10:29:53.512  3555  4149 I BtGatt.ScanManager: msg.what = 5
+01-24 10:29:53.513  1752  1752 W Looper  : Slow dispatch took 256ms main h=android.app.ActivityThread$H c=android.app.-$$Lambda$LoadedApk$ReceiverDispatcher$Args$_BumDX2UKsnxLVrE6UJsJZkotuA@9800c06 m=0
+01-24 10:29:53.514  1752  1752 W Looper  : Slow delivery took 261ms main h=com.android.server.AlarmManagerService$AlarmHandler c=null m=4
+01-24 10:29:53.514  1752  1752 W Looper  : Drained
+01-24 10:29:53.516     0     0 D cnss    : Resuming PCI link
+01-24 10:29:53.522  2365  2365 D audio_hw_primary: adev_set_parameters: enter: screen_state=on
+01-24 10:29:53.522  2365  2365 D sound_trigger_hw: handle_screen_status_change: screen on
+01-24 10:29:53.520     0     0 D cnss    : Set PCI link status to: 2
+01-24 10:29:53.520     0     0 D cnss    : Setting MHI state: RESUME(7)
+01-24 10:29:53.535  4739  4739 D NfcService: MSG_APPLY_SCREEN_STATE 4
+01-24 10:29:53.539  4739  4739 I libnfc_nci: [INFO:NativeNfcManager.cpp(2864)] nfcManager_doSetScreenState: state = 4 prevScreenState= 1, discovry_param = 1
+01-24 10:29:53.539  4739  4739 I libnfc_nci: [INFO:nfa_dm_api.cc(230)] NFA_SetPowerSubStateForScreenState: state:0x4
+01-24 10:29:53.539  4739  5415 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x011A
+01-24 10:29:53.539  4739  5415 I libnfc_nci: [INFO:nfa_dm_main.cc(151)] event: NFA_DM_API_SET_POWER_SUB_STATE_EVT (0x1a)
+01-24 10:29:53.539  4739  5415 I libnfc_nci: [INFO:nfa_dm_act.cc(657)] nfa_dm_set_power_sub_state
+01-24 10:29:53.540  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(398)] nfc_ncif_send_cmd()
+01-24 10:29:53.540  4739  5415 I libnfc_nci: [INFO:NfcAdaptation.cc(704)] NfcAdaptation::HalWrite
+01-24 10:29:53.540   988  5103 D NxpTml  : PN54X - Write requested.....
+01-24 10:29:53.540   988  5103 D NxpTml  : PN54X - Invoking I2C Write.....
+01-24 10:29:53.526     0     0 E [wifi@1][0x5f1107cca6e][10:29:53.530553] wlan: [981:E:OSIF] wlan_hdd_set_station_stats_request_pending: peer is null
+01-24 10:29:53.545  3580  3580 D KeyguardUpdateMonitor: received broadcast android.intent.action.TIME_TICK
+01-24 10:29:53.547  3580  3580 D KeyguardUpdateMonitor: received broadcast android.intent.action.TIME_TICK
+01-24 10:29:53.547   953   953 I sensors-hal: batch:242, android.sensor.device_orientation/272, period=66667000, max_latency=0
+01-24 10:29:53.547   953   953 I sensors-hal: set_config:68, no need to adjust sample_period_ns due to on_change_sp_enabled = 1 or reporting_mode = 2
+01-24 10:29:53.548   953   953 I sensors-hal: batch:251, android.sensor.device_orientation/272, period=66667000, max_latency=0 request completed
+01-24 10:29:53.548  3580  3580 I Choreographer: Skipped 33 frames!  The application may be doing too much work on its main thread.
+01-24 10:29:53.548   953   953 I sensors-hal: activate:209, android.sensor.device_orientation/272 en=1
+01-24 10:29:53.548   953   953 I sensors-hal: get_qmi_debug_flag:241, support_qmi_debug : false
+01-24 10:29:53.541     0     0 E i2c_geni 884000.i2c: i2c error :-107
+01-24 10:29:53.547     0     0 W i2c_write: write failed, Maybe in Standby Mode - Retry(1)
+01-24 10:29:53.551   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b4f went down
+01-24 10:29:53.554   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b50 went down
+01-24 10:29:53.554  1384  1384 I CNSS    : /sys/wifi/dump_in_progress file read permission doesn't exist
+01-24 10:29:53.555   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b51 went down
+01-24 10:29:53.558   953   953 I sensors-hal: send_sensor_config_request:481, dt=device_orient: convert sample_period=66667000 to batch_period=66667
+01-24 10:29:53.558   953   953 I sensors-hal: send_sync_sensor_request:358, send sync request
+01-24 10:29:53.558   953   953 I sensors-hal: send_sync_sensor_request:384, wait for notification of response
+01-24 10:29:53.559   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b52 went down
+01-24 10:29:53.560   988  5103 D NxpTml  : _i2c_write() errno : 5
+01-24 10:29:53.560   988  5103 E NxpTml  : PN54X - Error in I2C Write.....
+01-24 10:29:53.560   988  5103 D NxpTml  : PN54X - Posting Fresh Write message.....
+01-24 10:29:53.560   988  5103 D NxpTml  : PN54X - Tml Writer Thread Running................
+01-24 10:29:53.550     0     0 E nfc_i2c_dev_write: failed to write -107
+01-24 10:29:53.560   988  5105 D NxpHal  : write error status = 0x1ff
+01-24 10:29:53.560   988   988 D NxpHal  : write_unlocked failed - PN54X Maybe in Standby Mode - Retry
+01-24 10:29:53.561   953 26921 I sensors-hal: ssc_conn_resp_cb:663, resp_value = 0
+01-24 10:29:53.561   953   953 I sensors-hal: send_sync_sensor_request:390, takes 2 ms to receive the response with 0
+01-24 10:29:53.561   953   953 I sensors-hal: activate:220, android.sensor.device_orientation/272 en=1 completed
+01-24 10:29:53.559     0     0 D cnss    : Setting MHI state: SUSPEND(6)
+01-24 10:29:53.561  1752  2041 I DisplayPowerController: Unblocked screen on after 378 ms
+01-24 10:29:53.565  3580  3816 D KeyguardViewMediator: notifyScreenTurnedOn
+01-24 10:29:53.565  1752  2041 W PowerManagerService: Screen on took 416 ms
+01-24 10:29:53.565  1752  2041 I DreamManagerService: Gently waking up from dream.
+01-24 10:29:53.565  1752  1969 I DreamManagerService: Performing gentle wake from dream.
+01-24 10:29:53.571   988  5103 D NxpTml  : PN54X - Write requested.....
+01-24 10:29:53.571   988  5103 D NxpTml  : PN54X - Invoking I2C Write.....
+01-24 10:29:53.565     0     0 D cnss    : Suspending PCI link
+01-24 10:29:53.565     0     0 D cnss    : Use PCIe DRV suspend
+01-24 10:29:53.571   988  5103 D NxpNciX : len =   4 > 20090102
+01-24 10:29:53.571   988  5103 D NxpTml  : PN54X - I2C Write successful.....
+01-24 10:29:53.571   988  5103 D NxpTml  : PN54X - Posting Fresh Write message.....
+01-24 10:29:53.572   988  5103 D NxpTml  : PN54X - Tml Writer Thread Running................
+01-24 10:29:53.572   988  5105 D NxpHal  : write successful status = 0x0
+01-24 10:29:53.576   988  5102 D NxpTml  : PN54X - I2C Read successful.....
+01-24 10:29:53.576   988  5102 D NxpNciR : len =   4 > 40090100
+01-24 10:29:53.576   988  5102 D NxpTml  : PN54X - Posting read message.....
+01-24 10:29:53.576   988  5105 D NxpHal  : read successful status = 0x0
+01-24 10:29:53.577  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(465)] NFC received rsp gid:0
+01-24 10:29:53.577  4739  5415 I libnfc_nci: [INFO:nci_hrcv.cc(83)] nci_proc_core_rsp opcode:0x9
+01-24 10:29:53.577  4739  5415 I libnfc_nci: [INFO:nfa_dm_act.cc(293)] unknown revt(0x5012)
+01-24 10:29:53.577  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(995)] nfaDeviceManagementCallback: enter; event=0xB
+01-24 10:29:53.577  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(1140)] nfaDeviceManagementCallback: NFA_DM_SET_POWER_SUB_STATE_EVT; status=0x0
+01-24 10:29:53.578  4739  4739 I libnfc_nci: [INFO:nfa_dm_api.cc(288)] param_id:0x2
+01-24 10:29:53.579   988  5102 D NxpTml  : PN54X - Read requested.....
+01-24 10:29:53.579   988  5102 D NxpTml  : PN54X - Invoking I2C Read.....
+01-24 10:29:53.579  3999  3999 D DeviceStatisticsService: Send device is interactive
+01-24 10:29:53.579  3999  3999 D DeviceInfoHidlClient: getDeviceInfoSupportStatus()=-1
+01-24 10:29:53.579  4739  5415 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0102
+01-24 10:29:53.579  4739  5415 I libnfc_nci: [INFO:nfa_dm_main.cc(151)] event: NFA_DM_API_SET_CONFIG_EVT (0x02)
+01-24 10:29:53.580  4739  5415 I libnfc_nci: [INFO:nfa_dm_main.cc(255)] nfa_dm_check_set_config
+01-24 10:29:53.580  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(398)] nfc_ncif_send_cmd()
+01-24 10:29:53.580  4739  5415 I libnfc_nci: [INFO:NfcAdaptation.cc(704)] NfcAdaptation::HalWrite
+01-24 10:29:53.580   988  5103 D NxpTml  : PN54X - Write requested.....
+01-24 10:29:53.580   988  5103 D NxpTml  : PN54X - Invoking I2C Write.....
+01-24 10:29:53.580   988  5103 D NxpNciX : len =   7 > 20020401020100
+01-24 10:29:53.581   988  5103 D NxpTml  : PN54X - I2C Write successful.....
+01-24 10:29:53.581   988  5103 D NxpTml  : PN54X - Posting Fresh Write message.....
+01-24 10:29:53.581   988  5103 D NxpTml  : PN54X - Tml Writer Thread Running................
+01-24 10:29:53.581  1752  3496 I WifiConnectivityManager: SetInitialScanState to : 0
+01-24 10:29:53.581   988  5105 D NxpHal  : write successful status = 0x0
+01-24 10:29:53.582  1752  3496 E WifiScoringParams: Invalid frequency(-1), using 5G as default rssi array
+01-24 10:29:53.584  1752  3496 I WifiConnectivityManager: SetInitialScanState to : 2
+01-24 10:29:53.585   988  5102 D NxpTml  : PN54X - I2C Read successful.....
+01-24 10:29:53.585   988  5102 D NxpNciR : len =   5 > 4002020000
+01-24 10:29:53.585   988  5102 D NxpTml  : PN54X - Posting read message.....
+01-24 10:29:53.585   988  5105 D NxpHal  : read successful status = 0x0
+01-24 10:29:53.585   988  5105 D NxpHal  : phNxpNciHal_print_res_status: response status =STATUS_OK
+01-24 10:29:53.584     0     0 D cnss    : Runtime resume start
+01-24 10:29:53.584     0     0 D cnss    : Resuming PCI link
+01-24 10:29:53.586   988  5102 D NxpTml  : PN54X - Read requested.....
+01-24 10:29:53.586   988  5102 D NxpTml  : PN54X - Invoking I2C Read.....
+01-24 10:29:53.587  3580  3580 D KeyguardUpdateMonitor: handleTimeUpdate
+01-24 10:29:53.587  3580  3580 D KeyguardClockSwitch: Updating clock: 1029
+01-24 10:29:53.587  3580  3580 D KeyguardUpdateMonitor: handleTimeUpdate
+01-24 10:29:53.587  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(465)] NFC received rsp gid:0
+01-24 10:29:53.587  4823  4823 D SYS_EVENT: send event 16 notification to client
+01-24 10:29:53.587  4739  5415 I libnfc_nci: [INFO:nci_hrcv.cc(83)] nci_proc_core_rsp opcode:0x2
+01-24 10:29:53.587  3580  3580 D KeyguardClockSwitch: Updating clock: 1029
+01-24 10:29:53.587  4739  5415 I libnfc_nci: [INFO:nfa_dm_act.cc(293)] NFC_SET_CONFIG_REVT(0x5002)
+01-24 10:29:53.587  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(995)] nfaDeviceManagementCallback: enter; event=0x2
+01-24 10:29:53.587  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(1020)] nfaDeviceManagementCallback: NFA_DM_SET_CONFIG_EVT
+01-24 10:29:53.589  4778  4778 D PASRDozeReceiver: Received Intent Intent { act=android.intent.action.SCREEN_ON flg=0x50200010 }
+01-24 10:29:53.592  4778  4778 D PASRDozeReceiver: Sent intent Successfully
+01-24 10:29:53.592  4778  4778 D PASRService: PASRService started
+01-24 10:29:53.592  4778  4778 D PASRService: OnStartteett, Intent: android.intent.action.SCREEN_ON
+01-24 10:29:53.593  4778  4778 D PASRService: Screen Off timer prop: 0. val: 0
+01-24 10:29:53.595  1752  3501 D WifiNative: Scan trigered from WifiNative
+01-24 10:29:53.596  4778  4778 I android_os_HwBinder: HwBinder: Starting thread pool for getting: vendor.qti.memory.pasrmanager@1.0::IPasrManager/pasrhal
+01-24 10:29:53.596  4778  4778 D PASRService: is ActiveMode Enabled: true
+01-24 10:29:53.597  4778  4778 D PASRService: State is now: -10
+01-24 10:29:53.592     0     0 D cnss    : Set PCI link status to: 2
+01-24 10:29:53.592     0     0 D cnss    : Setting MHI state: RESUME(7)
+01-24 10:29:53.598  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] wait_event:Wait done with Cmd 33
+01-24 10:29:53.599  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] do_listen_events: Rcvd valid Netlink Cmd 0 Err 0
+01-24 10:29:53.597     0     0 I [kworke][0x5f110916bd0][10:29:53.600972] wlan: [18426:I:PMO] pmo_core_psoc_send_host_wakeup_ind_to_fw: Host wakeup indication sent to fw
+01-24 10:29:53.605  3580  3580 D KeyguardViewMediator: handleNotifyScreenTurnedOn
+01-24 10:29:53.607  1752  3675 I DreamManagerService: Leaving dreamland.
+01-24 10:29:53.608  1752  1969 I DreamManagerService: Performing gentle wake from dream.
+01-24 10:29:53.608  1752  1969 I DreamController: Stopping dream: name=ComponentInfo{com.android.systemui/com.android.systemui.doze.DozeService}, isTest=false, canDoze=true, userId=0, reason='finished self'(from 'requested stopDream')
+01-24 10:29:53.615  3580  3580 V KeyguardUpdateMonitor: startListeningForFingerprint()
+01-24 10:29:53.616  3580  3580 V KeyguardUpdateMonitor: startListeningForFace()
+01-24 10:29:53.600     0     0 E [soft_i][0x5f11092751c][10:29:53.604509] wlan: [0:E:WMA] wma_wake_event_packet: Wake reason UNSPECIFIED is not a packet event
+01-24 10:29:53.601     0     0 D cnss    : Runtime resume status: 0
+01-24 10:29:53.641 14689 14749 I BeaconBle: Client requested scan, settings=BleSettings [scanMode=LOW_LATENCY, callbackType=ALL_MATCHES, reportDelayMillis=0, 5 filters, 1 clients, callingClientName=Nearby] [CONTEXT service_id=111 ]
+01-24 10:29:53.654 14689 14749 I BeaconBle: Stopping scan on delegate scanner. BT state: 12 [CONTEXT service_id=111 ]
+01-24 10:29:53.655 14689 14749 D BluetoothAdapter: isLeEnabled(): ON
+01-24 10:29:53.658  3555  4903 D BtGatt.GattService: stopScan() - queue size =1
+01-24 10:29:53.660  3555  4149 I BtGatt.ScanManager: msg.what = 1
+01-24 10:29:53.661  3555  4149 D BtGatt.ScanManager: stop scan
+01-24 10:29:53.662  3555  4681 E bt_btm  : BTM_BleObserve Observe not active
+01-24 10:29:53.662  3555  4892 D BtGatt.GattService: unregisterScanner() - scannerId=6
+01-24 10:29:53.662  3555  4681 V bt_stack: [VERBOSE1:gatt_api.cc(994)] GATT_Deregister gatt_if=6
+01-24 10:29:53.663  3555  4681 V bt_stack: [VERBOSE1:connection_manager.cc(161)] on_app_deregistered : app_id 0x06
+01-24 10:29:53.665 14689 14749 I BeaconBle: Resetting - new scanner available: true [CONTEXT service_id=111 ]
+01-24 10:29:53.662     0     0 I [schedu][0x5f110a47087][10:29:53.665888] wlan: [14736:I:OSIF] scan start scan id 41137
+01-24 10:29:53.667 14689 14749 I BeaconBle: 'L' hardware scan: 5 filters, scanMode=2, reportdelay=0, callback type=1, #clients=1, workSource=WorkSource{10138 com.google.android.gms} [CONTEXT service_id=111 ]
+01-24 10:29:53.669 14689 14749 I BeaconBle: Starting scan on OS scanner. BT state: 12 [CONTEXT service_id=111 ]
+01-24 10:29:53.670 14689 14749 D BluetoothAdapter: isLeEnabled(): ON
+01-24 10:29:53.676  3555  4903 D BtGatt.GattService: registerScanner() - UUID=fdfafcbb-b375-4f47-b4e8-8924dc6dde98
+01-24 10:29:53.678  3555  4681 V bt_stack: [VERBOSE1:bta_gattc_act.cc(201)] bta_gattc_register: state:2
+01-24 10:29:53.679  3555  4681 I bt_stack: [INFO:gatt_api.cc(951)] GATT_Register b9c782a8-2eb4-1d05-a818-e5b565e916aa
+01-24 10:29:53.679  3555  4681 I bt_stack: [INFO:gatt_api.cc(971)] allocated gatt_if=6
+01-24 10:29:53.679  3555  4681 V bt_stack: [VERBOSE1:gatt_api.cc(1081)] GATT_StartIf gatt_if=6
+01-24 10:29:53.679  3555  3693 D BtGatt.GattService: onScannerRegistered() - UUID=fdfafcbb-b375-4f47-b4e8-8924dc6dde98, scannerId=6, status=0
+01-24 10:29:53.679  3555  4681 V bt_stack: [VERBOSE1:gatt_utils.cc(254)] gatt_find_the_connected_bda start_idx=0
+01-24 10:29:53.679  3555  4681 V bt_stack: [VERBOSE1:gatt_utils.cc(266)]  found=0 found_idx=10
+01-24 10:29:53.680 14689 14711 D BluetoothLeScanner: onScannerRegistered() - status=0 scannerId=6 mScannerId=0
+01-24 10:29:53.681  3555  4903 D BtGatt.GattService: start scan with filters. callingPackage: com.google.android.gms
+01-24 10:29:53.688  3555  4149 I BtGatt.ScanManager: msg.what = 0
+01-24 10:29:53.688  3555  4149 D BtGatt.ScanManager: handling starting scan
+01-24 10:29:53.688  3555  4149 D BtGatt.ScanManager: isAptXLowLatencyModeEnabled: false
+01-24 10:29:53.689   941   941 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+01-24 10:29:53.690   941   941 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired 
+01-24 10:29:53.690   941   941 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Writing IBS_WAKE_IND
+01-24 10:29:53.696   941  4675 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_ACK: 0xFC
+01-24 10:29:53.696   941  4675 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Signal wack_cond_
+01-24 10:29:53.696   941   941 D vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Unblocked from waiting for FC
+01-24 10:29:53.697   941  4675 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+01-24 10:29:53.697   941  4675 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+01-24 10:29:53.698  3555  3693 D BtGatt.GattService: onScanFilterEnableDisabled() - clientIf=6, status=0, action=1
+01-24 10:29:53.698  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.698  3555  4149 D BtGatt.ScanManager: Available Filter size: 61
+01-24 10:29:53.699  3555  4681 I bt_stack: [INFO:btm_ble_adv_filter.cc(693)] BTM_LE_PF_set UUID MASK is empty 
+01-24 10:29:53.699  3555  3693 D BtGatt.GattService: onScanFilterConfig() - clientIf=6, action = 0 status = 0, filterType=0, availableSpace=0
+01-24 10:29:53.699  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.699  3555  4149 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0, deliveryMode=0
+01-24 10:29:53.703  3555  3693 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=6, status=0, action=0, availableSpace=63
+01-24 10:29:53.703  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.704  3555  4681 I bt_stack: [INFO:btm_ble_adv_filter.cc(693)] BTM_LE_PF_set UUID MASK is empty 
+01-24 10:29:53.704  3555  3693 D BtGatt.GattService: onScanFilterConfig() - clientIf=6, action = 0 status = 0, filterType=0, availableSpace=0
+01-24 10:29:53.704  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.704  3555  4149 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0, deliveryMode=0
+01-24 10:29:53.707  3555  3693 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=6, status=0, action=0, availableSpace=62
+01-24 10:29:53.707  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.707  3555  3693 D BtGatt.GattService: onScanFilterConfig() - clientIf=6, action = 0 status = 0, filterType=0, availableSpace=0
+01-24 10:29:53.707  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.707  3555  4149 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0, deliveryMode=0
+01-24 10:29:53.711  3555  3693 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=6, status=0, action=0, availableSpace=61
+01-24 10:29:53.711  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.712  3555  3693 D BtGatt.GattService: onScanFilterConfig() - clientIf=6, action = 0 status = 0, filterType=0, availableSpace=0
+01-24 10:29:53.712  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.712  3555  4149 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0, deliveryMode=0
+01-24 10:29:53.714  3555  3693 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=6, status=0, action=0, availableSpace=60
+01-24 10:29:53.714  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.715  3555  4681 I bt_stack: [INFO:btm_ble_adv_filter.cc(693)] BTM_LE_PF_set UUID MASK is empty 
+01-24 10:29:53.715  3555  3693 D BtGatt.GattService: onScanFilterConfig() - clientIf=6, action = 0 status = 0, filterType=0, availableSpace=0
+01-24 10:29:53.715  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.716  3555  4149 D BtGatt.ScanManager: configureFilterParamter 500 10000 1 0, deliveryMode=0
+01-24 10:29:53.713     0     0 I [FTS_TS/I]fts_wait_tp_to_valid: TP Ready,Device ID:0x5452
+01-24 10:29:53.719  3555  3693 D BtGatt.GattService: onScanFilterParamsConfigured() - clientIf=6, status=0, action=0, availableSpace=59
+01-24 10:29:53.719  3555  3693 D BtGatt.ScanManager: callback done for scannerId - 6 status - 0
+01-24 10:29:53.719  3555  4149 D BtGatt.ScanManager: configureRegularScanParams() - queue=1
+01-24 10:29:53.719  3555  4149 D BtGatt.ScanManager: configureRegularScanParams() - ScanSetting LE 1M Scan mode=2ScanSetting LE Coded Scan mode=2 mLastConfiguredScanSettingLE1M=-2147483648 mLastConfiguredScanSettingLECoded=-2147483648scanPhy=255
+01-24 10:29:53.720  3555  4149 D BtGatt.ScanManager: configureRegularScanParams - scanInterval LE 1M = 4096configureRegularScanParams - scanWindow LE 1M= 4096configureRegularScanParams - scanInterval LE Coded= 4096configureRegularScanParams - scanWindow LE Coded= 4096
+01-24 10:29:53.721  3555  3693 D BtGatt.GattService: onScanParamSetupCompleted : 0
+01-24 10:29:53.771   941  4675 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+01-24 10:29:53.871  3580  3580 D KeyguardViewBase: screen on, instance 865f316
+01-24 10:29:53.872   953   953 I sensors-hal: activate:209, android.sensor.proximity/82 en=0
+01-24 10:29:53.873  3580  3580 D KeyguardViewMediator: tryKeyguardDone: pending - false, animRan - true animRunning - false
+01-24 10:29:53.873  3580  3580 D KeyguardViewMediator: handleKeyguardDone
+01-24 10:29:53.873  3580  3580 D KeyguardViewMediator: handleHide
+01-24 10:29:53.873  3580  3580 D KeyguardViewMediator: keyguardGoingAway
+01-24 10:29:53.875   953   953 I sensors-hal: activate:220, android.sensor.proximity/82 en=0 completed
+01-24 10:29:53.876   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b4e went down
+01-24 10:29:53.886  1752  5261 D ActivityTaskManager: Top Process State changed to PROCESS_STATE_TOP
+01-24 10:29:53.892  1752  5261 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:53.892  1752  5261 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:53.893  1752  5261 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:53.895  3580  3580 D StatusBar: disable<e i a s b H R c s > disable2<q i n >
+01-24 10:29:53.898  1058  1175 E ANDR-PERF-LM: GAMEOPT: operator()() 496: ERROR: status != Status::SUCCESS
+01-24 10:29:53.898  1058  1175 E ANDR-PERF-LM: GamePerfEngine: runAsync() 477: Hint is for com.jian.detectx.lahaina.debug/com.jian.detectx.LauncherActivity/2 = 0x1003 PID=1752
+01-24 10:29:53.899   606   606 I hwservicemanager: getTransport: Cannot find entry vendor.display.config@1.0::IDisplayConfig/default in either framework or device manifest.
+01-24 10:29:53.899  1058  1175 W ANDR-PERF-LM: FeatureState: writeState() 188: GameOptimization: State transition not allowed
+01-24 10:29:53.905  3555  4149 I BtGatt.ScanManager: msg.what = 8
+01-24 10:29:53.906  3555  4149 I BtGatt.ScanManager: msg.what = 5
+01-24 10:29:53.909  3580  3580 V KeyguardUpdateMonitor: *** unregister callback for com.android.keyguard.CarrierTextController$2@8fb9d50
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: QUALCOMM build                   : d58476d1d1, Ie65ffa8b2d
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: Build Date                       : 09/16/21
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: OpenGL ES Shader Compiler Version: EV031.35.01.09
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: Local Branch                     : 
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: Remote Branch                    : 
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: Remote Branch                    : 
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: Reconstruct Branch               : 
+01-24 10:29:53.925 26853 26877 I AdrenoGLES-0: Build Config                     : S P 10.0.7 AArch64
+01-24 10:29:53.926 26853 26877 I AdrenoGLES-0: Driver Path                      : /vendor/lib64/egl/libGLESv2_adreno.so
+01-24 10:29:53.938  3580  3580 D KeyguardViewMediator: handleStartKeyguardExitAnimation startTime=328479027 fadeoutDuration=300
+01-24 10:29:53.939 26853 26877 I AdrenoGLES-0: PFP: 0x016dc094, ME: 0x00000000
+01-24 10:29:53.940  3580  3580 D StatusBar: disable<e i a s b H R c s > disable2<q i n >
+01-24 10:29:53.943  3580  3580 D KeyguardViewMediator: adjustStatusBarLocked: mShowing=false mOccluded=false isSecure=false force=false --> flags=0x0
+01-24 10:29:53.943  3580  3717 D KeyguardViewMediator: updateActivityLockScreenState(false, false)
+01-24 10:29:53.943   953   953 I sensors-hal: batch:242, android.sensor.proximity/82, period=20000000, max_latency=0
+01-24 10:29:53.943   953   953 I sensors-hal: set_config:68, no need to adjust sample_period_ns due to on_change_sp_enabled = 1 or reporting_mode = 2
+01-24 10:29:53.943   953   953 I sensors-hal: batch:251, android.sensor.proximity/82, period=20000000, max_latency=0 request completed
+01-24 10:29:53.944   953   953 I sensors-hal: activate:209, android.sensor.proximity/82 en=1
+01-24 10:29:53.944   953   953 I sensors-hal: get_qmi_debug_flag:241, support_qmi_debug : false
+01-24 10:29:53.945  3580  3580 D StatusBar: updateQsExpansionEnabled - QS Expand enabled: true
+01-24 10:29:53.946   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b54 went down
+01-24 10:29:53.949   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b55 went down
+01-24 10:29:53.952  3580  3580 D StatusBar: disable<e i a s b h!r!c s > disable2<q i n >
+01-24 10:29:53.953   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b56 went down
+01-24 10:29:53.954   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b57 went down
+01-24 10:29:53.954   953   953 I sensors-hal: send_sensor_config_request:481, dt=proximity: convert sample_period=20000000 to batch_period=20000
+01-24 10:29:53.954   953   953 I sensors-hal: send_sync_sensor_request:358, send sync request
+01-24 10:29:53.954   953   953 I sensors-hal: send_sync_sensor_request:384, wait for notification of response
+01-24 10:29:53.956   953 26930 I sensors-hal: ssc_conn_resp_cb:663, resp_value = 0
+01-24 10:29:53.956   953   953 I sensors-hal: send_sync_sensor_request:390, takes 1 ms to receive the response with 0
+01-24 10:29:53.956   953   953 I sensors-hal: activate:220, android.sensor.proximity/82 en=1 completed
+01-24 10:29:53.957   953   953 I sensors-hal: activate:209, android.sensor.proximity/82 en=0
+01-24 10:29:53.958   935  1070 E minksocket: MinkIPC_QRTR_Service: client with node 1 port 4b58 went down
+01-24 10:29:53.959  3580  3580 D KeyguardUpdateMonitor: onKeyguardVisibilityChanged(false)
+01-24 10:29:53.960   953   953 I sensors-hal: activate:220, android.sensor.proximity/82 en=0 completed
+01-24 10:29:53.962  3580  3580 D KeyguardViewMediator: keyguardGone
+01-24 10:29:53.962  3580  3580 V KeyguardDisplayManager: hide
+01-24 10:29:53.963  3580  3580 D KeyguardViewMediator: adjustStatusBarLocked: mShowing=false mOccluded=false isSecure=false force=false --> flags=0x0
+01-24 10:29:53.967  4933  4933 E SUI_svcsock: svc_sock_send_message(suisvc): invalid remote socket suilst
+01-24 10:29:53.970  4739  4739 D NfcService: MSG_APPLY_SCREEN_STATE 8
+01-24 10:29:53.970  4823  4823 D SYS_EVENT: send event 64 notification to client
+01-24 10:29:53.971  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.android.chrome/org.chromium.chrome.browser.sharing.click_to_call.ClickToCallMessageHandler$PhoneUnlockedReceiver
+01-24 10:29:53.973  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.google.android.gms/.auth.setup.devicesignals.LockScreenReceiver
+01-24 10:29:53.977  4739  4739 D NfcService: applyRouting enter
+01-24 10:29:53.978  4739  4739 D NfcService: Discovery configuration equal, not updating.
+01-24 10:29:53.978  4739  4739 I libnfc_nci: [INFO:NativeNfcManager.cpp(2864)] nfcManager_doSetScreenState: state = 8 prevScreenState= 4, discovry_param = 1
+01-24 10:29:53.978  4739  4739 I libnfc_nci: [INFO:nfa_dm_api.cc(230)] NFA_SetPowerSubStateForScreenState: state:0x8
+01-24 10:29:53.978  4739  5415 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x011A
+01-24 10:29:53.978  4739  5415 I libnfc_nci: [INFO:nfa_dm_main.cc(151)] event: NFA_DM_API_SET_POWER_SUB_STATE_EVT (0x1a)
+01-24 10:29:53.979  4739  5415 I libnfc_nci: [INFO:nfa_dm_act.cc(657)] nfa_dm_set_power_sub_state
+01-24 10:29:53.979  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(398)] nfc_ncif_send_cmd()
+01-24 10:29:53.979  4739  5415 I libnfc_nci: [INFO:NfcAdaptation.cc(704)] NfcAdaptation::HalWrite
+01-24 10:29:53.979   988  5103 D NxpTml  : PN54X - Write requested.....
+01-24 10:29:53.979   988  5103 D NxpTml  : PN54X - Invoking I2C Write.....
+01-24 10:29:53.979  1752  5261 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:53.979  1752  5261 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:53.979  1752  5261 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:53.979   988  5103 D NxpNciX : len =   4 > 20090100
+01-24 10:29:53.979   988  5103 D NxpTml  : PN54X - I2C Write successful.....
+01-24 10:29:53.979   988  5103 D NxpTml  : PN54X - Posting Fresh Write message.....
+01-24 10:29:53.979   988  5103 D NxpTml  : PN54X - Tml Writer Thread Running................
+01-24 10:29:53.979   988  5105 D NxpHal  : write successful status = 0x0
+01-24 10:29:53.983   988  5102 D NxpTml  : PN54X - I2C Read successful.....
+01-24 10:29:53.983   988  5102 D NxpNciR : len =   4 > 40090100
+01-24 10:29:53.983   988  5102 D NxpTml  : PN54X - Posting read message.....
+01-24 10:29:53.983   988  5105 D NxpHal  : read successful status = 0x0
+01-24 10:29:53.983   988  5102 D NxpTml  : PN54X - Read requested.....
+01-24 10:29:53.984   988  5102 D NxpTml  : PN54X - Invoking I2C Read.....
+01-24 10:29:53.984  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(465)] NFC received rsp gid:0
+01-24 10:29:53.984  4739  5415 I libnfc_nci: [INFO:nci_hrcv.cc(83)] nci_proc_core_rsp opcode:0x9
+01-24 10:29:53.984  4739  5415 I libnfc_nci: [INFO:nfa_dm_act.cc(293)] unknown revt(0x5012)
+01-24 10:29:53.984  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(995)] nfaDeviceManagementCallback: enter; event=0xB
+01-24 10:29:53.984  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(1140)] nfaDeviceManagementCallback: NFA_DM_SET_POWER_SUB_STATE_EVT; status=0x0
+01-24 10:29:53.985  4739  4739 I libnfc_nci: [INFO:nfa_dm_api.cc(288)] param_id:0x2
+01-24 10:29:53.985  4739  5415 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0102
+01-24 10:29:53.985  4739  5415 I libnfc_nci: [INFO:nfa_dm_main.cc(151)] event: NFA_DM_API_SET_CONFIG_EVT (0x02)
+01-24 10:29:53.985  4739  5415 I libnfc_nci: [INFO:nfa_dm_main.cc(255)] nfa_dm_check_set_config
+01-24 10:29:53.985  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(398)] nfc_ncif_send_cmd()
+01-24 10:29:53.985  4739  5415 I libnfc_nci: [INFO:NfcAdaptation.cc(704)] NfcAdaptation::HalWrite
+01-24 10:29:53.985   988  5103 D NxpTml  : PN54X - Write requested.....
+01-24 10:29:53.985   988  5103 D NxpTml  : PN54X - Invoking I2C Write.....
+01-24 10:29:53.986   988  5103 D NxpNciX : len =   7 > 20020401020101
+01-24 10:29:53.986   988  5103 D NxpTml  : PN54X - I2C Write successful.....
+01-24 10:29:53.986   988  5103 D NxpTml  : PN54X - Posting Fresh Write message.....
+01-24 10:29:53.986   988  5105 D NxpHal  : write successful status = 0x0
+01-24 10:29:53.986  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.google.android.gms/.trustagent.UserPresentBroadcastReceiver
+01-24 10:29:53.987  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.USER_PRESENT flg=0x24200010 } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+01-24 10:29:53.987   988  5103 D NxpTml  : PN54X - Tml Writer Thread Running................
+01-24 10:29:53.998   988  5102 D NxpTml  : PN54X - I2C Read successful.....
+01-24 10:29:53.998   988  5102 D NxpNciR : len =   5 > 4002020000
+01-24 10:29:53.998   988  5102 D NxpTml  : PN54X - Posting read message.....
+01-24 10:29:53.999   988  5105 D NxpHal  : read successful status = 0x0
+01-24 10:29:53.999   988  5105 D NxpHal  : phNxpNciHal_print_res_status: response status =STATUS_OK
+01-24 10:29:54.000  4739  5415 I libnfc_nci: [INFO:nfc_ncif.cc(465)] NFC received rsp gid:0
+01-24 10:29:54.000  4739  5415 I libnfc_nci: [INFO:nci_hrcv.cc(83)] nci_proc_core_rsp opcode:0x2
+01-24 10:29:54.000  4739  5415 I libnfc_nci: [INFO:nfa_dm_act.cc(293)] NFC_SET_CONFIG_REVT(0x5002)
+01-24 10:29:54.000  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(995)] nfaDeviceManagementCallback: enter; event=0x2
+01-24 10:29:54.000  4739  5415 I libnfc_nci: [INFO:NativeNfcManager.cpp(1020)] nfaDeviceManagementCallback: NFA_DM_SET_CONFIG_EVT
+01-24 10:29:54.001  1752  5261 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:54.001  1752  5261 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:54.001  1752  5261 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:54.002   988  5102 D NxpTml  : PN54X - Read requested.....
+01-24 10:29:54.002   988  5102 D NxpTml  : PN54X - Invoking I2C Read.....
+01-24 10:29:54.035  1752  3675 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:54.035  1752  3675 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:54.035  1752  3675 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:54.060 14882 26716 I CastDatabase: Opening the database
+01-24 10:29:54.069  1752  3677 I WifiService: startScan uid=10138
+01-24 10:29:54.073 14882 14950 I DiscoveryManager: WifiGuestModeDeviceScanner enabled.
+01-24 10:29:54.085 14882 26716 I SQLiteCastStore: 0 CastNetworkInfo instances loaded, 0 CastDeviceInfo instances loaded, 0 paired guest mode devices loaded.
+01-24 10:29:54.600  1752  1752 D WifiNative: Broadcast partial scan results event
+01-24 10:29:54.614  1752  3496 D WifiScanRequestProxy: onPartialScanResults invoked
+01-24 10:29:54.615  1752  3496 E ActivityManager: Sending non-protected broadcast com.qualcomm.qti.net.wifi.PARTIAL_SCAN_RESULTS from system 1752:system/1000 pkg android
+01-24 10:29:54.615  1752  3496 E ActivityManager: java.lang.Throwable
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:16014)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:16689)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:16031)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentWithFeature(ActivityManagerService.java:16845)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.app.ContextImpl.sendBroadcastAsUser(ContextImpl.java:1290)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.content.ContextWrapper.sendBroadcastAsUser(ContextWrapper.java:545)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy.sendPartialScanResultBroadcast(ScanRequestProxy.java:314)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy.access$300(ScanRequestProxy.java:73)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy$GlobalScanListener.onResults(ScanRequestProxy.java:148)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy$GlobalScanListener.onPartialScanResults(ScanRequestProxy.java:160)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.net.wifi.WifiScanner$ServiceHandler.lambda$handleMessage$1(WifiScanner.java:1667)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.net.wifi.-$$Lambda$WifiScanner$ServiceHandler$tfzaoDCMuySQuJsgvPXn9A60XqE.run(Unknown Source:4)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:938)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.os.Looper.loop(Looper.java:223)
+01-24 10:29:54.615  1752  3496 E ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+01-24 10:29:54.616  1752  3496 D WifiConnectivityManager: onPartialScanResults invoked
+01-24 10:29:54.617  1752  2003 I DropBoxManagerService: add tag=system_server_wtf isTagEnabled=true flags=0x2
+01-24 10:29:54.614     0     0 E [wifi@1][0x5f111bb4e74][10:29:54.617753] wlan: [981:E:OSIF] wlan_hdd_set_station_stats_request_pending: peer is null
+01-24 10:29:54.730   941  4690 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceSleep: TX Awake, Sending SLEEP_IND
+01-24 10:29:54.731   941  4690 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+01-24 10:29:54.881   941  4166 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released 
+01-24 10:29:54.900  1058  5285 E ANDR-PERF-LM: GamePerfEngine: runAsyncPeriodic() 597: AppState st 98
+01-24 10:29:55.196  3580  3580 V KeyguardStatusView: Enable transport text marquee
+01-24 10:29:55.375  1058  1175 W ANDR-PERF-LM: FeatureState: readState() 151: warning: appName is NULL, returning default State
+01-24 10:29:55.375  1058  1175 W ANDR-PERF-LM: FeatureState: readState() 151: warning: appName is NULL, returning default State
+01-24 10:29:55.376  1058  1175 W ANDR-PERF-LM: MetaMeter: handleSecondaryAsync() 151: AdaptLaunch MetaMeterThread start(). No MeterMgr Available to handle this Secondary/Data Async. !!!! 
+01-24 10:29:55.376  1058  1175 E ANDR-PERF-LM: GamePerfEngine: runAsync() 477: Hint is for  = 0x1043 PID=1752
+01-24 10:29:55.436  1752  7928 I ActivityTaskManager: START u0 {cmp=com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity (has extras)} from uid 10209
+01-24 10:29:55.439  1058  1174 E ANDR-PERF-OPTSHANDLER: Min bounds check failed
+01-24 10:29:55.439  1058  1174 E ANDR-PERF-OPTSHANDLER: Error! Perflock failed, invalid request value 255
+01-24 10:29:55.440  1058  1174 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [12, 6]
+01-24 10:29:55.440  1752  7928 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:55.440  1752  7928 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:55.440  1752  7928 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:55.442  1752  7928 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+01-24 10:29:55.442  1058  1175 E ANDR-PERF-LM: GamePerfEngine: runAsync() 477: Hint is for com.jian.detectx.lahaina.debug/com.jian.detectx.LauncherActivity/2 = 0x1004 PID=1752
+01-24 10:29:55.442  1058  1175 W ANDR-PERF-LM: MetaMeter: handleAsync() 171: GameOptimization Invalid state for appName com.jian.detectx.lahaina.debug 
+01-24 10:29:55.448  1752  7928 I ActivityTaskManager: The Process com.jian.detectx.lahaina.debug Already Exists in BG. So sending its PID: 26853
+01-24 10:29:55.449  1752  7928 W ActivityTaskManager: Tried to set launchTime (0) < mLastActivityLaunchTime (328459632)
+01-24 10:29:55.449  1752  7928 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:55.449  1752  7928 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:55.449  1752  7928 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:55.451  1058  1175 E ANDR-PERF-LM: GAMEOPT: operator()() 496: ERROR: status != Status::SUCCESS
+01-24 10:29:55.451  1058  1175 E ANDR-PERF-LM: GamePerfEngine: runAsync() 477: Hint is for com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity/2 = 0x1003 PID=1752
+01-24 10:29:55.452   606   606 I hwservicemanager: getTransport: Cannot find entry vendor.display.config@1.0::IDisplayConfig/default in either framework or device manifest.
+01-24 10:29:55.452  1058  1175 W ANDR-PERF-LM: FeatureState: writeState() 188: GameOptimization: State transition not allowed
+01-24 10:29:55.488 26853 26853 E Jian_Java_MainActivity: before initializing JNIManager
+01-24 10:29:55.498 26853 26853 I com.jian.detectx.lahaina.debug: vendor/qcom/proprietary/adsprpc/src/rpcmem_android.c:159: rpcmem_init_internal: opened ION device fd 91, configured heap IDs: system (0x2000000), contig (0x10), secure (0x400), secure flags (0x80080000)
+01-24 10:29:55.498 26853 26853 I com.jian.detectx.lahaina.debug: vendor/qcom/proprietary/adsprpc/src/fastrpc_apps_user.c:3061: fastrpc_apps_user_init done with default domain:3 and &fastrpc_trace:0x7bca264fa0
+01-24 10:29:55.504 26853 26853 I HandPose_Jian_JNI: Create HandPose
+01-24 10:29:55.504 26853 26853 I BodyPose_Jian_JNI: Create BodyPose
+01-24 10:29:55.505 26853 26853 I yoloBodyPose_Jian_JNI: Init YoloBodyPose
+01-24 10:29:55.505 26853 26853 E Jian_Java_MainActivity: after initializing JNIManager
+01-24 10:29:55.514 26853 26959 I CameraManagerGlobal: Connecting to camera service
+01-24 10:29:55.516  1291 14111 W ServiceManager: Permission failure: android.permission.CAMERA_OPEN_CLOSE_LISTENER from uid=10209 pid=26853
+01-24 10:29:55.517 26853 26959 W CameraManagerGlobal: [soar.cts] ignore the status update of camera: 2
+01-24 10:29:55.517 26853 26959 W CameraManagerGlobal: [soar.cts] ignore the status update of camera: 3
+01-24 10:29:55.517 26853 26959 W CameraManagerGlobal: [soar.cts] ignore the status update of camera: 4
+01-24 10:29:55.517 26853 26946 W CameraManagerGlobal: ignore the torch status update of camera: 2
+01-24 10:29:55.514 26853 26853 I CameraX-core_ca: type=1400 audit(0.0:6573): avc: denied { read } for name="u:object_r:vendor_persist_camera_prop:s0" dev="tmpfs" ino=34840 scontext=u:r:untrusted_app_29:s0:c209,c256,c512,c768 tcontext=u:object_r:vendor_persist_camera_prop:s0 tclass=file permissive=1 app=com.jian.detectx.lahaina.debug
+01-24 10:29:55.518 26853 26946 W CameraManagerGlobal: ignore the torch status update of camera: 3
+01-24 10:29:55.518 26853 26946 W CameraManagerGlobal: ignore the torch status update of camera: 4
+01-24 10:29:55.514 26853 26853 I CameraX-core_ca: type=1400 audit(0.0:6574): avc: denied { open } for path="/dev/__properties__/u:object_r:vendor_persist_camera_prop:s0" dev="tmpfs" ino=34840 scontext=u:r:untrusted_app_29:s0:c209,c256,c512,c768 tcontext=u:object_r:vendor_persist_camera_prop:s0 tclass=file permissive=1 app=com.jian.detectx.lahaina.debug
+01-24 10:29:55.523 26853 26959 D CameraRepository: Added camera: 0
+01-24 10:29:55.532 26853 26959 I Camera2CameraInfo: Device Level: INFO_SUPPORTED_HARDWARE_LEVEL_3
+01-24 10:29:55.533 26853 26959 D CameraRepository: Added camera: 1
+01-24 10:29:55.533 26853 26960 D UseCaseAttachState: Active and attached use case: [] for camera: 0
+01-24 10:29:55.533 26853 26959 I Camera2CameraInfo: Device Level: INFO_SUPPORTED_HARDWARE_LEVEL_3
+01-24 10:29:55.534 26853 26960 D UseCaseAttachState: Active and attached use case: [] for camera: 1
+01-24 10:29:55.537 26853 26853 D Jian_Java_MainActivity: get valid cameraProvider...
+01-24 10:29:55.539  1752  2000 I ActivityTaskManager: Displayed com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity: +102ms
+01-24 10:29:55.557 26853 26956 D Jian_Java_MainActivity: startYolov5sInit Enter
+01-24 10:29:55.562 26853 26956 E Jian_Java_MainActivity: targetsToDet:length:80
+01-24 10:29:55.562 26853 26956 E Jian_Java_MainActivity: targetsToDet:true
+--------- beginning of crash
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: FATAL EXCEPTION: handlerThread-MainActivity
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: Process: com.jian.detectx.lahaina.debug, PID: 26853
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: java.lang.ArrayIndexOutOfBoundsException: length=80; index=80
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: 	at com.jian.detectx.MainActivity.startYolov5sInit(MainActivity.java:609)
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: 	at com.jian.detectx.MainActivity.access$1000(MainActivity.java:67)
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: 	at com.jian.detectx.MainActivity$7.handleMessage(MainActivity.java:493)
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:223)
+01-24 10:29:55.564 26853 26956 E AndroidRuntime: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+01-24 10:29:55.567  1752 26962 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
+01-24 10:29:55.569  1752  3679 W ActivityTaskManager:   Force finishing activity com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity
+01-24 10:29:55.563 26853 26956 I chatty  : uid=10209(com.jian.detectx.lahaina.debug) handlerThread-M identical 68 lines
+01-24 10:29:55.563 26853 26956 E Jian_Java_MainActivity: targetsToDet:true
+01-24 10:29:55.570  1752  3679 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+01-24 10:29:55.573  1058  1175 E ANDR-PERF-LM: GamePerfEngine: runAsync() 477: Hint is for com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity/2 = 0x1004 PID=1752
+01-24 10:29:55.574  1058  1175 W ANDR-PERF-LM: MetaMeter: handleAsync() 171: GameOptimization Invalid state for appName com.jian.detectx.lahaina.debug 
+01-24 10:29:55.575  1752  3679 W ActivityTaskManager:   Force finishing activity com.jian.detectx.lahaina.debug/com.jian.detectx.LauncherActivity
+01-24 10:29:55.586  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+01-24 10:29:55.586  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+01-24 10:29:55.600  1752  7928 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:55.600  1752  7928 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:55.600  1752  7928 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:55.600  1752  1752 D WifiNative: Broadcast partial scan results event
+01-24 10:29:55.603 26853 26956 I Process : Sending signal. PID: 26853 SIG: 9
+01-24 10:29:55.616  1752  3496 D WifiScanRequestProxy: onPartialScanResults invoked
+01-24 10:29:55.617  1752  3496 E ActivityManager: Sending non-protected broadcast com.qualcomm.qti.net.wifi.PARTIAL_SCAN_RESULTS from system 1752:system/1000 pkg android
+01-24 10:29:55.617  1752  3496 E ActivityManager: java.lang.Throwable
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:16014)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:16689)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:16031)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentWithFeature(ActivityManagerService.java:16845)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.app.ContextImpl.sendBroadcastAsUser(ContextImpl.java:1290)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.content.ContextWrapper.sendBroadcastAsUser(ContextWrapper.java:545)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy.sendPartialScanResultBroadcast(ScanRequestProxy.java:314)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy.access$300(ScanRequestProxy.java:73)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy$GlobalScanListener.onResults(ScanRequestProxy.java:148)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at com.android.server.wifi.ScanRequestProxy$GlobalScanListener.onPartialScanResults(ScanRequestProxy.java:160)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.net.wifi.WifiScanner$ServiceHandler.lambda$handleMessage$1(WifiScanner.java:1667)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.net.wifi.-$$Lambda$WifiScanner$ServiceHandler$tfzaoDCMuySQuJsgvPXn9A60XqE.run(Unknown Source:4)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.os.Handler.handleCallback(Handler.java:938)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.os.Looper.loop(Looper.java:223)
+01-24 10:29:55.617  1752  3496 E ActivityManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+01-24 10:29:55.617  1752  3496 D WifiConnectivityManager: onPartialScanResults invoked
+01-24 10:29:55.619  1752  2003 I DropBoxManagerService: add tag=system_server_wtf isTagEnabled=true flags=0x2
+01-24 10:29:55.618     0     0 E [wifi@1][0x5f112e1812c][10:29:55.621950] wlan: [981:E:OSIF] wlan_hdd_set_station_stats_request_pending: peer is null
+01-24 10:29:55.650  1385  1385 I Zygote  : Process 26853 exited due to signal 9 (Killed)
+01-24 10:29:55.650  1752  3679 I WindowManager: WIN DEATH: Window{717d04f u0 com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity}
+01-24 10:29:55.650  1752  3679 W InputDispatcher: Attempted to unregister already unregistered input channel '717d04f com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity (server)'
+01-24 10:29:55.651  1752  3675 I ActivityManager: Process com.jian.detectx.lahaina.debug (pid 26853) has died: prcp TOP 
+01-24 10:29:55.651  1752  2011 I libprocessgroup: Successfully killed process cgroup uid 10209 pid 26853 in 0ms
+01-24 10:29:55.658  1752  5261 I WindowManager: WIN DEATH: Window{ecc0c0c u0 com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity}
+01-24 10:29:55.658  1752  5261 W InputDispatcher: Attempted to unregister already unregistered input channel 'ecc0c0c com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity (server)'
+01-24 10:29:55.663  1752 11724 I WindowManager: WIN DEATH: Window{9dea156 u0 com.jian.detectx.lahaina.debug/com.jian.detectx.LauncherActivity}
+01-24 10:29:55.663  1752 11724 W InputDispatcher: Attempted to unregister already unregistered input channel '9dea156 com.jian.detectx.lahaina.debug/com.jian.detectx.LauncherActivity (server)'
+01-24 10:29:55.685  1752  1973 W ActivityManager: setHasOverlayUi called on unknown pid: 26853
+01-24 10:29:56.071  1752  1973 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{bf9bcb0 u0 com.jian.detectx.lahaina.debug/com.jian.detectx.MainActivity t-1 f}}
+01-24 10:29:56.409  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] wait_event:Wait done with Cmd 34
+01-24 10:29:56.410  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] do_listen_events: Rcvd valid Netlink Cmd 34 Err 0
+01-24 10:29:56.407     0     0 I [schedu][0x5f113c8affe][10:29:56.411054] wlan: [14736:I:OSIF] vdev 0, scan id 41137 type COMPLETED(1) reason COMPLETED(1) scan found 23 bss
+01-24 10:29:56.416  1752  5261 D WifiNl80211Manager: Scan result ready event
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242570478 as it greater than Beacon TSF 340242566148
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.417  1752  5261 D WifiNative: Scan result ready event
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:f0 LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1431): ESS Privacy ShortPreamble ShortSlotTime
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:f0 FREQ: 2412, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:f0 (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.570, RSSI: -138, CPL: 1, AGE: 2672,  SSID Hydra, TSFDelta: 0x346eb629, TXRate: 0
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.417  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242570758 as it greater than Beacon TSF 338698932007
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:f2 LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_OPEN 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1421): ESS ShortPreamble ShortSlotTime
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:f2 FREQ: 2412, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:f2 (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.570, RSSI: -138, CPL: 1, AGE: 2672,  SSID QGuest, TSFDelta: 0x3471081a, TXRate: 0
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242672005 as it greater than Beacon TSF 338699080618
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_EAP
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.418  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:ce LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_EAP 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:ce FREQ: 5240, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:ce (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.672, RSSI: -170, CPL: 7, AGE: 2572,  SSID Pandora, TSFDelta: 0xf8f657d0, TXRate: 0
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242821079 as it greater than Beacon TSF 335699175561
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 40:b0:76:ae:fa:14 LOWI_PHY_MODE_11AC_VHT80(10), Beacon Interval: 100, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1011): ESS Privacy
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 40:b0:76:ae:fa:14 FREQ: 5785, cFreq1[40:80:160] = [5795:5775:0] cFreq2 = 0 Country Code =    
+01-24 10:29:56.419  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 40:b0:76:ae:fa:14 (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.821, RSSI: -146, CPL: 127, AGE: 2420,  SSID st5, TSFDelta: 0x3f0fb0e4, TXRate: 0
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340243131314 as it greater than Beacon TSF 340243090865
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:df LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:df FREQ: 5280, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:df (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:43.131, RSSI: -136, CPL: 7, AGE: 2112,  SSID Hydra, TSFDelta: 0xa0b4e55, TXRate: 0
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340243132055 as it greater than Beacon TSF 340243113718
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.420  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:dd LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_OPEN 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1101): ESS SpectrumMgmt
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:dd FREQ: 5280, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:dd (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:43.132, RSSI: -136, CPL: 7, AGE: 2112,  SSID QGuest, TSFDelta: 0xa0f8abc, TXRate: 0
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report beacon TSF 340243138230 as it greater than probe TSF 340243132129
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_EAP
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:de LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_EAP 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:de FREQ: 5280, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.421  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:de (wlan0) ASSO: NO AddInfo: 0x1, TSF 3, 22:30:43.138, RSSI: -136, CPL: 7, AGE: 2104,  SSID Pandora, TSFDelta: 0xa117cd0, TXRate: 0
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340243120954 as it greater than Beacon TSF 340243116750
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 40:b0:76:ae:fa:10 LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 100, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1411): ESS Privacy ShortSlotTime
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 40:b0:76:ae:fa:10 FREQ: 2442, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code =    
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 40:b0:76:ae:fa:10 (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:43.120, RSSI: -104, CPL: 127, AGE: 2120,  SSID my, TSFDelta: 0xd0377a85, TXRate: 0
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report beacon TSF 340243351142 as it greater than probe TSF 340243331867
+01-24 10:29:56.422  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_EAP
+01-24 10:29:56.423  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.423  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:fe LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_EAP 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.423  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:fe FREQ: 5320, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.429  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:fe (wlan0) ASSO: NO AddInfo: 0x1, TSF 3, 22:30:43.351, RSSI: -144, CPL: 7, AGE: 1892,  SSID Pandora, TSFDelta: 0x4a5c3ab0, TXRate: 0
+01-24 10:29:56.430  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.430  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340243331075 as it greater than Beacon TSF 340243301888
+01-24 10:29:56.430  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.430  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.430  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:ff LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.430  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:ff FREQ: 5320, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.430  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:ff (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:43.331, RSSI: -142, CPL: 7, AGE: 1912,  SSID Hydra, TSFDelta: 0x4a55d9c8, TXRate: 0
+01-24 10:29:56.431  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.431  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340243331678 as it greater than Beacon TSF 340243326563
+01-24 10:29:56.431  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.431  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:fd LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_OPEN 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1101): ESS SpectrumMgmt
+01-24 10:29:56.431  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:fd FREQ: 5320, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.431  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c0:fd (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:43.331, RSSI: -144, CPL: 7, AGE: 1912,  SSID QGuest, TSFDelta: 0x4a5a1617, TXRate: 0
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242594865 as it greater than Beacon TSF 335698958419
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6d LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_OPEN 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1101): ESS SpectrumMgmt
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6d FREQ: 5200, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6d (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.594, RSSI: -166, CPL: 4, AGE: 2648,  SSID QGuest, TSFDelta: 0xd936fcf9, TXRate: 0
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242670825 as it greater than Beacon TSF 335699033760
+01-24 10:29:56.432  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.433  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.433  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:cf LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.433  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:cf FREQ: 5240, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.433  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:cf (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.670, RSSI: -170, CPL: 7, AGE: 2572,  SSID Hydra, TSFDelta: 0xf8ee5e88, TXRate: 0
+01-24 10:29:56.436  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.436  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242671844 as it greater than Beacon TSF 335699065260
+01-24 10:29:56.436  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.436  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:cd LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_OPEN 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1101): ESS SpectrumMgmt
+01-24 10:29:56.436  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:cd FREQ: 5240, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.436  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:cd (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.671, RSSI: -172, CPL: 7, AGE: 2572,  SSID QGuest, TSFDelta: 0xf8f29ad7, TXRate: 0
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242594980 as it greater than Beacon TSF 338698983335
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_EAP
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6e LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_EAP 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6e FREQ: 5200, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6e (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.594, RSSI: -166, CPL: 4, AGE: 2648,  SSID Pandora, TSFDelta: 0xd93ab9f2, TXRate: 0
+01-24 10:29:56.437  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242594725 as it greater than Beacon TSF 340242594554
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6f LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1111): ESS Privacy SpectrumMgmt
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6f FREQ: 5200, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 88:1d:fc:f5:c1:6f (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.594, RSSI: -168, CPL: 4, AGE: 2648,  SSID Hydra, TSFDelta: 0xd932c062, TXRate: 0
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report beacon TSF 340242534348 as it greater than probe TSF 338698983258
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS ca:50:e9:a0:02:19 LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 100, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x0411): ESS Privacy ShortSlotTime
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS ca:50:e9:a0:02:19 FREQ: 2412, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code =    
+01-24 10:29:56.438  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS ca:50:e9:a0:02:19 (wlan0) ASSO: NO AddInfo: 0x1, TSF 3, 22:30:42.534, RSSI: -172, CPL: 127, AGE: 2708,  SSID ChinaNet-sJYf, TSFDelta: 0x4978977e, TXRate: 0
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report beacon TSF 340242555303 as it greater than probe TSF 340242555303
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 9a:00:74:7d:9d:1e LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 100, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x0411): ESS Privacy ShortSlotTime
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 9a:00:74:7d:9d:1e FREQ: 2412, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code =    
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 9a:00:74:7d:9d:1e (wlan0) ASSO: NO AddInfo: 0x1, TSF 3, 22:30:42.555, RSSI: -170, CPL: 127, AGE: 2688,  SSID ChinaNet-0PBw, TSFDelta: 0xdce89873, TXRate: 0
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242528825 as it greater than Beacon TSF 0
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:c2 LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_OPEN 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1421): ESS ShortPreamble ShortSlotTime
+01-24 10:29:56.439  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:c2 FREQ: 2412, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:f0:cc:c2 (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.528, RSSI: -172, CPL: 1, AGE: 2712,  SSID QGuest, TSFDelta: 0xf5966961, TXRate: 0
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report Probe TSF 340242570826 as it greater than Beacon TSF 340242519802
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_EAP
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 7c:21:0e:0a:87:60 LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 100, LOWI_ENCRYPTION_TYPE_WPA_EAP 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1011): ESS Privacy
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 7c:21:0e:0a:87:60 FREQ: 2412, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS 7c:21:0e:0a:87:60 (wlan0) ASSO: NO AddInfo: 0x0, TSF 3, 22:30:42.570, RSSI: -144, CPL: 127, AGE: 2672,  SSID mobilenet, TSFDelta: 0xdfaac075, TXRate: 0
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report beacon TSF 340242564957 as it greater than probe TSF 340242564957
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS e6:cb:88:59:a5:fc LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 100, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1511): ESS Privacy SpectrumMgmt ShortSlotTime
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS e6:cb:88:59:a5:fc FREQ: 2412, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.440  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS e6:cb:88:59:a5:fc (wlan0) ASSO: NO AddInfo: 0x1, TSF 3, 22:30:42.564, RSSI: -172, CPL: 127, AGE: 2676,  SSID ______, TSFDelta: 0xe8302438, TXRate: 0
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report beacon TSF 340242666507 as it greater than probe TSF 340242666507
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d2:c0:bf:39:80:0e LOWI_PHY_MODE_11AC_VHT20(8), Beacon Interval: 100, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x0011): ESS Privacy
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d2:c0:bf:39:80:0e FREQ: 5240, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code =    
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d2:c0:bf:39:80:0e (wlan0) ASSO: NO AddInfo: 0x1, TSF 3, 22:30:42.666, RSSI: -176, CPL: 127, AGE: 2576,  SSID RX-BF39800E, TSFDelta: 0x4e2d6974, TXRate: 0
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] 
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] print_bss_handler: Report beacon TSF 340243483189 as it greater than probe TSF 340243483189
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] decode_rsn_wpa_ie: LOWI_ENCRYPTION_TYPE_WPA_PSK
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] is_qcom_ie, bss_age: 0
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:d0 LOWI_PHY_MODE_11NG_HT20(5), Beacon Interval: 102, LOWI_ENCRYPTION_TYPE_WPA_PSK 11mcRanging: No, ANQP: No, LCI: No, Civic: No, capability(0x1431): ESS Privacy ShortPreamble ShortSlotTime
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:d0 FREQ: 2462, cFreq1[40:80:160] = [0:0:0] cFreq2 = 0 Country Code = CN 
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] BSS d4:6d:50:ed:31:d0 (wlan0) ASSO: NO AddInfo: 0x1, TSF 3, 22:30:43.483, RSSI: -128, CPL: 1, AGE: 1760,  SSID Hydra, TSFDelta: 0x13c6cb99, TXRate: 0
+01-24 10:29:56.441  1503 14859 D LOWI-9.0.0.87: [LOWIDiagLog] Log: lowiMeasResult->request: invalid null argument
+01-24 10:29:56.441  1503 14859 I LOWI-9.0.0.87: [LOWI-Scan] lowi_close_record:Scan done in 333036846ms, 23 APs in scan results
+01-24 10:29:56.442  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] WipsScanUsingNL: passive scan cached 0, took 1544703 ms, err 0
+01-24 10:29:56.442  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] lowi_proc_req_passive_scan_with_live_meas - No WLAN Frames to be parsed
+01-24 10:29:56.442  1503 14859 D LOWI-9.0.0.87: [LOWIScanResultReceiver] Send scan meas to listener
+01-24 10:29:56.442  1503 14859 D LOWI-9.0.0.87: [LOWIScanResultReceiver] Enter passive listening mode
+01-24 10:29:56.442  1503  1667 D LOWI-9.0.0.87: [LOWIEventReceiver] handleEvent:FROM:NA, TO:NA, REQ:NA, IREQ:NA, REQ_ID:0, RESP:NA, INFO:NA
+01-24 10:29:56.442  1503  1667 D LOWI-9.0.0.87: [LOWIBackgroundScanMgr] isRspForBgScanMgr: evt(LOWI_NO_EVT) - not handled
+01-24 10:29:56.442  1503  1667 D LOWI-9.0.0.87: [LOWIScheduler] manageMsg: NULL results or NULL request in results
+01-24 10:29:56.442  1503  1667 D LOWI-9.0.0.87: [LOWIController] Measurements received
+01-24 10:29:56.442  1503  1667 D LOWI-9.0.0.87: [LOWICacheManager] putInCache:Num of Meas to add: 23
+01-24 10:29:56.442  1503 14859 D LOWI-9.0.0.87: [LOWIWifiDriverInterface] getMeasurements - Passive listening mode
+01-24 10:29:56.442  1503 14859 D LOWI-9.0.0.87: [LOWI-Scan] WipsScanUsingNL:wait -1 sec for netlink message
+01-24 10:29:56.443  1503  1667 D LOWI-9.0.0.87: [LOWIController] processMeasurementResults: No current Request. Cache measurements
+01-24 10:29:56.443  1503  1667 D LOWI-9.0.0.87: [LOWIControllerExtn] sendLOWILpDiscoveryScanResponse: Not a discovery scan response
+01-24 10:29:56.436     0     0 E [wifi@1][0x5f113d128b8][10:29:56.439970] wlan: [981:E:OSIF] wlan_hdd_set_station_stats_request_pending: peer is null
+01-24 10:29:56.628  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+01-24 10:29:56.629  1752  2003 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+01-24 10:29:56.640  1752 10050 D CompatibilityInfo: mCompatibilityFlags - 0
+01-24 10:29:56.640  1752 10050 D CompatibilityInfo: applicationDensity - 480
+01-24 10:29:56.641  1752 10050 D CompatibilityInfo: applicationScale - 1.0
+01-24 10:29:57.034     0     0 D cnss    : Runtime suspend start
+01-24 10:29:57.035     0     0 I [kworke][0x5f1148094c4][10:29:57.038744] wlan: [26727:I:PMO] pmo_core_is_wow_applicable: lpass enabled, enabling wow
+01-24 10:29:57.035     0     0 I [kworke][0x5f11480a603][10:29:57.038974] wlan: [26727:I:PMO] pmo_core_enable_wow_in_fw: drv wow is enabled
+01-24 10:29:57.035     0     0 I [kworke][0x5f11480a881][10:29:57.039007] wlan: [26727:I:PMO] pmo_core_enable_wow_in_fw: RTPM wow
+01-24 10:29:57.035     0     0 I [kworke][0x5f11480adf1][10:29:57.039080] wlan: [26727:I:WMI] send_wow_enable_cmd_tlv: suspend type: WOW_IFACE_PAUSE_ENABLED flag is 0x10
+01-24 10:29:57.065     0     0 D cnss    : Setting MHI state: SUSPEND(6)
+01-24 10:29:57.065     0     0 D cnss    : Suspending PCI link
+01-24 10:29:57.066     0     0 D cnss    : Use PCIe DRV suspend
+01-24 10:29:57.073     0     0 D cnss    : Runtime suspend status: 0
+01-24 10:29:57.182     0     0 I (virq   : irq_count)- 3:21334919 9:5007142 348:3057090 14:1371761 380:948471 303:815371 18:802253 414:773835 282:659470 279:641458
+01-24 10:29:57.182     0     0 I (cpu    : irq_count)- 0:8776040 1:8764047 2:8760353 3:9003445 4:718657 5:731901 6:769513 7:526600
+01-24 10:29:57.182     0     0 I (ipi    : irq_count)- 0:49572760 1:38220087 2:0 3:0 4:0 5:7031315 6:0

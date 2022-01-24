@@ -7,6 +7,8 @@ from PyQt5.QtGui import QIcon, QFont, QColor
 from PyQt5.QtCore import Qt
 from enum import Enum
 from PyQt5.Qsci import *
+
+from Utils import LocalUtils
 from Utils.MyLexer import MyLexer
 from Utils.logCacher import LocalCache
 
@@ -217,6 +219,8 @@ class MainDesk(QMainWindow):
         # debug enabling
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_ANALYZE]:
             print(actionItem.text())
+            thread = threading.Thread(target=self.start_analyzer)
+            thread.start()
         # stop action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_STOP]:
             print(actionItem.text())
@@ -232,7 +236,7 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.load_file_init, args=('../logs_1227.txt',))
+            thread = threading.Thread(target=self.load_file_init, args=('../logs_arrayOutOfIndex.txt',))
             thread.start()
         else:
             print('no supported')
@@ -256,6 +260,15 @@ class MainDesk(QMainWindow):
 
         time_finish = time.time()
         print('load_file_init >>> cost %.2fs >>>>:' % (time_finish - time_start))
+
+    def start_analyzer(self):
+        print('start analyzing..................')
+        time_start = time.time()
+        content = self.__logCacher.get_cache_allLines()
+        LocalUtils.findTargetPositions(content)
+
+        time_finish = time.time()
+        print('start_analyzer >>> cost %.2fs >>>>:' % (time_finish - time_start))
 
 
 if __name__ == '__main__':

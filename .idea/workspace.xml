@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04a29b11-6665-4795-a005-2b6ad474c621" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Utils/Analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Utils/FastTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/LogEntity.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/LogEntity.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/MainDesk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/MainDesk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/LocalUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/LocalUtils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Utils/logCacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/logCacher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +53,32 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\PCProject\LogCatty\res" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\PCProject\LogCatty" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.MainDesk">
+    <configuration name="FastTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LogCatty" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils/FastTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="MainDesk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="LogCatty" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,27 +113,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils/TestFileLocal.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestQScintilla" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="LogCatty" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/TestQScintilla.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -159,10 +166,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.MainDesk" />
+        <item itemvalue="Python.FastTest" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.TestQScintilla_official" />
         <item itemvalue="Python.TestFileLocal" />
-        <item itemvalue="Python.TestQScintilla" />
       </list>
     </recent_temporary>
   </component>
@@ -263,5 +270,16 @@
     <MESSAGE value="support loading all pages function&#10;add quickFilter searching function" />
     <MESSAGE value="improve the logCacher which is reading and caching the same time" />
     <option name="LAST_COMMIT_MESSAGE" value="improve the logCacher which is reading and caching the same time" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Utils/FastTest.py</url>
+          <line>3</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

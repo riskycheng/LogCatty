@@ -55,8 +55,11 @@ class LocalCache:
         return res
 
     def get_cache_from_all_cache(self, filterStr):
-        if filterStr is None or filterStr == '':
+        if filterStr is None:
             res = ''.join(line for line in self.__cachePages_all)
         else:
             res = ''.join(line if line.find(filterStr) != -1 else '' for line in self.__cacheLines_all)
         return res
+
+    def get_cache_allLines(self):
+        return self.__cacheLines_all
