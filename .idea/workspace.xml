@@ -231,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642567375159</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="improve the logCacher which is reading and caching the same time">
+      <created>1642830290693</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1642830290693</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,6 +261,7 @@
     <MESSAGE value="update the format to Simsun" />
     <MESSAGE value="change the default toolbar position to left-area" />
     <MESSAGE value="support loading all pages function&#10;add quickFilter searching function" />
-    <option name="LAST_COMMIT_MESSAGE" value="support loading all pages function&#10;add quickFilter searching function" />
+    <MESSAGE value="improve the logCacher which is reading and caching the same time" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve the logCacher which is reading and caching the same time" />
   </component>
 </project>

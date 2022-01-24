@@ -183,7 +183,7 @@ class MainDesk(QMainWindow):
         self.__editor.setLexer(None)
         self.__editor.setUtf8(True)  # Set encoding to UTF-8
         self.__editor.setFont(self.__myFont)  # to use the style from Lexer
-
+        self.__editor.setReadOnly(True)
         # Margins
         # -----------
         # Margin 0 = Line nr margin
@@ -232,7 +232,7 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.load_file_init, args=('../logcat_botao.txt',))
+            thread = threading.Thread(target=self.load_file_init, args=('../logs_1227.txt',))
             thread.start()
         else:
             print('no supported')
