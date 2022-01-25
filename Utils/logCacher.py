@@ -36,7 +36,6 @@ class LocalCache:
             len(self.__cachePages_all), self.__numLines_all))
         time_finish = time.time()
         print('load_file_to_cache >>> cost %.2fs >>>>:' % (time_finish - time_start))
-        pass
 
     def load_content_to_cache(self, text):
         self.__cacheLines_display.clear()

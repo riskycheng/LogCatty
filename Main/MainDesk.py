@@ -181,6 +181,14 @@ class MainDesk(QMainWindow):
         self.__editor.setMarginWidth(0, "00000000")
         self.__editor.setMarginsFont(QFont('Arial', 10))
         self.__editor.setMarginsForegroundColor(QColor("#ff888888"))
+
+        # add the marker
+        self.__editor.setMarginType(1, QsciScintilla.SymbolMargin)
+        self.__editor.setMarginWidth(1, "00000")
+        sym_0 = QImage("../res/break_dot.png").scaled(QSize(24, 24))
+        self.__editor.markerDefine(sym_0, 0)
+        self.__editor.setMarginMarkerMask(1, 0b1111)
+
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
         # ! Add editor to layout !
@@ -255,13 +263,6 @@ class MainDesk(QMainWindow):
 
         # ! append the text style, it is taking long since it would go through all lines
         self.__editor.setLexer(self.__lexer)
-
-        # test the marker
-        self.__editor.setMarginType(1, QsciScintilla.SymbolMargin)
-        self.__editor.setMarginWidth(1, "00000")
-        sym_0 = QImage("../res/break_dot.png").scaled(QSize(24, 24))
-        self.__editor.markerDefine(sym_0, 0)
-        self.__editor.setMarginMarkerMask(1, 0b1111)
 
         time_finish = time.time()
         print('load_file_init >>> cost %.2fs >>>>:' % (time_finish - time_start))
