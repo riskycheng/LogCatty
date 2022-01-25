@@ -3,8 +3,8 @@ import threading
 import time
 
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon, QFont, QColor
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon, QFont, QColor, QImage
+from PyQt5.QtCore import Qt, QSize
 from enum import Enum
 from PyQt5.Qsci import *
 
@@ -236,7 +236,7 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.load_file_init, args=('../logs_arrayOutOfIndex.txt',))
+            thread = threading.Thread(target=self.load_file_init, args=('../logs_arrayOutOfIndex_UIThread.txt',))
             thread.start()
         else:
             print('no supported')
@@ -258,6 +258,13 @@ class MainDesk(QMainWindow):
         # ! append the text style, it is taking long since it would go through all lines
         self.__editor.setLexer(self.__lexer)
 
+        # test the marker
+        self.__editor.setMarginType(1, QsciScintilla.SymbolMargin)
+        self.__editor.setMarginWidth(1, "00000")
+        sym_0 = QImage("../res/break_dot.png").scaled(QSize(24, 24))
+        self.__editor.markerDefine(sym_0, 0)
+        self.__editor.setMarginMarkerMask(1, 0b1111)
+
         time_finish = time.time()
         print('load_file_init >>> cost %.2fs >>>>:' % (time_finish - time_start))
 
@@ -265,8 +272,9 @@ class MainDesk(QMainWindow):
         print('start analyzing..................')
         time_start = time.time()
         content = self.__logCacher.get_cache_allLines()
-        LocalUtils.findTargetPositions(content)
-
+        suspiciousLines, _, _ = LocalUtils.findTargetPositions(content)
+        for lineIndex in suspiciousLines:
+            LocalUtils.add_marker_to_editor(self.__editor, lineIndex)
         time_finish = time.time()
         print('start_analyzer >>> cost %.2fs >>>>:' % (time_finish - time_start))
 

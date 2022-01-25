@@ -1,7 +1,10 @@
 import os
 import re
 import subprocess
-from PyQt5.QtGui import QColor
+
+from PyQt5.Qsci import QsciScintilla
+from PyQt5.QtCore import QSize
+from PyQt5.QtGui import QColor, QImage
 from Utils import logCacher
 from Main.LogEntity import LogEntity
 
@@ -37,6 +40,11 @@ def run_logcat(editor):
         print('Subprogram success')
     else:
         print('Subprogram failed')
+
+
+# editor related
+def add_marker_to_editor(editor, lineIndex):
+    editor.markerAdd(lineIndex, 0)
 
 
 def clear_cache(deviceId, editor):
@@ -113,14 +121,13 @@ def findTargetPositions(content):
     suspiciousLines = []
     suspiciousPIDs = set()
     PID_Packages = dict()
-    index = 0
-    # 01-24 08:23:33.105 25669 26328 E AndroidRuntime: Process: com.jian.detectx.lahaina.debug, PID: 25669
+    lineIndex = 0
     for line in content:
-        index += 1
+        lineIndex += 1
         # check the process IDs
         logItem = parse_line_to_log(line)
         if logItem.orgText.find('beginning of crash') != -1:
-            suspiciousLines.append(index)
+            suspiciousLines.append(lineIndex)
 
         if logItem.orgText.find('FATAL EXCEPTION') != -1:
             suspiciousPIDs.add(logItem.pid)
@@ -137,3 +144,5 @@ def findTargetPositions(content):
     print('suspicious PIDs & Packages : >>>>>>>>>>>>>>>>>>>>')
     for item in suspiciousPIDs:
         print('\t PID:%s, Package:%s' % (str(item), PID_Packages[item]))
+
+    return suspiciousLines, suspiciousPIDs, PID_Packages
