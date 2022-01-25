@@ -24,6 +24,8 @@ class ToolkitItems(Enum):
     TOOLKIT_CLEAR = 8
     TOOLKIT_SETTINGS = 9
     TOOLKIT_REFRESH = 10
+    TOOLKIT_MOVE_PREV = 11
+    TOOLKIT_MOVE_NEXT = 12
     TOOLKIT_TEST = -1
 
 
@@ -38,6 +40,8 @@ ToolkitItemNames = {
     ToolkitItems.TOOLKIT_CLEAR: 'CLEAR',
     ToolkitItems.TOOLKIT_SETTINGS: "SETTINGS",
     ToolkitItems.TOOLKIT_REFRESH: "REFRESH",
+    ToolkitItems.TOOLKIT_MOVE_PREV: "MOVE_PREV",
+    ToolkitItems.TOOLKIT_MOVE_NEXT: "MOVE_NEXT",
     ToolkitItems.TOOLKIT_TEST: 'TEST'
 }
 
@@ -57,6 +61,10 @@ class MainDesk(QMainWindow):
         self.__lyt = None
         self.__frm = None
         self.__editor = None
+
+        # cached suspicious lines
+        self.__curBreakPointer = -1
+        self.__breakPoints = []
 
         # init the logCacher
         self.__logCacher = LocalCache()
@@ -129,6 +137,14 @@ class MainDesk(QMainWindow):
         updateTestToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_TEST])
         toolbar.addAction(updateTestToolkit)
 
+        movePrevToolkit = QAction(QIcon('../res/arrow_up.png'), 'Prev', self)
+        movePrevToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_MOVE_PREV])
+        toolbar.addAction(movePrevToolkit)
+
+        moveNextToolkit = QAction(QIcon('../res/arrow_down.png'), 'Next', self)
+        moveNextToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_MOVE_NEXT])
+        toolbar.addAction(moveNextToolkit)
+
         toolbar.actionTriggered.connect(self.toolkit_click)
 
         # ------------------------ main layout -------------------
@@ -148,34 +164,6 @@ class MainDesk(QMainWindow):
         self.__processes.addItems(['com.jian.detectx', 'com.system.gallery', 'com.jian.logcatty'])
         self.__toolkit_lyt.addWidget(self.__processes)
         self.__toolkit_lyt.setStretch(0, 3)
-        # - log level
-        self.__logLevel = QComboBox()
-        self.__logLevel.setFont(QFont('Arial', 12))
-        self.__logLevel.setObjectName('logLevel')
-        self.__logLevel.addItems(['Verbose', 'Debug', 'Info', 'Warn', 'Error', 'Assert'])
-        self.__toolkit_lyt.addWidget(self.__logLevel)
-        self.__toolkit_lyt.setStretch(1, 1)
-        # - quick filter
-        self.__quickFilter = QLineEdit()
-        self.__quickFilter.setFont(QFont('Arial', 12))
-        self.__quickFilter.setObjectName('quickFilter')
-        self.__toolkit_lyt.addWidget(self.__quickFilter)
-        self.__quickFilter.textChanged.connect(self.onQuickFilterUpdated)
-        self.__toolkit_lyt.setStretch(2, 6)
-        # - regex checkbox
-        self.__regexCheckBox = QCheckBox()
-        self.__regexCheckBox.setText('Regex')
-        self.__regexCheckBox.setFont(QFont('Arial', 12))
-        self.__regexCheckBox.setObjectName('regexCheckBox')
-        self.__toolkit_lyt.addWidget(self.__regexCheckBox, alignment=Qt.AlignCenter)
-        self.__toolkit_lyt.setStretch(3, 1)
-        # - regex checkbox
-        self.__listFilter = QComboBox()
-        self.__listFilter.setFont(QFont('Arial', 12))
-        self.__listFilter.setObjectName('listFilter')
-        self.__listFilter.addItems(['Show only selected application', 'No Filters', 'Edit Filter Configuration'])
-        self.__toolkit_lyt.addWidget(self.__listFilter)
-        self.__toolkit_lyt.setStretch(4, 2)
 
         self.__lyt.addLayout(self.__toolkit_lyt)
         self.__lyt.setStretch(0, 1)  # the first toolkit row
@@ -193,7 +181,6 @@ class MainDesk(QMainWindow):
         self.__editor.setMarginWidth(0, "00000000")
         self.__editor.setMarginsFont(QFont('Arial', 10))
         self.__editor.setMarginsForegroundColor(QColor("#ff888888"))
-
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
         # ! Add editor to layout !
@@ -233,6 +220,17 @@ class MainDesk(QMainWindow):
         # refresh action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_REFRESH]:
             print(actionItem.text())
+
+        # move to prev break point
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_MOVE_PREV]:
+            print(actionItem.text())
+            self.move_to_prev_break_point()
+
+        # move to next break point
+        elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_MOVE_NEXT]:
+            print(actionItem.text())
+            self.move_to_next_break_point()
+
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
@@ -272,11 +270,31 @@ class MainDesk(QMainWindow):
         print('start analyzing..................')
         time_start = time.time()
         content = self.__logCacher.get_cache_allLines()
-        suspiciousLines, _, _ = LocalUtils.findTargetPositions(content)
-        for lineIndex in suspiciousLines:
+        self.__breakPoints, _, _ = LocalUtils.findTargetPositions(content)
+        for lineIndex in self.__breakPoints:
             LocalUtils.add_marker_to_editor(self.__editor, lineIndex)
+
         time_finish = time.time()
         print('start_analyzer >>> cost %.2fs >>>>:' % (time_finish - time_start))
+
+    def move_to_prev_break_point(self):
+        length = len(self.__breakPoints)
+        if length <= 0:
+            return
+        self.__curBreakPointer -= 1
+        self.__curBreakPointer = self.__curBreakPointer if self.__curBreakPointer >= 0 else 0
+        print('move_to_prev_break_point >>> ', str(self.__breakPoints[self.__curBreakPointer]))
+        LocalUtils.scroll_to_line(self.__editor, self.__breakPoints[self.__curBreakPointer])
+
+    def move_to_next_break_point(self):
+        length = len(self.__breakPoints)
+        if length <= 0:
+            return
+        self.__curBreakPointer += 1
+        self.__curBreakPointer = self.__curBreakPointer if self.__curBreakPointer < length else (
+                length - 1)
+        print('move_to_next_break_point >>> ', str(self.__breakPoints[self.__curBreakPointer]))
+        LocalUtils.scroll_to_line(self.__editor, self.__breakPoints[self.__curBreakPointer])
 
 
 if __name__ == '__main__':

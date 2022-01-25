@@ -47,6 +47,13 @@ def add_marker_to_editor(editor, lineIndex):
     editor.markerAdd(lineIndex, 0)
 
 
+# move to specific line
+def scroll_to_line(editor, lineIndex):
+    # scroll to the first line
+    start = lineIndex - 10
+    editor.setFirstVisibleLine(start if start >= 0 else 0)
+
+
 def clear_cache(deviceId, editor):
     commandADB = 'adb logcat -c'
     if editor:
