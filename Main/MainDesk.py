@@ -276,13 +276,13 @@ class MainDesk(QMainWindow):
     def start_analyzer(self):
         print('start analyzing..................')
         time_start = time.time()
-        content = self.__logCacher.get_cache_allLines()
+        content = self.__logCacher.get_cache_allLogItems()
         self.__breakPoints, _, _ = LocalUtils.findTargetPositions(content)
         for lineIndex in self.__breakPoints:
             LocalUtils.add_marker_to_editor(self.__editor, lineIndex)
 
         time_finish = time.time()
-        print('start_analyzer >>> cost %.2fs >>>>:' % (time_finish - time_start))
+        print('start_analyzer finished >>> cost %.2fs >>>>:' % (time_finish - time_start))
 
     def move_to_prev_break_point(self):
         length = len(self.__breakPoints)

@@ -124,15 +124,14 @@ def get_package_name_from_pid(app_str):
         print('Subprogram failed')
 
 
-def findTargetPositions(content):
+def findTargetPositions(logItems):
     suspiciousLines = []
     suspiciousPIDs = set()
     PID_Packages = dict()
     lineIndex = 0
-    for line in content:
+    for logItem in logItems:
         lineIndex += 1
         # check the process IDs
-        logItem = parse_line_to_log(line)
         if logItem.orgText.find('beginning of crash') != -1:
             suspiciousLines.append(lineIndex)
 

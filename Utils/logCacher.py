@@ -3,12 +3,15 @@ import time
 
 from unidecode import unidecode
 
+from Utils import LocalUtils
+
 
 class LocalCache:
     def __init__(self):
         self.__MAX_LINES_PER_PAGE = 4000  # the max lines inside one same page
         self.__cacheLines_all = []  # simply for speeding up querying
         self.__cachePages_all = []  # simply for speeding up loading
+        self.__cacheLogItems_all = []
         self.__cacheLines_display = []  # simply for speeding up querying
         self.__cachePages_display = []  # simply for speeding up loading
         self.__numLines_all = 0
@@ -18,6 +21,7 @@ class LocalCache:
         time_start = time.time()
         self.__cacheLines_all.clear()
         self.__cachePages_all.clear()
+        self.__cacheLogItems_all.clear()
         self.__numLines_all = 0
         tempLines = []  # for concat the strings inside same page
         with open(filename, "r", encoding="utf-8", errors="ignore") as file:
@@ -26,6 +30,7 @@ class LocalCache:
                 line = unidecode(line)
                 tempLines.append(line)
                 self.__cacheLines_all.append(line)
+                self.__cacheLogItems_all.append(LocalUtils.parse_line_to_log(line))
                 if self.__numLines_all % self.__MAX_LINES_PER_PAGE == 0:
                     self.__cachePages_all.append(''.join(each for each in tempLines))
                     tempLines.clear()
@@ -62,3 +67,6 @@ class LocalCache:
 
     def get_cache_allLines(self):
         return self.__cacheLines_all
+
+    def get_cache_allLogItems(self):
+        return self.__cacheLogItems_all
