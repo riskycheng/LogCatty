@@ -192,6 +192,9 @@ class MainDesk(QMainWindow):
         self.__editor.markerDefine(sym_0, 0)
         self.__editor.setMarginMarkerMask(1, 0b1111)
 
+
+        # add slots to post the selected words
+        self.__editor.copyAvailable.connect(self.showSelectedWords)
         self.__editor.setAcceptDrops(False)  # set it False to convey it to Parent layer
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
@@ -315,6 +318,11 @@ class MainDesk(QMainWindow):
         print('load file from:', path)
         thread = threading.Thread(target=self.load_file_init, args=(path,))
         thread.start()
+        pass
+
+    # add the selection listener
+    def showSelectedWords(self, words):
+        print('current selected words:', self.__editor.selectedText())
         pass
 
 
