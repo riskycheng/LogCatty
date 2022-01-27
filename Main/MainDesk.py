@@ -192,9 +192,13 @@ class MainDesk(QMainWindow):
         self.__editor.markerDefine(sym_0, 0)
         self.__editor.setMarginMarkerMask(1, 0b1111)
 
-
         # add slots to post the selected words
         self.__editor.copyAvailable.connect(self.showSelectedWords)
+
+        # add the right click context menu
+        self.__editor.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.__editor.customContextMenuRequested.connect(self.showCustomContextMenu)
+
         self.__editor.setAcceptDrops(False)  # set it False to convey it to Parent layer
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
@@ -321,9 +325,36 @@ class MainDesk(QMainWindow):
         pass
 
     # add the selection listener
+    # todo search keywords can be acquired here
     def showSelectedWords(self, words):
         print('current selected words:', self.__editor.selectedText())
         pass
+
+    # customize the right click context menu
+    # todo trigger and customize more context menu here
+    def showCustomContextMenu(self, pos):
+        contextMenu = QMenu()
+        action1 = QAction('Search', self)
+        action1.setObjectName('context_menu_search')
+        action2 = QAction('Exclude', self)
+        action2.setObjectName('context_menu_exclude')
+        action1.triggered.connect(self.contextMenuClickActions)
+        action2.triggered.connect(self.contextMenuClickActions)
+        contextMenu.addAction(action1)
+        contextMenu.addAction(action2)
+        # get current cursor position
+        cursorPos = self.__editor.cursor().pos()
+        contextMenu.exec_(cursorPos)
+
+    def contextMenuClickActions(self):
+        sender = self.sender()
+        objectName = sender.objectName()
+        if objectName == 'context_menu_search':
+            print('start searching from context : ', self.__editor.selectedText())
+        elif objectName == 'context_menu_exclude':
+            print('start context_menu_exclude')
+        else:
+            print('not supported')
 
 
 if __name__ == '__main__':

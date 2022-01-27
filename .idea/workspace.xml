@@ -294,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643269890786</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add selection words listener, it will be triggered when selected words changed">
+      <created>1643273122243</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1643273122243</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -325,6 +332,7 @@
     <MESSAGE value="support dragging file to open" />
     <MESSAGE value="refactor the logic of parsing the file content:&#10;- load file into local memory cache:&#10;  - lines data&#10;  - pages data concat from lines data (every 4000 line into one page)&#10;  - structured log data&#10;- QScintilla takes the cached pages data ( x200+ faster)&#10;- lexer takes all content in QScintilla&#10;- Analyzer takes the cached structured log data&#10;in this case, the line-&gt;log parse will be executed only once." />
     <MESSAGE value="append the fatal and assert as highlighted errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="append the fatal and assert as highlighted errors" />
+    <MESSAGE value="add selection words listener, it will be triggered when selected words changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="add selection words listener, it will be triggered when selected words changed" />
   </component>
 </project>
