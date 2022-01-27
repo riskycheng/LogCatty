@@ -12,12 +12,12 @@ class LocalCache:
         self.__cacheLines_display = []  # simply for speeding up querying
         self.__cachePages_display = []  # simply for speeding up loading
         self.__numLines_all = 0
-        self.__numLines_display = 0
 
     def load_file_to_cache(self, filename):
         print('load_file_to_cache started')
         time_start = time.time()
         self.__cacheLines_all.clear()
+        self.__cachePages_all.clear()
         self.__numLines_all = 0
         tempLines = []  # for concat the strings inside same page
         with open(filename, "r", encoding="utf-8", errors="ignore") as file:

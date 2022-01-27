@@ -74,6 +74,9 @@ class MainDesk(QMainWindow):
 
     def init_ui(self):
         self.setWindowTitle('Logcatty Developed by JianCheng v1.0.0.1')
+        # accept the file drop
+        self.setAcceptDrops(True)
+
         self.resize(1920, 1080)
 
         # add toolbar
@@ -189,6 +192,7 @@ class MainDesk(QMainWindow):
         self.__editor.markerDefine(sym_0, 0)
         self.__editor.setMarginMarkerMask(1, 0b1111)
 
+        self.__editor.setAcceptDrops(False)  # set it False to convey it to Parent layer
         # set Lexer for editor
         self.__lexer = MyLexer(self.__editor)
         # ! Add editor to layout !
@@ -256,8 +260,10 @@ class MainDesk(QMainWindow):
         pass
 
     def load_file_init(self, filePath):
+        print('load_file_init begin...')
         time_start = time.time()
         self.__editor.clear()
+        self.__editor.setLexer(None)
         self.__logCacher.load_file_to_cache(filePath)
         self.__editor.append(self.__logCacher.get_cache_from_all_cache(None))
 
@@ -296,6 +302,20 @@ class MainDesk(QMainWindow):
                 length - 1)
         print('move_to_next_break_point >>> ', str(self.__breakPoints[self.__curBreakPointer]))
         LocalUtils.scroll_to_line(self.__editor, self.__breakPoints[self.__curBreakPointer])
+
+    def dragEnterEvent(self, event):
+        if event.mimeData().text().endswith('.txt'):
+            event.accept()
+        else:
+            event.ignore()
+        pass
+
+    def dropEvent(self, event):
+        path = event.mimeData().text().replace('file:///', '')
+        print('load file from:', path)
+        thread = threading.Thread(target=self.load_file_init, args=(path,))
+        thread.start()
+        pass
 
 
 if __name__ == '__main__':
