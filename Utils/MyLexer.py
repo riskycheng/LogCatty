@@ -62,7 +62,7 @@ class MyLexer(QsciLexerCustom):
         lines = text.split('\n')
         for line in lines:
             logItem = LocalUtils.parse_line_to_log(line)
-            if logItem.level == 'E':
+            if logItem.level == 'E' or logItem.level == 'F' or logItem.level == 'A':
                 # Red style
                 self.setStyling(len(line) + 1, 1)
             else:
