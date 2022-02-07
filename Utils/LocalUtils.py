@@ -63,13 +63,13 @@ def clear_cache(deviceId, editor):
 
 
 # parse one Line to logEntity instance
-def parse_line_to_log(line):
+def parse_adb_logLine_to_log(line):
     logItem = LogEntity()
     pattern_date = re.compile(r"\s+")
     items = pattern_date.split(line)
     itemsLen = len(items)
 
-    if itemsLen < logItem.leastLen:
+    if not is_log_line_parseable(line) or itemsLen < logItem.leastLen:
         logItem.content = line
         logItem.orgText = line
         logItem.wellAllocated = False
@@ -91,9 +91,72 @@ def parse_line_to_log(line):
         if tmpPID == logItem.pid:
             logItem.packageName = tmpPackage
 
-    if logItem.packageName != '':
-        print(logItem.toString())
     return logItem
+
+
+# 2022-01-27 15:53:04.337 20237-20237/? W/adbd: timeout expired while flushing socket, closing
+def parse_android_studio_logLine_to_log(line):
+    logItem = LogEntity()
+    pattern = re.compile(r"\s+")
+    items = pattern.split(line)
+    itemsLen = len(items)
+
+    if not is_log_line_parseable(line):
+        logItem.content = line
+        logItem.orgText = line
+        logItem.wellAllocated = False
+        return logItem
+
+    logItem.timeStamp = items[0] + '_' + items[1]
+    pid_tid = items[2].split('/')[0].split('-')
+    logItem.pid = pid_tid[0]
+    logItem.tid = pid_tid[-1]
+    logItem.packageName = items[2].split('/')[1]
+
+    logLevel_and_tag = items[3].split('/')
+    logItem.level = logLevel_and_tag[0]
+    logItem.tag = logLevel_and_tag[1][:-1]
+
+    for item in items[4:]:
+        logItem.content += item
+    logItem.orgText = line
+    if logItem.level == 'E' and logItem.orgText.find('AndroidRuntime: Process') != -1 and logItem.orgText.find(
+            'PID') != -1:
+        datas = logItem.orgText.split(' ')
+        tmpPID = datas[-1].replace(' ', '').replace('\n', '')
+        tmpPackage = datas[-3].replace(' ', '').replace(',', '')
+        if tmpPID == logItem.pid:
+            logItem.packageName = tmpPackage
+
+    return logItem
+
+
+def check_log_types(file):
+    r_android = r"[0-9]{1,4}-[0-1][0-9]-[0-3][0-9]\s+[0-2][0-9]?:[0-6][0-9]?:[0-6][0-9]?.[0-9]{1,3}\s+[0-9]+-[0-9]+/"
+    r_adb = r'[0-9|-]{0,4}[0-1][0-9]-[0-3][0-9]\s[0-2][0-9]?:[0-6][0-9]?:[0-6][0-9]?.[0-9]{1,3}\s+[0-9]{1,}\s+[0-9]{1,}\s+[V|v|D|d|I|i|W|w|E|e|F|f|A|a]\s+'
+    with open(file, 'r', encoding="utf-8", errors="ignore") as f:
+        for line in f:
+            match_android = re.match(r_android, line)
+            match_adb = re.match(r_adb, line)
+            if match_android is None and match_adb is not None:
+                return 1  # stands for ADB log
+            if match_android is not None and match_adb is None:
+                return 2  # stands for android studio log
+
+
+# can be parsed or not
+def is_log_line_parseable(line):
+    firstItem = str(line.split(' ')[0]).replace('-', '')
+    if firstItem.isalnum() and len(firstItem) >= 4:
+        return True
+    return False
+
+
+def parse_line_to_log(line, logType=1):
+    if logType == 1:
+        return parse_adb_logLine_to_log(line)
+    else:
+        return parse_android_studio_logLine_to_log(line)
 
 
 def is_contain_chinese_or_exASC(check_str):

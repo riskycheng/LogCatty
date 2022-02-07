@@ -16,7 +16,7 @@ class LocalCache:
         self.__cachePages_display = []  # simply for speeding up loading
         self.__numLines_all = 0
 
-    def load_file_to_cache(self, filename):
+    def load_file_to_cache(self, filename, logType):
         print('load_file_to_cache started')
         time_start = time.time()
         self.__cacheLines_all.clear()
@@ -30,7 +30,7 @@ class LocalCache:
                 line = unidecode(line)
                 tempLines.append(line)
                 self.__cacheLines_all.append(line)
-                self.__cacheLogItems_all.append(LocalUtils.parse_line_to_log(line))
+                self.__cacheLogItems_all.append(LocalUtils.parse_line_to_log(line, logType))
                 if self.__numLines_all % self.__MAX_LINES_PER_PAGE == 0:
                     self.__cachePages_all.append(''.join(each for each in tempLines))
                     tempLines.clear()

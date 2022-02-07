@@ -3,7 +3,7 @@ from Utils import LocalUtils
 
 def test_parse_line_to_log(lineData):
     print('testing test_parse_line_to_log start >>>>>>> ...')
-    logItem = LocalUtils.parse_line_to_log(lineData)
+    logItem = LocalUtils.parse_adb_logLine_to_log(lineData)
     print('testing test_parse_line_to_log done <<<<<<<<<...\n')
 
 

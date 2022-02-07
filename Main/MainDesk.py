@@ -49,6 +49,7 @@ ToolkitItemNames = {
 class MainDesk(QMainWindow):
     def __init__(self):
         super(MainDesk, self).__init__(flags=Qt.WindowFlags())
+        self.__logType = 1
         self.__listFilter = None
         self.__regexCheckBox = None
         self.__quickFilter = None
@@ -200,8 +201,7 @@ class MainDesk(QMainWindow):
         self.__editor.customContextMenuRequested.connect(self.showCustomContextMenu)
 
         self.__editor.setAcceptDrops(False)  # set it False to convey it to Parent layer
-        # set Lexer for editor
-        self.__lexer = MyLexer(self.__editor)
+        self.__lexer = MyLexer(self.__editor, self.__logType)
         # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
         self.__lyt.setStretch(1, 10)  # the second Log content row
@@ -253,7 +253,7 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.load_file_init, args=('../logs_arrayOutOfIndex_UIThread.txt',))
+            thread = threading.Thread(target=self.load_file_init, args=('../logs_androidStudio.txt',))
             thread.start()
         else:
             print('no supported')
@@ -267,11 +267,15 @@ class MainDesk(QMainWindow):
         pass
 
     def load_file_init(self, filePath):
-        print('load_file_init begin...')
         time_start = time.time()
+        self.__logType = LocalUtils.check_log_types(filePath)
+        print(
+            'load_file_init begin, load log type: %s' % 'ADB_log' if self.__logType == 1 else 'AS_log')
+        self.__lexer.updateLogType(self.__logType)
+        # set Lexer for editor
         self.__editor.clear()
         self.__editor.setLexer(None)
-        self.__logCacher.load_file_to_cache(filePath)
+        self.__logCacher.load_file_to_cache(filePath, self.__logType)
         self.__editor.append(self.__logCacher.get_cache_from_all_cache(None))
 
         # ! append the text style, it is taking long since it would go through all lines

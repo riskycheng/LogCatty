@@ -7,8 +7,9 @@ from Utils import LocalUtils
 
 
 class MyLexer(QsciLexerCustom):
-    def __init__(self, parent):
+    def __init__(self, parent, logType):
         super(MyLexer, self).__init__(parent)
+        self.__logType = logType
         # Default text settings
         # ----------------------
         self.setDefaultColor(QColor("#ff000000"))
@@ -51,6 +52,10 @@ class MyLexer(QsciLexerCustom):
         ###
         return ""
 
+    def updateLogType(self, logType):
+        print('updating internal logType in MyLexer to :', str(logType))
+        self.__logType = logType
+
     def styleText(self, start, end):
         # 1. Initialize the styling procedure
         # ------------------------------------
@@ -60,8 +65,9 @@ class MyLexer(QsciLexerCustom):
         # ----------------------------------
         text = self.parent().text()[start:end]
         lines = text.split('\n')
+        print('setting Lexer with logType=', str(self.__logType))
         for line in lines:
-            logItem = LocalUtils.parse_line_to_log(line)
+            logItem = LocalUtils.parse_line_to_log(line, self.__logType)
             if logItem.level == 'E' or logItem.level == 'F' or logItem.level == 'A':
                 # Red style
                 self.setStyling(len(line) + 1, 1)
