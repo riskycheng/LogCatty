@@ -34,7 +34,7 @@ class LocalCache:
                 if self.__numLines_all % self.__MAX_LINES_PER_PAGE == 0:
                     self.__cachePages_all.append(''.join(each for each in tempLines))
                     tempLines.clear()
-        if self.__numLines_all < self.__MAX_LINES_PER_PAGE:
+        if self.__numLines_all < self.__MAX_LINES_PER_PAGE or len(tempLines) > 0:
             self.__cachePages_all.append(''.join(each for each in tempLines))
             tempLines.clear()
         print('load_cache_from_file finished: \n\t total pages:%d \n\t total lines:%d' % (

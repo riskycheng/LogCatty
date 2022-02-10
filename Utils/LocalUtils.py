@@ -10,8 +10,8 @@ from Main.LogEntity import LogEntity
 
 
 def find_devices():
-    commandADB = 'adb devices'
-    p = subprocess.Popen(commandADB, shell=True, stdout=subprocess.PIPE)
+    commandADB = '../thirdPartyKit/adb.exe devices'
+    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE)
     # parse the device
     foundedDevices = set()
     out, err = p.communicate()
@@ -22,6 +22,22 @@ def find_devices():
         foundedDevices.add(deviceId)
     # all the queried devices
     return foundedDevices
+
+
+def locateNativeCrashingPoints(symbolLib, addresses):
+    commandAddress = '../thirdPartyKit/addr2line_64bit.exe -e ' + symbolLib
+    for address in addresses:
+        commandAddress += ' ' + address
+    p = subprocess.Popen(commandAddress, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    suspiciousLines = []
+    while p.poll() is None:
+        line = p.stdout.readline()
+        if line:
+            lineStr = str(line, encoding='utf-8').replace('\r\n', '\n')
+            suspiciousLines.append(lineStr)
+    if p.returncode != 0:
+        print('warning: failed to track crashing point with addr2line')
+    return suspiciousLines
 
 
 def run_logcat(editor):
