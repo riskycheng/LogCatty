@@ -217,6 +217,10 @@ def findTargetPositions(logItems):
         if logItem.orgText.find('FATAL EXCEPTION') != -1:
             suspiciousPIDs.add(logItem.pid)
 
+        if logItem.orgText.find('backtrace') != -1:
+            suspiciousPIDs.add(logItem.pid)
+            suspiciousLines.append(lineIndex)
+
         if logItem.packageName != '' and logItem.pid in suspiciousPIDs:
             print(logItem.toString())
             PID_Packages[logItem.pid] = logItem.packageName

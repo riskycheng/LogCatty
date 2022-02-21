@@ -2,8 +2,7 @@ import os
 
 # import subprocess
 # subprocess.Popen('../thirdPartyKit/adb.exe devices', shell=False, close_fds=True)
-
-import LocalUtils
+from Utils import LocalUtils
 
 devices = LocalUtils.find_devices()
 

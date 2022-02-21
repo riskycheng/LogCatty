@@ -342,10 +342,15 @@ class MainDesk(QMainWindow):
         action1.setObjectName('context_menu_search')
         action2 = QAction('Exclude', self)
         action2.setObjectName('context_menu_exclude')
+        # the action of triggering
+        action_addr2line = QAction('addr2line', self)
+        action_addr2line.setObjectName('context_menu_addr2line')
         action1.triggered.connect(self.contextMenuClickActions)
         action2.triggered.connect(self.contextMenuClickActions)
+        action_addr2line.triggered.connect(self.contextMenuClickActions)
         contextMenu.addAction(action1)
         contextMenu.addAction(action2)
+        contextMenu.addAction(action_addr2line)
         # get current cursor position
         cursorPos = self.__editor.cursor().pos()
         contextMenu.exec_(cursorPos)
@@ -357,6 +362,13 @@ class MainDesk(QMainWindow):
             print('start searching from context : ', self.__editor.selectedText())
         elif objectName == 'context_menu_exclude':
             print('start context_menu_exclude')
+        elif objectName == 'context_menu_addr2line':
+            print('start context_menu_addr2line')
+            selectedAddr = self.__editor.selectedText()
+            addresses = [selectedAddr]
+            results = LocalUtils.locateNativeCrashingPoints('../Test/nativeCrashDemo/libdetectx-lib.so', addresses)
+            print(results)
+            QMessageBox.information(self, "Addr2Line", results[0], QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
         else:
             print('not supported')
 
