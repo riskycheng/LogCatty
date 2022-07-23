@@ -7,20 +7,69 @@ from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QColor, QImage
 from Utils import logCacher
 from Main.LogEntity import LogEntity
+from Utils.MyDevice import MyDevice
+
+
+def call_to_get_result(commandADB):
+    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE)
+    # parse the device
+    out, err = p.communicate()
+    resultLines = []
+    for line in out.splitlines():
+        line = str(line, encoding='utf-8')
+        resultLines.append(line.replace('\n', ''))
+    return resultLines
 
 
 def find_devices():
-    commandADB = '../thirdPartyKit/adb.exe devices'
-    p = subprocess.Popen(commandADB, shell=False, stdout=subprocess.PIPE)
-    # parse the device
+    command_queryDevices = '../thirdPartyKit/adb.exe devices'
+    resultsQueryDevices = call_to_get_result(command_queryDevices)
+
     foundedDevices = set()
-    out, err = p.communicate()
-    for line in out.splitlines():
-        line = str(line, encoding='utf-8')
-        if line.startswith('List') or line == '' or line == '\n': continue
-        deviceId = line.replace('device', '').replace(' ', '').replace('\n', '').replace('\r', '')
-        foundedDevices.add(deviceId)
+    for line in resultsQueryDevices:
+        if line.startswith('List') or line == '' or line == '\n':
+            continue
+        if line.endswith('device'):
+            deviceId = line.replace('device', '').replace(' ', '').replace('\n', '').replace('\r', '')
+            # query its name
+            command_queryDeviceName = '../thirdPartyKit/adb.exe -s ' + deviceId + ' shell getprop ro.product.vendor.model'
+            deviceNames = call_to_get_result(command_queryDeviceName)
+            deviceName = ''
+            if len(deviceNames) > 0:
+                deviceName = deviceNames[0]
+
+            # query its API-Level
+            command_queryAPILevel = '../thirdPartyKit/adb.exe -s ' + deviceId + ' shell getprop ro.build.version.sdk'
+            deviceAPIs = call_to_get_result(command_queryAPILevel)
+            deviceAPILevel = ''
+            if len(deviceAPIs) > 0:
+                deviceAPILevel = deviceAPIs[0]
+
+            # query its Factory
+            command_queryManufacturer = '../thirdPartyKit/adb.exe -s ' + deviceId + ' shell getprop ro.product.manufacturer'
+            deviceManufacturers = call_to_get_result(command_queryManufacturer)
+            deviceManufacturer = ''
+            if len(deviceManufacturers) > 0:
+                deviceManufacturer = deviceManufacturers[0]
+
+            # query its Android version
+            command_queryAndroidVersion = '../thirdPartyKit/adb.exe -s ' + deviceId + ' shell getprop ro.build.version.release'
+            deviceAndroidVersions = call_to_get_result(command_queryAndroidVersion)
+            deviceAndroidVersion = ''
+            if len(deviceAndroidVersions) > 0:
+                deviceAndroidVersion = deviceAndroidVersions[0]
+
+            # instantiate the device
+            thisDevice = MyDevice(deviceID=deviceId, deviceName=deviceName)
+            thisDevice.deviceAPILevel = deviceAPILevel
+            thisDevice.deviceFactory = deviceManufacturer
+            thisDevice.deviceAndroidVersion = deviceAndroidVersion
+
+            foundedDevices.add(thisDevice)
     # all the queried devices
+    for device in foundedDevices:
+        print('found device => ID:', device.deviceID, ' Name:', device.deviceName, ' Manufacturer:',
+              device.deviceFactory, ' API-Level:', device.deviceAPILevel, ' Android:', device.deviceAndroidVersion)
     return foundedDevices
 
 

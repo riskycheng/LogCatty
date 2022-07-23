@@ -49,10 +49,14 @@ ToolkitItemNames = {
 class MainDesk(QMainWindow):
     def __init__(self):
         super(MainDesk, self).__init__(flags=Qt.WindowFlags())
+
         self.__logType = 1
         self.__listFilter = None
         self.__regexCheckBox = None
         self.__quickFilter = None
+        self.__deviceLabel = None  # this is only the static label name indicating devices
+        self.__devices = None
+        self.__currentEnabledDevice = None  # this is indicating which device is targeted as connection
         self.__processes = None
         self.__toolkit_lyt = None
         self.__logLevel = None
@@ -87,9 +91,9 @@ class MainDesk(QMainWindow):
         # define the toolkit style
         toolbar.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
 
-        clearToolkit = QAction(QIcon('../res/open_blue.png'), 'open', self)
-        clearToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_OPEN])
-        toolbar.addAction(clearToolkit)
+        openToolkit = QAction(QIcon('../res/open_blue.png'), 'open', self)
+        openToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_OPEN])
+        toolbar.addAction(openToolkit)
 
         # analyze with native
         debugToolkit = QAction(QIcon('../res/analyze.png'), 'analyze', self)
@@ -161,13 +165,30 @@ class MainDesk(QMainWindow):
 
         # add the toolkits into first row
         self.__toolkit_lyt = QHBoxLayout()
+
+        # - device connection options
+        self.__deviceLabel = QLabel()
+        self.__deviceLabel.setFont(QFont('Arial', 12))
+        self.__toolkit_lyt.addWidget(self.__deviceLabel)
+        self.__deviceLabel.setText('Devices')
+        self.__deviceLabel.setAlignment(Qt.AlignCenter)
+        self.__toolkit_lyt.setStretch(0, 1)
+        # - device connection options
+        self.__devices = QComboBox()
+        self.__devices.setFont(QFont('Arial', 12))
+        self.__devices.setObjectName('devices')
+        self.__toolkit_lyt.addWidget(self.__devices)
+        self.__toolkit_lyt.setStretch(1, 6)
+        # start initial update the device list, it might also be triggered by drop down
+        self.queryDevicesAndFillInList()
+
         # - process options
         self.__processes = QComboBox()
         self.__processes.setFont(QFont('Arial', 12))
         self.__processes.setObjectName('processes')
         self.__processes.addItems(['com.jian.detectx', 'com.system.gallery', 'com.jian.logcatty'])
         self.__toolkit_lyt.addWidget(self.__processes)
-        self.__toolkit_lyt.setStretch(0, 3)
+        self.__toolkit_lyt.setStretch(2, 10)
 
         self.__lyt.addLayout(self.__toolkit_lyt)
         self.__lyt.setStretch(0, 1)  # the first toolkit row
@@ -253,7 +274,7 @@ class MainDesk(QMainWindow):
         # test action
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_TEST]:
             print(actionItem.text())
-            thread = threading.Thread(target=self.load_file_init, args=('../logs_androidStudio.txt',))
+            thread = threading.Thread(target=self.load_file_init, args=('../androidStudioLogs.txt',))
             thread.start()
         else:
             print('no supported')
@@ -371,6 +392,16 @@ class MainDesk(QMainWindow):
             QMessageBox.information(self, "Addr2Line", results[0], QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
         else:
             print('not supported')
+
+    def queryDevicesAndFillInList(self):
+        print('start updating the device list')
+        self.__devices.clear()
+        devices = LocalUtils.find_devices()
+        for device in devices:
+            itemContent = device.deviceFactory + ' ' + device.deviceName + ' Android ' \
+                      + device.deviceAndroidVersion + ', API ' + device.deviceAPILevel
+            self.__devices.addItem(itemContent)
+        print('finish updating the device list')
 
 
 if __name__ == '__main__':
