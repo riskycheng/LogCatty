@@ -13,6 +13,21 @@ from Utils.MyLexer import MyLexer
 from Utils.logCacher import LocalCache
 
 
+class MyComboBox(QComboBox):
+    def showPopup(self):
+        print('start updating the device list')
+        self.clear()
+        devices = LocalUtils.find_devices()
+        for device in devices:
+            itemContent = device.deviceFactory + ' ' + device.deviceName + ' Android ' \
+                          + device.deviceAndroidVersion + ', API ' + device.deviceAPILevel
+            self.addItem(itemContent)
+        if len(devices) == 0:
+            self.addItem('None')
+        print('finish updating the device list')
+        super().showPopup()  # Show the dropdown
+
+
 class ToolkitItems(Enum):
     TOOLKIT_OPEN = 1
     TOOLKIT_ANALYZE = 2
@@ -173,11 +188,13 @@ class MainDesk(QMainWindow):
         self.__deviceLabel.setText('Devices')
         self.__deviceLabel.setAlignment(Qt.AlignCenter)
         self.__toolkit_lyt.setStretch(0, 1)
+
         # - device connection options
-        self.__devices = QComboBox()
+        self.__devices = MyComboBox()
         self.__devices.setFont(QFont('Arial', 12))
         self.__devices.setObjectName('devices')
         self.__toolkit_lyt.addWidget(self.__devices)
+
         self.__toolkit_lyt.setStretch(1, 6)
         # start initial update the device list, it might also be triggered by drop down
         self.queryDevicesAndFillInList()
@@ -226,6 +243,10 @@ class MainDesk(QMainWindow):
         # ! Add editor to layout !
         self.__lyt.addWidget(self.__editor, alignment=Qt.Alignment())
         self.__lyt.setStretch(1, 10)  # the second Log content row
+
+    def comboBox_devices_list(self, index):
+        # This function will be called when the combo box is clicked
+        print(f"Combo Box activated. Selected index: {index}")
 
     def toolkit_click(self, actionItem):
         # file open
@@ -397,9 +418,10 @@ class MainDesk(QMainWindow):
         print('start updating the device list')
         self.__devices.clear()
         devices = LocalUtils.find_devices()
+        self.__devices.addItem('None')
         for device in devices:
             itemContent = device.deviceFactory + ' ' + device.deviceName + ' Android ' \
-                      + device.deviceAndroidVersion + ', API ' + device.deviceAPILevel
+                          + device.deviceAndroidVersion + ', API ' + device.deviceAPILevel
             self.__devices.addItem(itemContent)
         print('finish updating the device list')
 

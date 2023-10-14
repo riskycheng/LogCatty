@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04a29b11-6665-4795-a005-2b6ad474c621" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Test/TestADBDeviceConnection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/MyDevice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LogCatty.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LogCatty.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/MainDesk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/MainDesk.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/LocalUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/LocalUtils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +49,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test/nativeCrashDemo" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "D:/Programs/anaconda3/envs/py_dev/python.exe",
+    "settings.editor.selected.configurable": "preferences.keymap"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\PCProject\LogCatty\Test\nativeCrashDemo" />
