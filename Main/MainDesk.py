@@ -65,6 +65,10 @@ class MainDesk(QMainWindow):
     def __init__(self):
         super(MainDesk, self).__init__(flags=Qt.WindowFlags())
 
+        self.selectedDevice = None
+        self.foundDevices = None
+        self.isDeviceActivated = False
+
         self.__logType = 1
         self.__listFilter = None
         self.__regexCheckBox = None
@@ -196,7 +200,7 @@ class MainDesk(QMainWindow):
         self.__devices.setFont(QFont('Arial', 12))
         self.__devices.setObjectName('devices')
         self.__toolkit_lyt.addWidget(self.__devices)
-
+        self.__devices.activated.connect(self.queryDevicesAndCheckSelectedIndex)
         self.__toolkit_lyt.setStretch(1, 6)
         # start initial update the device list, it might also be triggered by drop down
         self.queryDevicesAndFillInList()
@@ -259,7 +263,9 @@ class MainDesk(QMainWindow):
             print(actionItem.text())
         # video recording
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_VIDEO]:
-            print(actionItem.text())
+            if not self.isDeviceActivated:
+                LocalUtils.show_message('Error: no device connected')
+                return
             if not self.__isRecordRunning:
                 self.__recordProcess = LocalUtils.startRecordVideo()
                 self.__isRecordRunning = True
@@ -431,13 +437,34 @@ class MainDesk(QMainWindow):
     def queryDevicesAndFillInList(self):
         print('start updating the device list')
         self.__devices.clear()
-        devices = LocalUtils.find_devices()
+        self.foundDevices = LocalUtils.find_devices()
         self.__devices.addItem('None')
-        for device in devices:
+        for device in self.foundDevices:
             itemContent = device.deviceFactory + ' ' + device.deviceName + ' Android ' \
                           + device.deviceAndroidVersion + ', API ' + device.deviceAPILevel
             self.__devices.addItem(itemContent)
         print('finish updating the device list')
+
+    def queryDevicesAndCheckSelectedIndex(self, index):
+        # This function will be called when the combo box is clicked
+        print(f"Device Selected index: {index}")
+        print(f'devices: %d' % len(self.foundDevices))
+        idx = 0
+        for item in self.foundDevices:
+            if idx == index:
+                self.selectedDevice = item
+            idx += 1
+
+        if self.selectedDevice is None:
+            self.isDeviceActivated = False
+            print(f"Device list is empty!")
+            return
+
+        print(f'selected Device : ID:%s, Name:%s' % (self.selectedDevice.deviceID, self.selectedDevice.deviceName))
+        if self.selectedDevice.deviceID is not None:
+            self.isDeviceActivated = True
+        else:
+            self.isDeviceActivated = False
 
 
 if __name__ == '__main__':

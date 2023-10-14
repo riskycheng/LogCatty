@@ -5,6 +5,8 @@ import subprocess
 from PyQt5.Qsci import QsciScintilla
 from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QColor, QImage
+from PyQt5.QtWidgets import QMessageBox
+
 from Utils import logCacher
 from Main.LogEntity import LogEntity
 from Utils.MyDevice import MyDevice
@@ -301,3 +303,12 @@ def stopRecordVideo(process, savedPath):
         process.wait()
     command = 'adb pull /data/local/tmp/tmp.mp4 ' + savedPath
     subprocess.Popen(command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+
+def show_message(message):
+    # Create a QMessageBox with an error icon and the error message
+    msg_box = QMessageBox()
+    msg_box.setIcon(QMessageBox.Critical)
+    msg_box.setText(message)
+    msg_box.setWindowTitle("Logcatty")
+    msg_box.exec_()  # Display the message box
