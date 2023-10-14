@@ -284,3 +284,20 @@ def findTargetPositions(logItems):
         print('\t PID:%s, Package:%s' % (str(item), PID_Packages[item]))
 
     return suspiciousLines, suspiciousPIDs, PID_Packages
+
+
+# define function of start recording video
+def startRecordVideo():
+    print('start calling startRecordVideo')
+    command = 'adb shell screenrecord /data/local/tmp/tmp.mp4'
+    print('start command execution:%s ...' % command)
+    process = subprocess.Popen(command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    return process
+
+
+def stopRecordVideo(process, savedPath):
+    if process.poll() is None:
+        process.terminate()
+        process.wait()
+    command = 'adb pull /data/local/tmp/tmp.mp4 ' + savedPath
+    subprocess.Popen(command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)

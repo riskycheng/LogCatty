@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04a29b11-6665-4795-a005-2b6ad474c621" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/LogCatty.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LogCatty.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/MainDesk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/MainDesk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/LocalUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/LocalUtils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644481545582</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="support querying devices when clicking the QComboBox automatically updating the list">
+      <created>1697259880746</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1697259880746</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -376,6 +382,7 @@
     <MESSAGE value="bridge the context menu actions" />
     <MESSAGE value="supporting loading android studio logs" />
     <MESSAGE value="adding embedded addr2line and adb toolkit" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding embedded addr2line and adb toolkit" />
+    <MESSAGE value="support querying devices when clicking the QComboBox automatically updating the list" />
+    <option name="LAST_COMMIT_MESSAGE" value="support querying devices when clicking the QComboBox automatically updating the list" />
   </component>
 </project>

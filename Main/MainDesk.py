@@ -82,6 +82,9 @@ class MainDesk(QMainWindow):
         self.__frm = None
         self.__editor = None
 
+        # expose toolkit component for external updates
+        self.videoToolkit = None
+
         # cached suspicious lines
         self.__curBreakPointer = -1
         self.__breakPoints = []
@@ -91,6 +94,10 @@ class MainDesk(QMainWindow):
 
         # start building the UI renderings
         self.init_ui()
+
+        # internal variables
+        self.__isRecordRunning = False
+        self.__recordProcess = None
 
     def init_ui(self):
         self.setWindowTitle('Logcatty Developed by JianCheng v1.0.0.1')
@@ -125,20 +132,15 @@ class MainDesk(QMainWindow):
         runToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_RUN])
         toolbar.addAction(runToolkit)
 
-        # stop capture logs
-        stopToolkit = QAction(QIcon('../res/stop.png'), 'stop', self)
-        stopToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_STOP])
-        toolbar.addAction(stopToolkit)
-
         # capture screen
         cameraToolkit = QAction(QIcon('../res/camera.png'), 'camera', self)
         cameraToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_CAM])
         toolbar.addAction(cameraToolkit)
 
         # record the video
-        videoToolkit = QAction(QIcon('../res/video_green.png'), 'video', self)
-        videoToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_VIDEO])
-        toolbar.addAction(videoToolkit)
+        self.videoToolkit = QAction(QIcon('../res/video_green.png'), 'video', self)
+        self.videoToolkit.setObjectName(ToolkitItemNames[ToolkitItems.TOOLKIT_VIDEO])
+        toolbar.addAction(self.videoToolkit)
 
         # clear the cache
         clearToolkit = QAction(QIcon('../res/delete.png'), 'clear', self)
@@ -258,6 +260,18 @@ class MainDesk(QMainWindow):
         # video recording
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_VIDEO]:
             print(actionItem.text())
+            if not self.__isRecordRunning:
+                self.__recordProcess = LocalUtils.startRecordVideo()
+                self.__isRecordRunning = True
+                self.videoToolkit.setIcon(QIcon("../res/stop.png"))
+                self.videoToolkit.setText("stop")
+            else:
+                # stop
+                LocalUtils.stopRecordVideo(self.__recordProcess, 'c:/test/video_20231014.mp4')
+                self.__isRecordRunning = False
+                self.videoToolkit.setIcon(QIcon("../res/video_green.png"))
+                self.videoToolkit.setText("start")
+
         # filter adjustment
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_FILTER]:
             print(actionItem.text())
