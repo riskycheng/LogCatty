@@ -14,10 +14,18 @@ from Utils.logCacher import LocalCache
 
 
 class MyComboBox(QComboBox):
+    def __init__(self, desk):
+        super().__init__()
+        self.mainDesk = desk
+
     def showPopup(self):
         print('start updating the device list')
         self.clear()
+        self.mainDesk.foundDevices.clear()
         devices = LocalUtils.find_devices()
+        self.mainDesk.foundDevices = devices
+        self.mainDesk.selectedDevice = None
+        self.mainDesk.isDeviceActivated = False
         for device in devices:
             itemContent = device.deviceFactory + ' ' + device.deviceName + ' Android ' \
                           + device.deviceAndroidVersion + ', API ' + device.deviceAPILevel
@@ -27,6 +35,8 @@ class MyComboBox(QComboBox):
         print('finish updating the device list')
         super().showPopup()  # Show the dropdown
 
+    def setMainDesk(self, desk):
+        self.mainDesk = desk
 
 class ToolkitItems(Enum):
     TOOLKIT_OPEN = 1
@@ -196,7 +206,7 @@ class MainDesk(QMainWindow):
         self.__toolkit_lyt.setStretch(0, 1)
 
         # - device connection options
-        self.__devices = MyComboBox()
+        self.__devices = MyComboBox(self)
         self.__devices.setFont(QFont('Arial', 12))
         self.__devices.setObjectName('devices')
         self.__toolkit_lyt.addWidget(self.__devices)
