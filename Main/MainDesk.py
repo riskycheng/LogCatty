@@ -13,6 +13,41 @@ from Utils.MyLexer import MyLexer
 from Utils.logCacher import LocalCache
 
 
+class InputDialog(QDialog):
+    def __init__(self, desk):
+        super().__init__()
+        self.desk = desk
+
+        self.input_edit = None
+        self.init_ui()
+
+    def init_ui(self):
+        self.setWindowTitle('Search')
+        self.setMinimumWidth(400)
+        layout = QVBoxLayout()
+
+        self.input_edit = QLineEdit()
+        layout.addWidget(self.input_edit)
+
+        button_layout = QHBoxLayout()
+
+        ok_button = QPushButton('OK')
+        ok_button.clicked.connect(self.call_custom_function)
+        button_layout.addWidget(ok_button)
+
+        cancel_button = QPushButton('Cancel')
+        cancel_button.clicked.connect(self.reject)
+        button_layout.addWidget(cancel_button)
+
+        layout.addLayout(button_layout)
+        self.setLayout(layout)
+
+    def call_custom_function(self):
+        input_text = self.input_edit.text()
+        self.desk.reload_file(input_text)
+        self.accept()
+
+
 class MyComboBox(QComboBox):
     def __init__(self, desk):
         super().__init__()
@@ -37,6 +72,7 @@ class MyComboBox(QComboBox):
 
     def setMainDesk(self, desk):
         self.mainDesk = desk
+
 
 class ToolkitItems(Enum):
     TOOLKIT_OPEN = 1
@@ -79,6 +115,7 @@ class MainDesk(QMainWindow):
         self.foundDevices = None
         self.isDeviceActivated = False
 
+        self.logFilePath = None
         self.__logType = 1
         self.__listFilter = None
         self.__regexCheckBox = None
@@ -291,6 +328,13 @@ class MainDesk(QMainWindow):
         # filter adjustment
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_FILTER]:
             print(actionItem.text())
+            dialog = InputDialog(self)
+
+            if dialog.exec_() == QDialog.Accepted:
+                input_text = dialog.input_edit.text()
+                print('You entered:', input_text)
+            else:
+                print('Dialog was canceled.')
         # clear log cache
         elif actionItem.objectName() == ToolkitItemNames[ToolkitItems.TOOLKIT_CLEAR]:
             print(actionItem.text())
@@ -340,14 +384,36 @@ class MainDesk(QMainWindow):
 
     def load_file_init(self, filePath):
         time_start = time.time()
-        self.__logType = LocalUtils.check_log_types(filePath)
+        self.logFilePath = filePath
+        self.__logType = LocalUtils.check_log_types(self.logFilePath)
         print(
             'load_file_init begin, load log type: %s' % 'ADB_log' if self.__logType == 1 else 'AS_log')
         self.__lexer.updateLogType(self.__logType)
         # set Lexer for editor
         self.__editor.clear()
         self.__editor.setLexer(None)
-        self.__logCacher.load_file_to_cache(filePath, self.__logType)
+        self.__logCacher.load_file_to_cache(self.logFilePath, self.__logType)
+        self.__editor.append(self.__logCacher.get_cache_from_all_cache(None))
+
+        # ! append the text style, it is taking long since it would go through all lines
+        self.__editor.setLexer(self.__lexer)
+
+        time_finish = time.time()
+        print('load_file_init >>> cost %.2fs >>>>:' % (time_finish - time_start))
+
+    def reload_file(self, matcher):
+        time_start = time.time()
+        if self.logFilePath is None:
+            print('Error: no file initially loaded!')
+            return
+        self.__logType = LocalUtils.check_log_types(self.logFilePath)
+        print(
+            'reload file begin, load log type: %s' % 'ADB_log' if self.__logType == 1 else 'AS_log')
+        self.__lexer.updateLogType(self.__logType)
+        # set Lexer for editor
+        self.__editor.clear()
+        self.__editor.setLexer(None)
+        self.__logCacher.load_file_to_cache_with_filter(self.logFilePath, self.__logType, matcher)
         self.__editor.append(self.__logCacher.get_cache_from_all_cache(None))
 
         # ! append the text style, it is taking long since it would go through all lines

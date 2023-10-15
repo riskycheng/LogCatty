@@ -42,6 +42,34 @@ class LocalCache:
         time_finish = time.time()
         print('load_file_to_cache >>> cost %.2fs >>>>:' % (time_finish - time_start))
 
+    def load_file_to_cache_with_filter(self, filename, logType, matcher):
+        print('load_file_to_cache started')
+        time_start = time.time()
+        self.__cacheLines_all.clear()
+        self.__cachePages_all.clear()
+        self.__cacheLogItems_all.clear()
+        self.__numLines_all = 0
+        tempLines = []  # for concat the strings inside same page
+        with open(filename, "r", encoding="utf-8", errors="ignore") as file:
+            for line in file:
+                if line.find(matcher) == -1:
+                    continue
+                self.__numLines_all += 1
+                line = unidecode(line)
+                tempLines.append(line)
+                self.__cacheLines_all.append(line)
+                self.__cacheLogItems_all.append(LocalUtils.parse_line_to_log(line, logType))
+                if self.__numLines_all % self.__MAX_LINES_PER_PAGE == 0:
+                    self.__cachePages_all.append(''.join(each for each in tempLines))
+                    tempLines.clear()
+        if self.__numLines_all < self.__MAX_LINES_PER_PAGE or len(tempLines) > 0:
+            self.__cachePages_all.append(''.join(each for each in tempLines))
+            tempLines.clear()
+        print('load_cache_from_file finished: \n\t total pages:%d \n\t total lines:%d' % (
+            len(self.__cachePages_all), self.__numLines_all))
+        time_finish = time.time()
+        print('load_file_to_cache >>> cost %.2fs >>>>:' % (time_finish - time_start))
+
     def load_content_to_cache(self, text):
         self.__cacheLines_display.clear()
         print('load_content_to_cache started')
