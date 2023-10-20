@@ -281,10 +281,6 @@ def findTargetPositions(logItems):
     for item in suspiciousLines:
         print('\t line[%06d]' % item)
 
-    print('suspicious PIDs & Packages : >>>>>>>>>>>>>>>>>>>>')
-    for item in suspiciousPIDs:
-        print('\t PID:%s, Package:%s' % (str(item), PID_Packages[item]))
-
     return suspiciousLines, suspiciousPIDs, PID_Packages
 
 
